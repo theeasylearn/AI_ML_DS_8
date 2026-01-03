@@ -1,0 +1,6 @@
+general
+
+1) write a program to findout area of circle using given radius 
+2) write a program to findout area of triangle using given base and height
+3) write a program to findout simple interest of given amount rate and year 
+4) write a program to calculate GST tax amount from given bill amount and tax rate 
