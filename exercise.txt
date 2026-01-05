@@ -4,3 +4,15 @@ general
 2) write a program to findout area of triangle using given base and height
 3) write a program to findout simple interest of given amount rate and year 
 4) write a program to calculate GST tax amount from given bill amount and tax rate 
+
+List
+---------------
+create a list to store your favourite destination in india
+create a list & store 10 different type of values in it 
+    print all values 
+    print 1st value 
+    print 1st five value 
+    print last 5 value 
+    print list twice using * 
+    print item in the list from 2nd to 5th position
+
