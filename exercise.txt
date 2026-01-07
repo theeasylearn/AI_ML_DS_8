@@ -16,3 +16,17 @@ create a list & store 10 different type of values in it
     print list twice using * 
     print item in the list from 2nd to 5th position
 
+Dictionary
+---------------------------
+    Create Dictionary store 10 different types of detail about you. 
+    add dob into it.
+    display Dictionary
+    remove dob from Dictionary 
+    get only keys 
+    get only values 
+    update age key 
+    update city key using update method 
+    copy Dictionary into another Dictionary using shallow copy technique
+    empty copied Dictionary 
+    display empty Dictionary 
+    
