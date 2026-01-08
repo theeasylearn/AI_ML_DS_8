@@ -30,3 +30,11 @@ Dictionary
     empty copied Dictionary 
     display empty Dictionary 
     
+write a program to convert 3 digit amount into words
+input :123 output one two three
+
+write a program to convert 3 digit amount into words
+input :123 output one hundred twenty three
+
+write a program to convert 4 digit amount into words
+input :1234 output one two three four 
