@@ -60,3 +60,67 @@ output :
 5 x 1 =   05
 2 x 1 =   02
 1 x 1 =   01
+
+decision making statement
+---------------------
+1) write a program to convert 24 hours time into 12 hours format time and display it with AM PM message. 
+input : 15 hours 
+output  3 PM 
+
+input : 11 hours 
+output  11 AM 
+
+input : 25 hours 
+output  invalid input 
+
+2) write a program to accept length and width of two different farm from user. and findout & display which farm is bigger 
+
+3) write a program to accept day of week (between 1 to 7) and then display name of day. (use simple if decision making)
+    input 1 : monday 
+    input 2 : tuesday 
+    input 7 : sunday 
+
+4) write a program to findout whether given year is millennium year or not. using if else decision making statements.
+
+5) write a program to findout elder brother from two brother age. 
+
+6) write a program to findout which is cheaper approach to buy IPhone 17 pro max.  consider use is going usa should he buy iphone from usa or from india. 
+
+7) write a program to decide which is better approach to go from ahmedabad to delhi. by car or by train. person has his own petrol car 
+
+4) 
+Write a program that takes a 5 subject marks from user. calculate total and average  and prints the grade using the following conditions:
+
+| Percentage | Grade |
+| ---------- | ----- |
+| 90–100     | A+    |
+| 80–89      | A     |
+| 70–79      | B     |
+| 60–69      | C     |
+| 50–59      | D     |
+| below 50   | Need to improve  |
+----------------------------------------
+
+1) write a program to accept 2 number from user. and accept choice for operations.
+operations will be addition, subtraction, multiplication, division
+do operation and display result as per user choice using switch statements.
+
+2) write a program to accept month number from user and display how many days month has. 
+    input : 1 output : this month has 31 days 
+    input : 4 output : this month has 30 days 
+
+3) write a program to findout whether given year is millenium year or not 
+
+4) write a program to accept birth day and birth month from user. decide zodiac sign from below table 
+    Aries: March 21–April 19
+    Taurus: April 20–May 20
+    Gemini: May 21–June 21
+    Cancer: June 22–July 22
+    Leo: July 23–August 22
+    Virgo: August 23–September 22
+    Libra: September 23–October 22
+    Scorpio: October 24–November 21
+    Sagittarius: November 22–December 21
+    Capricorn: December 22–January 19
+    Aquarius: January 20–February 18
+    Pisces: February 19–March 20
