@@ -82,13 +82,15 @@ output  invalid input
 
 4) write a program to findout whether given year is millennium year or not. using if else decision making statements.
 
-5) write a program to findout elder brother from two brother age. 
+5) write a program to findout elder brother from given two brother's age. 
 
 6) write a program to findout which is cheaper approach to buy IPhone 17 pro max.  consider use is going usa should he buy iphone from usa or from india. 
 
-7) write a program to decide which is better approach to go from ahmedabad to delhi. by car or by train. person has his own petrol car 
+7) write a program to decide which is cheaper approach to go from ahmedabad to delhi. by car or by train. consider person has his own petrol car  and he prefer to travel by 1st class train 
 
-4) 
+
+if else if decision making 
+1) 
 Write a program that takes a 5 subject marks from user. calculate total and average  and prints the grade using the following conditions:
 
 | Percentage | Grade |
