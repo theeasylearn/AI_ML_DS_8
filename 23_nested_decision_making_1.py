@@ -17,23 +17,24 @@
 '''    
 # step 1
 monthly_income = float(input("enter monthly income"))
-# step 2
-annual_income = monthly_income * 12 
-tax  = None
-# step 3
-if annual_income<1200000:
-    tax = 0
-elif annual_income>=1200000 and annual_income<1600000:
-    tax = (annual_income * 15) / 100
-elif annual_income>=1600001 and annual_income<2000000:
-    tax = (annual_income * 20) / 100
-elif annual_income>=2000001 and annual_income<2400000:
-    tax = (annual_income * 25) / 100
+if monthly_income<0:
+    print("invalid monthly income")
 else:
-    tax = annual_income * 0.30
-# step 4
-net_income = annual_income - tax 
-
-#step 5
-print("Gross income =",annual_income," Tax = ",tax," Net income = ",net_income)
-
+    # step 2
+    annual_income = monthly_income * 12 
+    tax  = None
+    # step 3
+    if annual_income<1200000:
+        tax = 0
+    elif annual_income>=1200000 and annual_income<1600000:
+        tax = (annual_income * 15) / 100
+    elif annual_income>=1600001 and annual_income<2000000:
+        tax = (annual_income * 20) / 100
+    elif annual_income>=2000001 and annual_income<2400000:
+        tax = (annual_income * 25) / 100
+    else:
+        tax = annual_income * 0.30
+    # step 4
+    net_income = annual_income - tax 
+    #step 5
+    print("Gross income =",annual_income," Tax = ",tax," Net income = ",net_income)

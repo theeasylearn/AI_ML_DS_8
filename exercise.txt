@@ -103,17 +103,17 @@ Write a program that takes a 5 subject marks from user. calculate total and aver
 | below 50   | Need to improve  |
 ----------------------------------------
 
-1) write a program to accept 2 number from user. and accept choice for operations.
+3) write a program to accept 2 number from user. and accept choice for operations.
 operations will be addition, subtraction, multiplication, division
 do operation and display result as per user choice using switch statements.
 
-2) write a program to accept month number from user and display how many days month has. 
+2) write a program to accept month number from user and display how many days month has. (use logical operator or)
     input : 1 output : this month has 31 days 
     input : 4 output : this month has 30 days 
 
 3) write a program to findout whether given year is millenium year or not 
 
-4) write a program to accept birth day and birth month from user. decide zodiac sign from below table 
+4) write a program to accept birth day and birth month from user as separate input. decide zodiac sign from below table 
     Aries: March 21–April 19
     Taurus: April 20–May 20
     Gemini: May 21–June 21
