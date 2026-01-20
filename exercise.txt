@@ -126,3 +126,11 @@ do operation and display result as per user choice using switch statements.
     Capricorn: December 22–January 19
     Aquarius: January 20–February 18
     Pisces: February 19–March 20
+
+5) write a program for male female marriage compatibility as per below link,  accept birth day and birth month from user as separate input. decide zodiac sign as per previous example and then use zodiac sign to decide  marriage compatibility
+
+https://miro.medium.com/v2/resize:fit:1100/format:webp/1*f58HMTVzfN2XvCPR23wXgA.jpeg
+
+6) write a program to calculate & display day of week (monday/tuesday) from given date. 
+refer https://www.wikihow.com/Calculate-the-Day-of-the-Week
+
