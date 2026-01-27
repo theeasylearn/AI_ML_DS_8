@@ -153,4 +153,15 @@ input: 12345 output : 54321
 8) write a program to check whether given number is perfect no or not 
 9) write a program to check whether given number is composite no or not 
 
+for loop 
+------------------------
+1) write a program to count odd and even number in numeric list 
+2) write a program to sum of all the values in tuple and also calculate average 
+3) write a program to count words in given string 
+4) write a program to count digits in given string 
+5) write a program to count vowels, consonants, digits, words, and symbol in given list 
+6) write a program to convert all negative values into positive values in the same list 
+
+
+
 
