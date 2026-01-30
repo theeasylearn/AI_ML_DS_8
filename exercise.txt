@@ -162,6 +162,15 @@ for loop
 5) write a program to count vowels, consonants, digits, words, and symbol in given list 
 6) write a program to convert all negative values into positive values in the same list 
 
+functions
+-----------------------------------
+create default argument function getBytes that returns total bytes of Gigabytes, megabytes and kilobytes and bytes where megabytes and kilobytes and bytes should be optional 
+
+create default argument function getSeconds that return total seconds of hours, minutes and seconds where  minutes and seconds should be optional 
+
+create default argument function getVolume that return volume of room using , length width and deapth where all inputs should be optional, in case no argument is supplied return 0 
+
+
 
 
 
