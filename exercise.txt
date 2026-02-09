@@ -176,7 +176,3 @@ modify beautifulsoup\4_final_example.py make below changes
     2) findout and use package that can calculate and return chandra rashi 
     3) play rashi bhavishya as per chandra rashi calculated in step 2 
     4) create system that will play music everyday once when user start computer 1st time  
-
-
-
-
