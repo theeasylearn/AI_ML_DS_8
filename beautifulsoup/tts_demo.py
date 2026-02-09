@@ -1,20 +1,56 @@
-import pyttsx3
+# pip install gtts pygame
+# (pygame works on Windows / macOS / Linux)
 
-engine = pyttsx3.init()
+from gtts import gTTS
+from io import BytesIO
+import pygame
+import time
 
-# Optional tweaks
-engine.setProperty('rate', 150)    # words per minute
-engine.setProperty('volume', 0.9)  # 0.0–1.0
+# Optional: longer text example from your file
+text = """ઝિટિવ- ઘણા દિવસોથી અટકેલું કાર્ય પૂર્ણ થશે, જેનાથી તમે અન્ય પ્રવૃત્તિઓ પર ધ્યાન કેન્દ્રિત કરી શકશો. જરૂરિયાતમંદ મિત્રને મદદ કરવાથી આનંદ મળશે. બાળકનું શિસ્તબદ્ધ અને યોગ્ય વર્તન તમને ખુશી અને શાંતિ આપશે.
 
-# List available voices
-voices = engine.getProperty('voices')
-# for voice in voices: print(voice.name, voice.id)
+નેગેટિવ- કોઈપણ પ્રતિકૂળ પરિસ્થિતિમાં હાર માનવાને બદલે ઉકેલ શોધો. અંગત બાબતોમાં દખલગીરી ટાળો. નજીકની કોઈ વ્યક્તિ સમસ્યાઓ ઊભી કરી શકે છે. અહંકારને અંદર આવવા ન દો.
 
-# engine.setProperty('voice', voices[1].id)  # change if wanted
+વ્યવસાય- તમારા પ્રોફેશનલ કાર્યો વિશે કોઈને વધુ પડતું જણાવવાનું ટાળો. નહીંતર, કોઈ તેનો દુરુપયોગ કરી શકે છે અને તમને નુકસાન પહોંચાડી શકે છે. નોકરિયાતોને પ્રમોશન અથવા ટ્રાન્સફર માટે શુભ તકો મળશે.
 
-engine.say("Hello! This is completely offline with no API key needed. Works on Windows, macOS and Linux.")
-engine.runAndWait()
+લવ- પ્રેમની બાબતોમાં તમે ભાગ્યશાળી અનુભવશો. પરિવારના સભ્યો અથવા જીવનસાથીનો સહયોગ તમારા મનોબળ અને આત્મવિશ્વાસમાં વધારો કરશે.
 
-# Save to file instead of speaking
-engine.save_to_file("Text to WAV example.", "hello_offline.wav")
-engine.runAndWait()
+સ્વાસ્થ્ય- સ્વાસ્થ્ય સારું રહેશે. જોકે, વર્તમાન વાતાવરણને કારણે કોઈપણ પ્રકારની બેદરકારી ટાળો. સ્વાસ્થ્યનું ધ્યાન રાખો.
+
+આજનો દિવસ સંવેદનશીલતા અને કરુણાથી ભરેલો રહેશે. ઘરમાં તમારી શાંત હાજરી આરામદાયક વાતાવરણ બનાવશે. તમે વૃદ્ધોની ભાવનાત્મક જરૂરિયાતોને ઊંડાણપૂર્વક સમજી શકશો. તમે તમારા બાળકો પ્રત્યે સચેત રહેશો અને તેમને ભાવનાત્મક ટેકો આપશો. નાણાકીય બાબતોમાં, કોઈ પ્રિય વ્યક્તિની સલાહને પ્રાથમિકતા આપવામાં આવશે. નફાકારક પ્રોફેશનલ સોદો થવાની સંભાવના છે. હૃદયની ભાષા શબ્દો કરતાં વધુ અસરકારક સાબિત થશે.
+
+કરિયરઃ કામ પર કામનો ભાર વધશે. કાઉન્સેલિંગ અથવા માનવ સંસાધન ક્ષેત્રે કામ કરતા લોકો બીજાઓની લાગણીઓને સમજીને વધુ સારા નિર્ણયો લઈ શકશે. તમારી ટીમ તમારા કરુણાપૂર્ણ વલણની પ્રશંસા કરશે. નોકરી શોધનારાઓને સફળતા મળી શકે છે; ઇન્ટરવ્યુ દરમિયાન તમારી નમ્રતા પેનલને પ્રભાવિત કરશે.
+
+લવઃ પ્રેમ વધુ ગાઢ અને મધુર બનશે. જીવનસાથી તમારી સમજણ અને કાળજીથી સુરક્ષિત અનુભવશે. તમારા વિચારો શેર કરવાથી હૃદય નજીક આવશે. પરિણીત યુગલો માટે, રોમાંસ અને આદર વચ્ચે સંતુલન રહેશે. આજે પ્રેમ અવાજ તરીકે નહીં, પરંતુ સૌમ્ય સ્પર્શ અને વિશ્વાસ તરીકે વહેશે.
+
+સ્વાસ્થ્યઃ ભાવનાત્મક સંતુલન સારી ઊંઘ અને હળવા મૂડ તરફ દોરી જશે. તમારી ત્વચા ચમકી શકે છે અને તમારા વાળ નરમ બની શકે છે. હળવું ડિહાઇડ્રેશન અથવા હોઠ શુષ્ક થવા શક્ય છે. ગરમ પાણી, નરમ સંગીત અને શાંતિ ફાયદાકારક રહેશે.
+
+અનુભવી લોકોની સલાહ લઈને કામ કરશો તો વધુ ફાયદામાં રહેશો. સ્મરણશક્તિ નબળી પડી શકે છે અને તમે હતાશાનો શિકાર બની શકો છો. શત્રુઓ પ્રબળ રહેશે અને આવક ઓછી રહેશે. દિવસના અંતે વિશેષ ધ્યાન રાખીને કામ કરવું હિતાવહ છે. લોભ લાલચ આપતી યોજનાઓથી દૂર રહેવું અને પરિવાર સાથે સમય વિતાવવો.
+
+કરિયર: નોકરીમાં કાર્યસ્થળ પર સતર્ક રહેવું અને વેપારમાં વિચારીને રોકાણ કરવું.
+
+લવ: પ્રેમમાં અતિરેક કરવાથી હાસ્યાસ્પદ બની શકો છો. વૈવાહિક જીવન સુખી રહેશે.
+
+લકી નંબર: 3, 4, 8
+
+લકી કલર: મરૂન
+
+"""  # your full text here
+
+# Create speech → write directly to memory (no file on disk)
+tts = gTTS(text=text, lang='gu', slow=False)
+tts.save("my_gujarati_horoscope.mp3")
+mp3_buffer = BytesIO()
+tts.write_to_fp(mp3_buffer)
+mp3_buffer.seek(0)           # important: go back to start
+
+# Initialize pygame mixer (only once is enough)
+pygame.mixer.init()
+pygame.mixer.music.load(mp3_buffer, 'mp3')
+pygame.mixer.music.play()
+
+# Optional: wait until sound finishes (if you want script to wait)
+while pygame.mixer.music.get_busy():
+    time.sleep(0.1)
+
+print("Playback finished (played in background, no window)")

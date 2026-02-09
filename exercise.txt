@@ -170,6 +170,12 @@ create default argument function getSeconds that return total seconds of hours, 
 
 create default argument function getVolume that return volume of room using , length width and deapth where all inputs should be optional, in case no argument is supplied return 0 
 
+------------------
+modify beautifulsoup\4_final_example.py make below changes 
+    1) accept users birth day and month separately only once and store it somewhere in file (use fs module) 
+    2) findout and use package that can calculate and return chandra rashi 
+    3) play rashi bhavishya as per chandra rashi calculated in step 2 
+    4) create system that will play music everyday once when user start computer 1st time  
 
 
 
