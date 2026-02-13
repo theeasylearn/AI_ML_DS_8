@@ -176,3 +176,10 @@ modify beautifulsoup\4_final_example.py make below changes
     2) findout and use package that can calculate and return chandra rashi 
     3) play rashi bhavishya as per chandra rashi calculated in step 2 
     4) create system that will play music everyday once when user start computer 1st time  
+
+recursion
+-----------------
+write a program to convert decimal number into octal number system 
+write a program to convert decimal number into hexadecimal number system 
+write a program to convert amount into words (upto 10 digits)
+input: 10265 output: ten thousand two hundred sixty five  
