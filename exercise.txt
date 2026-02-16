@@ -183,3 +183,15 @@ write a program to convert decimal number into octal number system
 write a program to convert decimal number into hexadecimal number system 
 write a program to convert amount into words (upto 10 digits)
 input: 10265 output: ten thousand two hundred sixty five  
+
+lambda function 
+write a program to calculate compound interest using lambda function 
+write a program to calculate fahrenheit of given celsius using lambda function 
+write a program to convert list that has mixed case countries names into lowercase countries name using lambda
+write a program to convert list that has mixed case countries names into uppercase countries name  using lambda
+
+write a program to filter word list that ends with asia using filter function 
+write a program to filter word list that ends with tan using filter function 
+write a program to filter largest number among each value in 2n list using filter function 
+
+
