@@ -195,3 +195,24 @@ write a program to filter word list that ends with tan using filter function
 write a program to filter largest number among each value in 2n list using filter function 
 
 
+modules
+-----------------------------
+create module currency.py which has below methods 
+    toDollar which convert given Rupees into Dollar 
+    toEuro  which convert given Rupees into Euro 
+    toPound which convert given Rupees into Pound 
+    ToYen which convert given Rupees into Yen
+
+create module communicator which has below methods 
+    sendsms which has mobile no message as argument 
+        decrease credit by 2
+    sendWhatmsg which has mobile no message as argument
+        decrease credit by 1.5
+    sendEmail which has mobile no message as argument
+        decrease credit by 1
+    increaseCredit(points)
+        increase credit variable using value given in points (must be positive)
+        
+    use can send sms/msg/email only when he has sufficient credit (global variable) 
+        deduct credit variable as per value given above 
+    initial credit value will be 10
