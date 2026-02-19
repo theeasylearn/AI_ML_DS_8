@@ -1,0 +1,110 @@
+Project Title
+
+Raja Mantri Chor Sipahi Game in Python
+
+Objective
+
+Create a console-based Python program that simulates the traditional Raja Mantri Chor Sipahi game with scoring.
+
+Program Requirements
+
+The program must allow at least 4 players.
+
+The game should randomly assign one role each round:
+
+Raja
+
+Mantri
+
+Chor
+
+Sipahi
+
+Roles must be assigned secretly (players should not see each other’s roles).
+
+The Mantri must guess who the Chor is.
+
+Points must be awarded based on whether the guess is correct or incorrect.
+
+The game should support multiple rounds.
+
+At the end, display the final scoreboard.
+
+Development Steps
+Step 1: Player Setup
+
+Ask the user to enter the number of players.
+
+Collect player names and store them.
+
+Validate that there are at least 4 players.
+
+Step 2: Role Assignment
+
+Create a list containing the four roles.
+
+Randomly shuffle and assign one role per player (only four active roles per round).
+
+If more than 4 players, rotate roles each round.
+
+Step 3: Reveal Raja
+
+Identify the player assigned as Raja.
+
+Display a message announcing the Raja.
+
+Step 4: Mantri Guess
+
+Ask the Mantri to guess which player is the Chor.
+
+Take input carefully and validate it.
+
+Step 5: Scoring Logic
+
+Implement scoring rules such as:
+
+Raja: 1000 points
+
+Mantri: 800 points if correct, otherwise 0
+
+Sipahi: 500 points if Chor is caught
+
+Chor: 0 if caught, high points if not caught
+
+Store and update scores using a suitable data structure.
+
+Step 6: Display Results
+
+Reveal all roles after each round.
+
+Show updated scores.
+
+Step 7: Multiple Rounds
+
+Ask whether the players want to continue.
+
+Repeat the process until users choose to stop.
+
+Additional Requirements
+
+Use functions to organize the program.
+
+Use lists and dictionaries where appropriate.
+
+Handle invalid inputs properly.
+
+Make the interface clear and user-friendly.
+
+Bonus Features (Optional)
+
+    Add difficulty levels
+    Add sound effects
+    Add role rotation logic
+
+Random module
+    Lists and dictionaries
+    Loops
+    Conditional statements
+    Functions
+    Input validation
+    Game logic design
