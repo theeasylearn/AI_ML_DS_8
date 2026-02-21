@@ -216,3 +216,14 @@ create module communicator which has below methods
     use can send sms/msg/email only when he has sufficient credit (global variable) 
         deduct credit variable as per value given above 
     initial credit value will be 10
+
+Exception handling 
+------------------------------------------------
+1) write a program to make sum of two list into third list. make sure both list are of same size. 
+    number1 = [10,20,30]
+    number2 = [11,12,13]
+    result = [21,32,43]
+
+2) write a program to convert negative numbers into positive numbers in list.  also skip invalid values and empty values if any 
+
+3) write a program to accept weight from user in kg. calculate BMI(body to mass index) and display it. make sure weight is > 0 using raise Exception concept 
