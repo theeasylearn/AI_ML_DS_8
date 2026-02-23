@@ -227,3 +227,8 @@ Exception handling
 2) write a program to convert negative numbers into positive numbers in list.  also skip invalid values and empty values if any 
 
 3) write a program to accept weight from user in kg. calculate BMI(body to mass index) and display it. make sure weight is > 0 using raise Exception concept 
+
+4) write a program to accept comments from user as string. ensure comment must not have any below given bad words, if there is any bad words raise custom Exception ask user to re-enter without bad words. program should continue to work until user given comments without bad words .
+    Use class keywords for custom Exception 
+    bad words = ['abc','bcd','cde','xyz','zzz']
+    
