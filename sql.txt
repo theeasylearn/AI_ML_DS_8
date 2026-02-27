@@ -1,0 +1,53 @@
+1) How to insert row in table 
+Ans to insert row in table, we use INSERT SQL Command
+    there are 2 method to insert row into table. 
+    
+    1st method syntax 
+    insert into <tablename> values (value1,value2,.....,value-n)
+
+    Example 
+    -----------------
+    insert into category values (0,'Watch','watch.jpg','smart watch for mans and womans',now(),0)
+
+    2nd method syntax 
+    insert into <tablename> (field-1,field-2,....field-N) values (value1,value2,.....,value-n)
+
+    Example 
+    -----------------
+    insert into category (name,photo,detail) values ('Computer','computer.jpg','desktop & laptops')
+
+
+2) How to delete row(s) from table?
+
+delete all rows 
+delete from <tablename>
+example 
+delete from category 
+
+delete only specific row (as per condition)
+delete from <tablename> where condition
+delete category whose id is 1 
+delete from category where id = 1
+
+delete category whose where id is above 3 
+delete from category where id>3
+
+we can use any relational operators  in condition 
+= != < > <= >=
+we can use also any logical operators in condition as well 
+and or not 
+
+3) How to update/change part of row row in table?
+to update row , we use update sql statement 
+syntax 
+update <tablename> set field=value,field-2=value-2 ... field-n = value N [where condition]
+
+update all row 
+update category set is_deleted to 1 
+update category set is_deleted = 1
+
+update only specific row 
+example 
+update category change name to AI Drone, detail to spy Drone of category whoe name is Drone 
+
+update category set name = 'AI Drone',detail='spy drone' where name = 'drone'
