@@ -114,21 +114,52 @@ SQL : Select customerNumber, customerName,  creditLimit from customers where cre
 Select customerNumber, customerName,  creditLimit from customers where creditLimit between 100000 and 999999
 
 14 Select customerNumber, customerName, city, state, country, creditLimit from customers where country is USA and state is CA and city is San Francisco
-SQL :
+SQL : select customerNumber,customerName,city,state, country,creditLimit from customers where country='usa' and state = 'ca' and city = 'San Francisco'
 
 15 Select customerNumber, customerName, city, state, country, creditLimit from customers where country is USA and state is CA and city is Delhi
-SQL :
+SQL :  select customerNumber,customerName,city,state, country,creditLimit from customers where country='usa' and state = 'ca' and city = 'delhi'
 
 16 Select unique country from customers table and display it in ascending order
-SQL :
+SQL : select distinct country from customers
 
-17 Select customerNumber, customerName, city, state, country, creditLimit of those customers who are not from USA, France, Australia, Japan and display them in ascending order of country name
-SQL :
+17 Select customerNumber, customerName, city, state, country, creditLimit of those customers who are not from USA, France, Australia, Japan & Italy and display them in ascending order of country name
+SQL : Select customerNumber, customerName, country from customers where country not in ('usa','france','Australia','japan','Italy') order by country 
+
+18 Select customerNumber, customerName from customers table of those customers whose name has wheels at any position (start, middle, last)
+SQL : select customerNumber, customerName from customers where customerName like '%wheels%'  
+
+19 Select customerNumber, customerName from customers table of those customers whose name has contains wheels at end 
+SQL : select customerNumber, customerName from customers where customerName like '%wheels'  
+
+20 Select customerNumber, customerName from customers table of those customers whose name has contains wheels at end 
+SQL : select customerNumber, customerName from customers where customerName like 'wheels%'  
+
+21 select payments details (all fields) from payments table of those payments received on 17 dec 2004
+SQL : select * from payments where paymentDate = '2004-12-17'
+
+22 select payments details (all fields) from payments table of those payments in  received dec 2004
+SQL : select * from payments where paymentDate >= '2004-12-01' and paymentDate <= '2004-12-31'
+
+23 select payments details (all fields) from payments table of those payments received in 2004
+SQL : select * from payments where paymentDate >= '2004-01-01' and paymentDate <= '2004-12-31'
+
+24 select customerNumber,paymentDate and amount from payment table display paymentDate in indian format including day name of week  
+
+SQL : select customerNumber,date_format(paymentDate,'%W %d-%m-%Y'),amount from payments;
+Common Format Codes
+| Code | Meaning          | Example |
+| ---- | ---------------- | ------- |
+| %d   | Day (2 digits)   | 05      |
+| %m   | Month (2 digits) | 03      |
+| %Y   | Year (4 digits)  | 2026    |
+| %y   | Year (2 digits)  | 26      |
+| %M   | Full month name  | March   |
+| %b   | Short month name | Mar     |
+| %W   | full week   name | Monday  |
 
 Aggregate function
-
+------------------------------
 Function that works upon numeric field and returns single value is called Aggregate function.
-
 sum()
 avg()
 min()
