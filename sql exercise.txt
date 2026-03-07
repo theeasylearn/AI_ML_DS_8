@@ -1,0 +1,87 @@
+1) create table to store your friends detail into it.
+    store your friend id,name,surname,gender,dob,mobile,email,address,city,pincode,bloodgroup etc 
+    
+2) insert 5 row into friends table using 1st syntax 
+3) insert 5 row into friends table using 2nd syntax 
+4) delete friends whose name is kishor 
+5) delete friends whose surname is shah 
+6) delete friends whose id is 3 
+7) delete friends who are from rajkot 
+
+---------------------------------------------------------------------
+
+1. Select all columns and all rows from the customers table.
+2. Select customerNumber, customerName, and country from the customers table.
+3. Select customerName, city, and creditLimit from all customers.
+4. Select customerNumber, customerName, city, state from the first 20 customers.
+5. Select customerName, country, city from customers starting from row 30 (show next 30 customers).
+6. Select customerNumber, customerName, creditLimit from the next 25 customers after the first 50.
+7. Select customerName, city, country from all customers.
+8. Select all fields from customers but only show the first 10 rows.
+9. Select customerNumber and customerName from customers table.
+10. Select city, state, country from all customers.
+
+11. Select customerName, city, country and sort the result by customerName in ascending order.
+12. Select customerNumber, customerName, creditLimit and sort by creditLimit from highest to lowest.
+13. Select customerName, country, city and sort first by country (A–Z), then by city (A–Z).
+14. Select customerNumber, customerName, state, country and sort by country descending.
+15. Select customerName, creditLimit, city and sort by creditLimit ascending, then by customerName ascending.
+16. Select city, state, country from customers and sort by country, then state, then city — all ascending.
+17. Select customerNumber, customerName, creditLimit and show results sorted from highest creditLimit to lowest.
+18. Select customerName, country and sort the records in reverse alphabetical order of customerName.
+19. Select customerNumber, customerName, city and sort first by city ascending, then by customerName ascending.
+20. Select country, state, customerName from customers and sort by country descending, then state ascending.
+
+21. Select customerName, city, country of customers who live in Germany.
+22. Select customerNumber, customerName, creditLimit of customers whose country is UK.
+23. Select customerName, city, state of customers from city Paris.
+24. Select customerNumber, customerName, country of customers from either Canada or Italy.
+25. Select customerName, creditLimit, country of customers whose country is Spain or Netherlands.
+26. Select customerNumber, customerName, city, creditLimit of customers with creditLimit greater than 80000.
+27. Select customerName, country, creditLimit of customers with creditLimit less than or equal to 50000.
+28. Select customerNumber, customerName, creditLimit of customers whose creditLimit is between 60000 and 120000.
+29. Select customerName, city, state, country of customers from USA and state NY.
+30. Select customerNumber, customerName, creditLimit from customers where country is Japan and creditLimit > 90000.
+
+31. Select customerName, country of customers from USA, France, or UK.
+32. Select customerNumber, customerName, city of customers from Australia, Japan, or Singapore.
+33. Select customerName, creditLimit, country of customers NOT from USA.
+34. Select customerNumber, customerName, country of customers NOT from France, USA, Japan.
+35. Select customerName, city, country where country is in ('Italy','Spain','Portugal').
+36. Select customerNumber, customerName, creditLimit where country is NOT in ('USA','UK','Canada').
+37. Select customerName, city, state, creditLimit of customers from USA and city is either NY or Boston or LA.
+38. Select customerNumber, customerName, country where creditLimit > 100000 and country is USA or Germany.
+
+39. Select all unique countries from the customers table.
+40. Select all unique cities from customers and sort them A to Z.
+41. Select all unique countries and sort them in descending order.
+42. Count how many customers are there in total.
+43. Find the highest creditLimit in the customers table.
+44. Find the lowest creditLimit value among all customers.
+45. Find the average creditLimit of all customers.
+
+46. Count how many customers are from France.
+47. Count how many customers have country = 'USA'.
+48. Find the total payment amount received from customerNumber 124.
+49. Find how many payments were made by customerNumber 171.
+50. Find the biggest single payment amount made by customerNumber 119.
+
+51. Select customerNumber, customerName, country from customers and orderNumber, orderDate from orders for all customers who have placed any orders. Sort the result by customerNumber ascending.
+
+52. Show customerName, city, phone, orderNumber, requiredDate, shippedDate from customers and orders tables. Display the result sorted by orderDate from oldest to newest.
+
+53. Fetch customerNumber, customerName, creditLimit from customers and amount, checkNumber from payments. Show all payments made by customers. Sort by customerNumber, then by payment date.
+
+54. Display customerName, country, orderNumber, status from customers and orders. Include only orders that have status 'Shipped'. Sort by country, then customerName.
+
+55. Select customerNumber, customerName, city from customers and paymentDate, amount from payments. Show results only for payments greater than 50000. Sort by amount descending.
+
+56. Get productName, productLine, buyPrice from products and orderNumber, quantityOrdered from orderdetails. Show all ordered products. Sort by productName ascending.
+
+57. Show customerName, country, orderNumber, orderDate, status from customers and orders. Sort first by country ascending, then by orderDate descending.
+
+58. Fetch customerNumber, customerName, contactLastName, contactFirstName from customers and checkNumber, paymentDate, amount from payments. Sort the result by paymentDate from newest to oldest.
+
+59. Display productCode, productName, MSRP from products and quantityOrdered, priceEach from orderdetails. Include only order details where quantityOrdered is greater than 50. Sort by quantityOrdered descending.
+
+60. Select customerName, city, state, country from customers, orderNumber, orderDate, requiredDate from orders. Show only orders that were required in the year 2003. Sort by customerName.

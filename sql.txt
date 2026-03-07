@@ -56,7 +56,7 @@ update category set name = 'AI Drone',detail='spy drone' where name = 'drone'
 How to fetch data from table(s)?
 
 syntax 
-SELECT * | column_list FROM table_name [WHERE condition] [GROUP BY column_name] [HAVING condition] [ORDER BY column_name] [ASC|DESC LIMIT number];
+SELECT * | column_list FROM table_name [WHERE condition] [GROUP BY column_name] [HAVING condition] [ORDER BY column_name ASC|DESC] [LIMIT number];
 
 1 Select all fields and all rows from customers table.
 SQL : select * from customers 
@@ -233,17 +233,38 @@ Having clause
 
 Having clause is used only when we need to give condition on value returned by group by clause.
 
-32 Fetch customer wise total payment amount of those customers whose total payment amount is above 1 lakh
-SQL :
+32 Fetch customer wise total payment amount of those customers whose total payment amount is above 1 lakh & display it total payment wise descending order 
 
-33 Fetch customer wise number of payments made of those customers who have made more than 3 payments
-SQL :
+SQL : select sum(amount),customerNumber from payments group by customerNumber having sum(amount)>100000 order by sum(amount) desc;
+
+33 Fetch customer wise number of payments made of those customers who have made more than 3 payments & display it in number of payments wise descending order 
+SQL : select count(*),customerNumber from orders group by customerNumber having count(*)>3 order by count(*) DESC;
 
 34 Fetch country name and number of customers from each country where there are more than 5 customers
-SQL :
+SQL : select count(*),country from customers group by country having count(*)>5 order by country;
+
 
 Joins
+----------------------------------------------------------------------------------------------------
+Join operation basically  makes join between any numbers of tables and display data as single virtual table.
+to join multiple tables, there must be one common field between tables to be used in join.
 
+what is common field?
+common field is field in two table which has same data type and same set of values (domain values)
+
+types of Joins
+INNER JOIN / Equi join 
+Inner join fetches only matching rows from all the tables using in join. here  matching rows means common field in both table has same value in both table  
+
+LEFT JOIN
+Left join fetches all rows from left side table but only matching rows from right side table.  here  matching rows means common field in both table has same value in both table  
+
+RIGHT JOIN
+right join fetches all rows from right side table but only matching rows from left side table.  here  matching rows means common field in both table has same value in both table  
+
+CROSS JOIN
+
+SELF JOIN
 35 Fetch customerNumber, customerName, city, state, country and orderNumber, orderDate, status of order, display it customerNumber wise ascending order
 SQL :
 
