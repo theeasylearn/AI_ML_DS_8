@@ -252,7 +252,8 @@ to join multiple tables, there must be one common field between tables to be use
 what is common field?
 common field is field in two table which has same data type and same set of values (domain values)
 
-types of Joins
+types of 
+
 INNER JOIN / Equi join 
 Inner join fetches only matching rows from all the tables using in join. here  matching rows means common field in both table has same value in both table  
 
@@ -265,37 +266,37 @@ right join fetches all rows from right side table but only matching rows from le
 CROSS JOIN
 
 SELF JOIN
-35 Fetch customerNumber, customerName, city, state, country and orderNumber, orderDate, status of order, display it customerNumber wise ascending order
-SQL :
+35  Fetch customerNumber, customerName, city, state, country and orderNumber, orderDate, status of order, display it customerNumber wise ascending order
 
-36 Fetch customerNumber, customerName, city, state, country and paymentDate, amount of each and every customer and display them payment date wise
+SQL : 
+    1) select customerNumber,customerName,city,state,country from customers c
+    2) select orderNumber,orderDate,status from orders o 
+
+    let us join 
+    3) select c.customerNumber,customerName,city,state,country,orderNumber,orderDate,status  from customers c, orders o where c.customerNumber = o.customerNumber order by c.customerNumber
+
+36 Fetch customerNumber, customerName, city, state, country and paymentDate, amount of each and every customer and display them payment date wise (old date come first and new date come last)
 SQL :
+    1) select customerNumber,customerName,city,state,country from customers c
+    2) select date_format(paymentDate,'%d-%m-%Y') as paymentDate,amount from payments p 
+
+     let us join 
+    3) select c.customerNumber,customerName,city,state,country, date_format(paymentDate,'%d-%m-%Y') as pd ,amount from customers c, payments p where c.customerNumber = p.customerNumber order by paymentdate asc 
 
 37 Fetch productCode, productName, quantityOrdered, priceEach, orderNumber, orderDate, status of each and every order
-SQL :
+SQL : 
+    1) select productCode, productName from products p 
+    2) select orderNumber,quantityOrdered,priceEach from orderdetails od 
+    3) select orderdate,status from orders o 
 
-Working upon date fields
+    let us join 
+    1)  select productCode, productName, orderNumber,quantityOrdered,priceEach, orderdate,status from products p,  orderdetails od, orders o where p.productCode = od.productCode and o.orderNumber = od.orderNumber  
 
-38 Select customerNumber, paymentDate, amount of those payments which is received on 10-Feb-2004
-SQL :
+38) fetch each order's orderNumber,customerNumber and total order value 
+SQL 
+    1) select orderNumber,customerNumber from orders o 
+    2) select orderNumber,sum(priceEach*quantityOrdered) as order_amount from orderdetails od group by orderNumber;
 
-39 Select customerNumber, paymentDate, amount of those payments which is received in February 2004
-SQL :
+    let us join 
 
-40 Select customerNumber, paymentDate, amount of those payments which is received in 2004
-SQL :
-
-41 Fetch employee details of those employees who do not have reporting manager
-SQL :
-
-42 Fetch employee details of those employees who have reporting manager
-SQL :
-
-43 Fetch customerNumber, customerName of those customers which has word wheels
-SQL :
-
-44 Fetch customerNumber, customerName of those customers which has word wheels at beginning
-SQL :
-
-45 Fetch customerNumber, customerName of those customers which has word wheels at ending
-SQL :
+    3) select o.orderNumber,customerNumber ,sum(priceEach*quantityOrdered) as order_amount from orders o, orderdetails od where o.orderNumber=od.orderNumber group by o.orderNumber;
