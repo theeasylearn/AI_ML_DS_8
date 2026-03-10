@@ -264,6 +264,7 @@ RIGHT JOIN
 right join fetches all rows from right side table but only matching rows from left side table.  here  matching rows means common field in both table has same value in both table  
 
 CROSS JOIN
+FETCH DATA FROM BOTH TABLE WITHOUT ANY CONDITION 
 
 SELF JOIN
 35  Fetch customerNumber, customerName, city, state, country and orderNumber, orderDate, status of order, display it customerNumber wise ascending order
@@ -300,3 +301,62 @@ SQL
     let us join 
 
     3) select o.orderNumber,customerNumber ,sum(priceEach*quantityOrdered) as order_amount from orders o, orderdetails od where o.orderNumber=od.orderNumber group by o.orderNumber;
+
+LEFT JOIN 
+-------------
+Left join fetches all rows from left side table but only matching rows from right side table.  here  matching rows means common field in both table has same value in both table  
+
+39) fetch customerNumber,customerName who have never given any order 
+
+SQL : 
+    1) SELECT customerNumber, customerName from customers c
+    2) select orderNumber from orders o 
+
+    let us join 
+
+    select c.customerNumber, customerName,orderNumber from customers c left join  orders o on c.customerNumber = o.customerNumber where orderNumber IS NULL 
+
+40) Fetch those productCode and ProductName of those product which is never ordered 
+
+SQL : 
+    1) select productCode, productName from products p 
+    2) select orderNumber from orderdetails od 
+
+    let us join 
+    select p.productCode, productName,orderNumber from products p left join orderdetails od on p.productCode = od.productCode where orderNumber is null 
+-------------------------------------------------------------------------------------------------
+RIGHT JOIN
+
+right join fetches all rows from right side table but only matching rows from left side table.  here  matching rows means common field in both table has same value in both table  
+
+41) fetch those customerNumber and customerName who have never given any payments 
+SQL 
+    1) SELECT customerNumber, customerName from customers c
+    2) SELECT AMOUNT FROM payments p 
+
+
+    let us join them 
+    select amount,c.customerNumber,customerName from payments p right join customers c on p.customerNumber = c.customerNumber where amount is null 
+
+42) fetch those office Detail from office table in which no employees are working 
+    
+SQL)
+    1) select * from offices o 
+    2) select officecode from employees e 
+
+let us join 
+    select e.officecode,o.* from employees e right join offices o on o.officecode = e.officecode where e.employeeNumber is null 
+
+CROSS JOIN
+    FETCH DATA FROM BOTH TABLE WITHOUT ANY CONDITION 
+
+fetch possibilities where each and every employees can work in each office 
+---------------------------------------
+SQL)
+    1) select * from offices o 
+    2) select * from employees e 
+
+let us join  
+    select o.*,e.* from offices o, employees e 
+
+    
