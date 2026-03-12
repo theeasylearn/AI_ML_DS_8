@@ -359,4 +359,39 @@ SQL)
 let us join  
     select o.*,e.* from offices o, employees e 
 
+some advance examples 
+-----------------------------------------------------
+43) findout actual customer's number and name  who have not given payments 
+
+SQL 
+    1) findout customers who have have given orders 
+    select DISTINCT customerNumber from orders o 
+
+    2) findout customerNumber and customerName from customers
+    select customerNumber,customerName from customers c     
+
+    3) findout customerNumber who have made at least one payments 
+        select distinct customerNumber from payments p 
+
+    let us join them
+    fetch customers details who has given orders  
+    select c.customerNumber,customerName from customers c, orders o where c.customerNumber=o.customerNumber  
+
+    now display only those customers who have not made payments 
+    select DISTINCT c.customerNumber,customerName from customers c, orders o where c.customerNumber=o.customerNumber and c.customerNumber not in (select distinct customerNumber from payments p)
+
+
+    fetch customerNumber,customerName, pending amount 
+
+    1) fetch orderNumber and order amount 
+        select orderNumber, sum(priceEach * quantityOrdered) from orderdetails od group by orderNumber
+
+    2) fetch customerNumber,customerName, orderNumber
+        select c.customerNumber,customerName,orderNumber from customers c, order o where c.customerNumber = o.customerNumber
+
+    let us join above detail 
+         select c.customerNumber,customerName,o.orderNumber, sum(priceEach * quantityOrdered) from customers c, orders  o, orderdetails od  where c.customerNumber = o.customerNumber and o.orderNumber = od.orderNumber group by o.orderNumber;
     
+        let us remove those customers who have given payment 
+
+        select c.customerNumber,customerName,o.orderNumber, sum(priceEach * quantityOrdered) from customers c, orders  o, orderdetails od  where c.customerNumber = o.customerNumber and o.orderNumber = od.orderNumber and c.customerNumber not in (select distinct customerNumber from payments p ) group by o.orderNumber;
