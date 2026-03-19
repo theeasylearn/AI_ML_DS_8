@@ -23,9 +23,33 @@ while True:
                 print("let us delete tour")
             elif tour_choice == 0:
                 print("exit from tour management")  
-                break 
+                break #inner loop 
+            else:
+                print("invalid choice")
+
     elif choice == 2:
         print("let us do transaction management")
+        while True:
+            print("Press 1 to insert new transaction")
+            print("press 2 to display all transaction (particular tour)")
+            print("press 3 to update transaction")
+            print("press 4 to delete transaction")
+            print("press 0 to exit to main menu")
+            transaction_choice = int(input("Enter your choice"))
+            if transaction_choice==1:
+                print("let us insert new transaction")
+            elif transaction_choice==2:
+                print("let us display all transaction of particular tour")
+            elif transaction_choice==3:
+                print("let us update transaction")
+            elif transaction_choice==4:
+                print("let us delete transaction")
+            elif transaction_choice==0:
+                print("exit to main menu")
+                break #inner loop break
+            else:
+                print("invalid choice")
+            
     elif choice == 0:
         break #loop stop 
     else:

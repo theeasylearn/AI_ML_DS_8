@@ -24,6 +24,3 @@ db.database.commit()
 
 #print how many rows updated
 print(my_cursor.rowcount, " trip updated")
-
-
-
