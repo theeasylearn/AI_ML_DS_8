@@ -1,6 +1,20 @@
 import db_connect as db
 import mysql.connector.errors as con_error
 my_cursor = db.database.cursor(dictionary=True)
+def DisplayTour():
+    sql = "select id,title,detail,date_format(start_date,'%d-%m-%Y') as start_date,total_days from tour order by id "
+    table = db.FetchTable(sql)
+    if table != None:
+        #fetch one row 
+        # first_row = my_cursor.fetchone()
+        # print(first_row) #will display 1st row as dictionary
+        # print(table)
+        #fetch all rows one by one and display it 
+        print(f"{'id':<6} {'title':<32} {'detail':<40}  {'total_days':<8} {'start_date'}")
+        print("_"*100)
+        for row in table:
+            output = f"{row['id']:<6} {row['title']:<32} {row['detail']:<40}  {row['total_days']:<8} {row['start_date']}"
+            print(output)
 while True:
     print("Press 1 for tour management")
     print("Press 2 for transaction management")
@@ -28,19 +42,7 @@ while True:
                 values = [title,detail,start_date,total_days]
                 db.RunQuery(sql,values,"tour has been added ")
             elif tour_choice == 2:
-                sql = "select id10,title,detail,date_format(start_date,'%d-%m-%Y') as start_date,total_days from tour order by id "
-                table = db.FetchTable(sql)
-                #fetch one row 
-                # first_row = my_cursor.fetchone()
-                # print(first_row) #will display 1st row as dictionary
-                # print(table)
-                #fetch all rows one by one and display it 
-                print(f"{'id':<6} {'title':<32} {'detail':<40}  {'total_days':<8} {'start_date'}")
-                print("_"*100)
-                for row in table:
-                    output = f"{row['id']:<6} {row['title']:<32} {row['detail']:<40}  {row['total_days']:<8} {row['start_date']}"
-                    print(output)
-
+                DisplayTour()
             elif tour_choice == 3:
                 sql = "update tour set title=%s,detail=%s,start_date=%s,total_days=%s where id=%s"
                 title = input("Enter tour title")
@@ -75,9 +77,28 @@ while True:
             print("press 0 to exit to main menu")
             transaction_choice = int(input("Enter your choice"))
             if transaction_choice==1:
-                print("let us insert new transaction")
+                DisplayTour()
+                
+                tourid = int(input("Enter tour id"))
+                amount = int(input("Enter transaction amount"))
+                print("Press 1 for income")
+                print("Press 2 for expense")
+                transaction_type = int(input("Enter your transaction type (1 or 2)"))
+                description = input("Enter transaction description")
+                challan_number = input("Enter challan number")
+                sql = "insert into transaction (tourid,amount,transaction_type_flag,description,challan_number) values (%s,%s,%s,%s,%s)" # %s placeholder
+                values = [tourid,amount,transaction_type,description,challan_number]
+                db.RunQuery(sql,values,"Transaction added successfully")
             elif transaction_choice==2:
-                print("let us display all transaction of particular tour")
+                DisplayTour()
+                tourid = int(input("Enter tour id"))
+                sql = "select * from transaction where tourid=%s"
+                values = [tourid]
+                table = db.FetchTable(sql,values)
+                if table != None:
+                    print(table) #2d list (list of dictionary)
+                    for row in table:
+                        
             elif transaction_choice==3:
                 print("let us update transaction")
             elif transaction_choice==4:
