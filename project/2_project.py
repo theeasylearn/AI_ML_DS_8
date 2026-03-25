@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import db_connect as db
 import mysql.connector.errors as con_error
 my_cursor = db.database.cursor(dictionary=True)
@@ -96,9 +98,33 @@ while True:
                 values = [tourid]
                 table = db.FetchTable(sql,values)
                 if table != None:
-                    print(table) #2d list (list of dictionary)
+                    # print(table) #2d list (list of dictionary)
+                    income_total = 0
+                    expense_total = 0
+                    if len(table)== 0:
+                        print("No entry found".center(100))
+                        print("_"*100)
                     for row in table:
-                        
+                        msg = None 
+                        if row['transaction_type_flag'] == 1:
+                            msg = 'Income'
+                            income_total = income_total + row['amount']
+                        else:
+                            msg = 'Expense'
+                            expense_total = expense_total + row['amount']
+                        # Convert string to datetime object
+                        dt = datetime.strptime(str(row['transaction_date']), "%Y-%m-%d %H:%M:%S")
+                        # Format to dd-mm-YYYY
+                        formatted_date = dt.strftime("%d-%m-%Y")
+                        output = f"{row['id']:<6} {row['description']:<48} {msg:<12}  {row['amount']:12} {row['challan_number']:<12} {formatted_date}"
+                        print(output)
+                    print("_"*110)
+                    print(f"Expense {expense_total:15} Income {income_total:15}")
+                    difference = income_total - expense_total
+                    if difference<0:
+                        print(f"total loss = {difference}")
+                    else:
+                        print(f"total profit = {difference}")
             elif transaction_choice==3:
                 print("let us update transaction")
             elif transaction_choice==4:
