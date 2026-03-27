@@ -17,6 +17,40 @@ def DisplayTour():
         for row in table:
             output = f"{row['id']:<6} {row['title']:<32} {row['detail']:<40}  {row['total_days']:<8} {row['start_date']}"
             print(output)
+def DisplayTransaction():
+    DisplayTour()
+    tourid = int(input("Enter tour id"))
+    sql = "select * from transaction where tourid=%s"
+    values = [tourid]
+    table = db.FetchTable(sql,values)
+    if table != None:
+        # print(table) #2d list (list of dictionary)
+        income_total = 0
+        expense_total = 0
+        if len(table)== 0:
+            print("No entry found".center(100))
+            print("_"*100)
+        for row in table:
+            msg = None 
+            if row['transaction_type_flag'] == 1:
+                msg = 'Income'
+                income_total = income_total + row['amount']
+            else:
+                msg = 'Expense'
+                expense_total = expense_total + row['amount']
+            # Convert string to datetime object
+            dt = datetime.strptime(str(row['transaction_date']), "%Y-%m-%d %H:%M:%S")
+            # Format to dd-mm-YYYY
+            formatted_date = dt.strftime("%d-%m-%Y")
+            output = f"{row['id']:<6} {row['description']:<48} {msg:<12}  {row['amount']:12} {row['challan_number']:<12} {formatted_date}"
+            print(output)
+        print("_"*110)
+        print(f"Expense {expense_total:15} Income {income_total:15}")
+        difference = income_total - expense_total
+        if difference<0:
+            print(f"total loss = {difference}")
+        else:
+            print(f"total profit = {difference}")
 while True:
     print("Press 1 for tour management")
     print("Press 2 for transaction management")
@@ -92,43 +126,41 @@ while True:
                 values = [tourid,amount,transaction_type,description,challan_number]
                 db.RunQuery(sql,values,"Transaction added successfully")
             elif transaction_choice==2:
-                DisplayTour()
-                tourid = int(input("Enter tour id"))
-                sql = "select * from transaction where tourid=%s"
-                values = [tourid]
-                table = db.FetchTable(sql,values)
-                if table != None:
-                    # print(table) #2d list (list of dictionary)
-                    income_total = 0
-                    expense_total = 0
-                    if len(table)== 0:
-                        print("No entry found".center(100))
-                        print("_"*100)
-                    for row in table:
-                        msg = None 
-                        if row['transaction_type_flag'] == 1:
-                            msg = 'Income'
-                            income_total = income_total + row['amount']
-                        else:
-                            msg = 'Expense'
-                            expense_total = expense_total + row['amount']
-                        # Convert string to datetime object
-                        dt = datetime.strptime(str(row['transaction_date']), "%Y-%m-%d %H:%M:%S")
-                        # Format to dd-mm-YYYY
-                        formatted_date = dt.strftime("%d-%m-%Y")
-                        output = f"{row['id']:<6} {row['description']:<48} {msg:<12}  {row['amount']:12} {row['challan_number']:<12} {formatted_date}"
-                        print(output)
-                    print("_"*110)
-                    print(f"Expense {expense_total:15} Income {income_total:15}")
-                    difference = income_total - expense_total
-                    if difference<0:
-                        print(f"total loss = {difference}")
-                    else:
-                        print(f"total profit = {difference}")
+                DisplayTransaction()
             elif transaction_choice==3:
-                print("let us update transaction")
+                DisplayTransaction()
+                #accept transaction id 
+                #check whether given transaction id exist or not 
+                #if found accept details of transaction to update it (title,detail,start_date,total_days)
+                #update transaction using update sql statement
+                transaction_id = int(input("Enter transaction id"))
+                sql = "select id from transaction where id=%s"
+                values = [transaction_id]
+                table = db.FetchTable(sql,values)
+                if table != None and len(table)>0:
+                    #data found
+                    amount = int(input("Enter transaction amount"))
+                    print("Press 1 for income")
+                    print("Press 2 for expense")
+                    transaction_type = int(input("Enter your transaction type (1 or 2)"))
+                    description = input("Enter transaction description")
+                    challan_number = input("Enter challan number")
+                    sql = "update transaction set amount=%s, transaction_type_flag=%s, description=%s, challan_number=%s where id=%s"
+                    values = [amount,transaction_type,description,challan_number,transaction_id]
+                    db.RunQuery(sql,values,"transaction updated successfully")
+
             elif transaction_choice==4:
-                print("let us delete transaction")
+                DisplayTransaction()
+                #accept transaction id to check transaction exist or not 
+                #if transaction found, delete that transaction 
+                transaction_id = int(input("Enter transaction id"))
+                sql = "select id from transaction where id=%s"
+                values = [transaction_id]
+                table = db.FetchTable(sql,values)
+                if table != None and len(table)>0:
+                    sql = "delete from transaction where id=%s"
+                    values = [transaction_id]
+                    db.RunQuery(sql,values,"transaction deleted successfully")
             elif transaction_choice==0:
                 print("exit to main menu")
                 break #inner loop break
