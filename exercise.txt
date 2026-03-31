@@ -232,3 +232,8 @@ Exception handling
     Use class keywords for custom Exception 
     bad words = ['abc','bcd','cde','xyz','zzz']
     
+write a program to read numbers from numbers.txt file which has positive and negative number
+    if number is positive, write it into positive.txt file 
+    if number is negative, write it into negative.txt file 
+
+write a program to read numbers from numbers.txt file. convert all numbers into positive, avoid duplicates and write into unique_numbers.txt file 
