@@ -1,0 +1,10 @@
+Apple  A crunchy, sweet fruit rich in fiber and vitamins, especially vitamin C.
+Banana  A soft, energy-boosting fruit high in potassium and natural sugars.
+Mango  A juicy tropical fruit known for its rich sweetness and high vitamin A content.
+Pineapple  A tangy-sweet fruit with a spiky exterior, rich in vitamin C and enzymes.
+Watermelon  A refreshing, water-rich fruit perfect for hydration in hot weather.
+Grapes  Small, juicy fruits that grow in bunches and are rich in antioxidants.
+Kiwi  A small brown fruit with green flesh, packed with vitamin C and fiber.
+Strawberry  A bright red, sweet fruit loaded with antioxidants and vitamin C.
+Blackberry  A dark purple fruit with a tart flavor, rich in fiber and vitamins.
+Coconut  A tropical fruit with hard shell, providing water, milk, and nutritious flesh.
