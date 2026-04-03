@@ -237,3 +237,7 @@ write a program to read numbers from numbers.txt file which has positive and neg
     if number is negative, write it into negative.txt file 
 
 write a program to read numbers from numbers.txt file. convert all numbers into positive, avoid duplicates and write into unique_numbers.txt file 
+
+date time 
+----------------
+1) write a program to findout younger person from 3 person's given birth date data
