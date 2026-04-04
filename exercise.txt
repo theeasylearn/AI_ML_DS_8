@@ -242,3 +242,4 @@ date time
 ----------------
 1) write a program to findout younger person from 3 person's given birth date data
 2) write a program to accept loan start date and tenure of loan from user. assume date of installment is loan date display each every installment date upto end of tenure. also display reminder date before 5 days of installment date 
+
