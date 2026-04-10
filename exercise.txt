@@ -243,3 +243,30 @@ date time
 1) write a program to findout younger person from 3 person's given birth date data
 2) write a program to accept loan start date and tenure of loan from user. assume date of installment is loan date display each every installment date upto end of tenure. also display reminder date before 5 days of installment date 
 
+OOP 
+--------------------
+1) Create class Animal which has below method 
+    hunt()
+    reproduce()
+
+Create class Bird which has below method  and it also extends Animal 
+    fly()
+    nest()
+    cheepering()
+
+
+2) Create class Foot which has constructor to initialize inches 
+    and it getFoot() method which return foot 
+
+Create class meter which extends Foot class 
+    and it getMeter() method which return meter 
+
+
+3) Create class Foot which has constructor to initialize inches 
+    and it getFoot() method which return foot 
+
+Create class meter which extends Foot class 
+    and it getMeter() method which return meter 
+
+Create class KM which extends meter class 
+    and it getkm() method which return kilometer  
