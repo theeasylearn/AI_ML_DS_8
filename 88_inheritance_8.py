@@ -1,4 +1,4 @@
-# hiearchical inheritance 
+# hierarchical inheritance 
 class MyMath:
     def getPi(self):
         pi = 3.142857
