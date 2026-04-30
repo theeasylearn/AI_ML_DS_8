@@ -1,6 +1,6 @@
 #insert new record into tour table
 #import db_connect 
-import db_connect as db
+import python.project.db_connect as db
 #create cursor object
 my_cursor = db.database.cursor()
 

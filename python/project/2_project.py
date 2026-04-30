@@ -1,31 +1,22 @@
 from datetime import datetime
 
-import db_connect as db
+import python.project.db_connect as db
 import mysql.connector.errors as con_error
-import common as c
 my_cursor = db.database.cursor(dictionary=True)
 def DisplayTour():
-    start = 0
-    while True:
-        sql = "select id,title,detail,date_format(start_date,'%d-%m-%Y') as start_date,total_days from tour order by id limit %s,15"
-        values = [start]
-        table = db.FetchTable(sql,values)
-        if table != None:
-            #fetch one row 
-            # first_row = my_cursor.fetchone()
-            # print(first_row) #will display 1st row as dictionary
-            # print(table)
-            #fetch all rows one by one and display it 
-            if len(table)>0:
-                start = start + 15
-            else:
-                return 
-            print(f"{'id':<6} {'title':<32} {'detail':<40}  {'total_days':<8} {'start_date'}")
-            c.PrintLine()
-            for row in table:
-                output = f"{row['id']:<6} {row['title']:<32} {row['detail']:<40}  {row['total_days']:<8} {row['start_date']}"
-                print(output)
-            key = input("Press Enter to continue")
+    sql = "select id,title,detail,date_format(start_date,'%d-%m-%Y') as start_date,total_days from tour order by id "
+    table = db.FetchTable(sql)
+    if table != None:
+        #fetch one row 
+        # first_row = my_cursor.fetchone()
+        # print(first_row) #will display 1st row as dictionary
+        # print(table)
+        #fetch all rows one by one and display it 
+        print(f"{'id':<6} {'title':<32} {'detail':<40}  {'total_days':<8} {'start_date'}")
+        print("_"*100)
+        for row in table:
+            output = f"{row['id']:<6} {row['title']:<32} {row['detail']:<40}  {row['total_days']:<8} {row['start_date']}"
+            print(output)
 def DisplayTransaction():
     DisplayTour()
     tourid = int(input("Enter tour id"))
@@ -37,11 +28,8 @@ def DisplayTransaction():
         income_total = 0
         expense_total = 0
         if len(table)== 0:
-            c.PrintCenter("no entry found")
-            c.PrintLine()
-        #set heading
-        print(f"{'id':<6} {'description':<48} {'Inc/exp':<12}  {'amount':12} {'challan_number':<12} {'formatted_date'}")
-        c.PrintLine()
+            print("No entry found".center(100))
+            print("_"*100)
         for row in table:
             msg = None 
             if row['transaction_type_flag'] == 1:
@@ -56,14 +44,13 @@ def DisplayTransaction():
             formatted_date = dt.strftime("%d-%m-%Y")
             output = f"{row['id']:<6} {row['description']:<48} {msg:<12}  {row['amount']:12} {row['challan_number']:<12} {formatted_date}"
             print(output)
-        c.PrintLine()
+        print("_"*110)
         print(f"Expense {expense_total:15} Income {income_total:15}")
         difference = income_total - expense_total
         if difference<0:
             print(f"total loss = {difference}")
         else:
             print(f"total profit = {difference}")
-    key = input("Press Enter to continue")
 while True:
     print("Press 1 for tour management")
     print("Press 2 for transaction management")

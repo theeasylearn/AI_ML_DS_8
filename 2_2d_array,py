@@ -1,0 +1,14 @@
+import numpy as np 
+
+numbers = [[1, 2, 3], [4, 5, 6]]
+array_2d = np.array(numbers)
+print(array_2d)
+print("shape ",array_2d.shape)
+
+#access 0th row 0th column
+print(array_2d[0][0])
+
+#update
+array_2d[0][0] = 100
+print(array_2d)
+

@@ -1,4 +1,4 @@
-import db_connect as db
+import python.project.db_connect as db
 #create cursor 
 my_cursor = db.database.cursor(dictionary=True)
 

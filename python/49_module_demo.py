@@ -1,5 +1,5 @@
 #import converter module
-import converter as c 
+import python.converter as c 
 #here c as alias that you can use instead of converter 
 foot = float(input("Enter value in foot: "))
 meter = float(input("Enter value in meter: "))

@@ -1,5 +1,5 @@
 #import bank module 
-import bank 
+import python.bank as bank 
 
 print("Balance before deposit",bank.balance)
 amount = int(input("Enter how many rupees you want to deposit"))
