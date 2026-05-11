@@ -1,0 +1,302 @@
+[
+  {
+    "student_name":"Aarav Sharma",
+    "python":88,
+    "maths":92,
+    "machine_learning":79
+  },
+  {
+    "student_name":"Ishita Gupta",
+    "python":74,
+    "maths":81,
+    "machine_learning":90
+  },
+  {
+    "student_name":"Rohit Verma",
+    "python":95,
+    "maths":89,
+    "machine_learning":85
+  },
+  {
+    "student_name":"Priya Kapoor",
+    "python":67,
+    "maths":72,
+    "machine_learning":78
+  },
+  {
+    "student_name":"Ananya Nair",
+    "python":81,
+    "maths":86,
+    "machine_learning":92
+  },
+  {
+    "student_name":"Aarav Gupta",
+    "python":88,
+    "maths":92,
+    "machine_learning":85
+  },
+  {
+    "student_name":"Kriti Sharma",
+    "python":76,
+    "maths":84,
+    "machine_learning":90
+  },
+  {
+    "student_name":"Riya Singh",
+    "python":91,
+    "maths":89,
+    "machine_learning":93
+  },
+  {
+    "student_name":"Arjun Mehta",
+    "python":65,
+    "maths":78,
+    "machine_learning":72
+  },
+  {
+    "student_name":"Nisha Kapoor",
+    "python":82,
+    "maths":88,
+    "machine_learning":86
+  },
+  {
+    "student_name":"Aarav Kapoor",
+    "python":88,
+    "maths":92,
+    "machine_learning":85
+  },
+  {
+    "student_name":"Vivaan Gupta",
+    "python":76,
+    "maths":81,
+    "machine_learning":79
+  },
+  {
+    "student_name":"Aditi Sharma",
+    "python":95,
+    "maths":89,
+    "machine_learning":93
+  },
+  {
+    "student_name":"Sneha Reddy",
+    "python":62,
+    "maths":74,
+    "machine_learning":70
+  },
+  {
+    "student_name":"Ishaan Nair",
+    "python":79,
+    "maths":85,
+    "machine_learning":88
+  },
+  {
+    "student_name":"Aarav Sharma",
+    "python":88,
+    "maths":92,
+    "machine_learning":85
+  },
+  {
+    "student_name":"Riya Kapoor",
+    "python":76,
+    "maths":81,
+    "machine_learning":79
+  },
+  {
+    "student_name":"Aditi Verma",
+    "python":95,
+    "maths":89,
+    "machine_learning":94
+  },
+  {
+    "student_name":"Karan Singh",
+    "python":63,
+    "maths":72,
+    "machine_learning":70
+  },
+  {
+    "student_name":"Meera Nair",
+    "python":84,
+    "maths":78,
+    "machine_learning":81
+  },
+  {
+    "student_name":"Aarav Gupta",
+    "python":85,
+    "maths":78,
+    "machine_learning":92
+  },
+  {
+    "student_name":"Ishaan Kapoor",
+    "python":73,
+    "maths":88,
+    "machine_learning":81
+  },
+  {
+    "student_name":"Riya Sharma",
+    "python":91,
+    "maths":76,
+    "machine_learning":89
+  },
+  {
+    "student_name":"Meera Nair",
+    "python":66,
+    "maths":72,
+    "machine_learning":77
+  },
+  {
+    "student_name":"Arjun Das",
+    "python":79,
+    "maths":84,
+    "machine_learning":86
+  },
+  {
+    "student_name":"Aarav Gupta",
+    "python":92,
+    "maths":88,
+    "machine_learning":95
+  },
+  {
+    "student_name":"Ishita Sharma",
+    "python":85,
+    "maths":90,
+    "machine_learning":89
+  },
+  {
+    "student_name":"Rhea Kapoor",
+    "python":78,
+    "maths":82,
+    "machine_learning":84
+  },
+  {
+    "student_name":"Dhruv Mehta",
+    "python":91,
+    "maths":86,
+    "machine_learning":88
+  },
+  {
+    "student_name":"Ananya Pillai",
+    "python":87,
+    "maths":93,
+    "machine_learning":90
+  },
+  {
+    "student_name":"Aarav Sharma",
+    "python":88,
+    "maths":76,
+    "machine_learning":91
+  },
+  {
+    "student_name":"Krishan Gupta",
+    "python":72,
+    "maths":85,
+    "machine_learning":77
+  },
+  {
+    "student_name":"Nisha Verma",
+    "python":95,
+    "maths":89,
+    "machine_learning":93
+  },
+  {
+    "student_name":"Riya Kapoor",
+    "python":68,
+    "maths":72,
+    "machine_learning":70
+  },
+  {
+    "student_name":"Aditi Menon",
+    "python":81,
+    "maths":84,
+    "machine_learning":88
+  },
+  {
+    "student_name":"Aarav Gupta",
+    "python":86,
+    "maths":91,
+    "machine_learning":78
+  },
+  {
+    "student_name":"Ishita Sharma",
+    "python":74,
+    "maths":88,
+    "machine_learning":92
+  },
+  {
+    "student_name":"Riya Verma",
+    "python":95,
+    "maths":82,
+    "machine_learning":89
+  },
+  {
+    "student_name":"Kiran Singh",
+    "python":68,
+    "maths":73,
+    "machine_learning":85
+  },
+  {
+    "student_name":"Navya Kapoor",
+    "python":90,
+    "maths":76,
+    "machine_learning":94
+  },
+  {
+    "student_name":"Arun Verma",
+    "python":92,
+    "maths":88,
+    "machine_learning":95
+  },
+  {
+    "student_name":"Priya Sharma",
+    "python":78,
+    "maths":85,
+    "machine_learning":80
+  },
+  {
+    "student_name":"Rahul Kumar",
+    "python":85,
+    "maths":90,
+    "machine_learning":88
+  },
+  {
+    "student_name":"Sneha Gupta",
+    "python":90,
+    "maths":82,
+    "machine_learning":91
+  },
+  {
+    "student_name":"Aditi Nair",
+    "python":76,
+    "maths":89,
+    "machine_learning":84
+  },
+  {
+    "student_name":"Aarav Sharma",
+    "python":88,
+    "maths":92,
+    "machine_learning":85
+  },
+  {
+    "student_name":"Ishita Gupta",
+    "python":76,
+    "maths":81,
+    "machine_learning":79
+  },
+  {
+    "student_name":"Riya Verma",
+    "python":94,
+    "maths":89,
+    "machine_learning":90
+  },
+  {
+    "student_name":"Karan Singh",
+    "python":65,
+    "maths":72,
+    "machine_learning":70
+  },
+  {
+    "student_name":"Neha Kapoor",
+    "python":82,
+    "maths":88,
+    "machine_learning":84
+  }
+]
