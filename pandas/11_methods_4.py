@@ -1,0 +1,10 @@
+import pandas as pd 
+s1 = pd.Series([1,2,2,3,3,4,5,6])
+print(s1)
+print("has this series contains duplicate value ",s1.duplicated())
+print("without duplicate values ",s1.drop_duplicates())
+s2 = s1.copy()
+print(s2)
+print("clipped Series ",s1.clip(2,4))
+print("Cumulative sum ",s1.cumsum())
+print("Cumulative Product ",s1.cumprod())
