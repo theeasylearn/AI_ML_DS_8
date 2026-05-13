@@ -1,0 +1,17 @@
+Line, Bar Chart 
+------------------------------
+1) create chart to display no of ODI PLAYED in each year in mans cricket between year 2000 to 2025
+2) create chart to display no of TEST PLAYED in each year in mans cricket between year 2000 to 2025
+3) create chart to display no of T20 PLAYED in each year in mans cricket between year 2000 to 2025
+
+4) create chart to display no of ODI,TEST,T20 PLAYED in each year in mans cricket between year 2000 to 2025
+
+
+
+5) create scatter chart to display car sales in lakhs in india along with gdp rates between 2000 to 2025
+
+6) create scatter chart to display two wheels sales in lakhs in india along with gdp rates between 2000 to 2025
+
+7) create bar chart to display price hike of gold, sliver between year 2010 to 2025 (not overlapping bar)
+
+8) create bar chart to display GDP growth rate of india & china between year 2010 to 2025 (not overlapping bar)
