@@ -12,6 +12,10 @@ Line, Bar Chart
 
 6) create scatter chart to display two wheels sales in lakhs in india along with gdp rates between 2000 to 2025
 
-7) create bar chart to display price hike of gold, sliver between year 2010 to 2025 (not overlapping bar)
+
+7.1) create bar chart to display price hike of gold between year 2010 to 2025 
+7.2) create bar chart to display stock market return of sensex between year 2010 to 2025 
+
+7.3) create bar chart to display price hike of gold, sliver between year 2010 to 2025 (not overlapping bar)
 
 8) create bar chart to display GDP growth rate of india & china between year 2010 to 2025 (not overlapping bar)
