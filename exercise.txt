@@ -22,3 +22,7 @@ Line, Bar Chart
 
 6) create scatter chart to display no of plan crash in each month between 2000 to 2025. 
 
+7) create pie chart that shows percent of students opted commerce, arts, science, diploma after 10th in gujarat state. 
+
+8) create pie chart that shows percent of sales of smart phone by different companies such RealMe, redme, oppo, vido, samsung, apple, nokia etc. 
+
