@@ -26,3 +26,12 @@ Line, Bar Chart
 
 8) create pie chart that shows percent of sales of smart phone by different companies such RealMe, redme, oppo, vido, samsung, apple, nokia etc. 
 
+9) create step chart that shows prices of gold, silver, copper in last 25 years. 
+
+10) create step chart that shows change in nifty and sensex.
+
+11) create step chart that shows growth in percentage in bitcoin, etherium,  
+
+12) create contour chart that shows longitude,, latitude and internet signal strength 
+13) create contourf chart that shows sugar in gram, boiling minutes of tea, user rating. 
+
