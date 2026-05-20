@@ -11,6 +11,7 @@ room_temperature = 25 + 5 * np.exp(-((X - 2.5)**2 + (Y - 3.0)**2) / 4)
 plt.contourf(X,Y,room_temperature,levels=10,cmap='viridis')
 plt.xlabel('room width')
 plt.ylabel('room height')
+# plt.colorbar(label=room_temperature)
 plt.title("Room temperature contour chart")
 plt.show()
 
