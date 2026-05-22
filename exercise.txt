@@ -35,3 +35,8 @@ Line, Bar Chart
 12) create contour chart that shows longitude,, latitude and internet signal strength 
 13) create contourf chart that shows sugar in gram, boiling minutes of tea, user rating. 
 
+14) create error bar chart of all the IPL teams scores in 2026.
+
+15) create error bar chart of 5 products sales of 30 days. 
+
+

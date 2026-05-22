@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 Y, X = np.mgrid[-90:90:200j, -180:180:400j]
 U = np.zeros_like(X)
 V = np.zeros_like(Y)
+# print(Y,X)
+# print(U,V)
 
 def add_gyre(lon_c, lat_c, r_lon, r_lat, strength, clockwise=True):
     """Simulates an mathematical elliptical fluid vortex for gyre flow."""
