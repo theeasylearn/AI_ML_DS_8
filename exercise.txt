@@ -39,4 +39,7 @@ Line, Bar Chart
 
 15) create error bar chart of 5 products sales of 30 days. 
 
+16) create stack bar chart that will display indian goverment budget spending on  
+    Interest Payments, States' Share of Taxes & Duties, Central Sector Schemes, Defense, Centrally Sponsored Schemes, Finance Commission & Other Transfers, Subsidies, Pensions, Capital Expenditure, Rural Development
+
 
