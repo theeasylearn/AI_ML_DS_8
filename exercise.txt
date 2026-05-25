@@ -43,3 +43,5 @@ Line, Bar Chart
     Interest Payments, States' Share of Taxes & Duties, Central Sector Schemes, Defense, Centrally Sponsored Schemes, Finance Commission & Other Transfers, Subsidies, Pensions, Capital Expenditure, Rural Development
 
 
+17) create polar chart that show how many runs virat kohli has made in which direction 
+
