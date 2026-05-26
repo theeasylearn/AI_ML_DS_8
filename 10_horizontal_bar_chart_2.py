@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 ipl_teams = [
     "Mumbai Indians", 
     "Chennai Super Kings", 

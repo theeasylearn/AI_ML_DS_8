@@ -45,3 +45,5 @@ Line, Bar Chart
 
 17) create polar chart that show how many runs virat kohli has made in which direction 
 
+18) create candle chart that will display movement of sensex 30 in last 30 days. make sure it display candle for each and every day. read data from csv file. 
+

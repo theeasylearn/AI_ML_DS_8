@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt 
-import numpy as np 
+import numpy as np
+import pandas as pd
 plt.figure(figsize=(10, 6))
 room_width = np.linspace(0,10,10)
 # 1D array of height positions (e.g., 0 to 3 meters)
