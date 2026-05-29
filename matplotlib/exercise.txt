@@ -47,3 +47,4 @@ Line, Bar Chart
 
 18) create candle chart that will display movement of sensex 30 in last 30 days. make sure it display candle for each and every day. read data from csv file. 
 
+19) create 4 chart in one screen. all chart must be of different type. but related to same topic 
