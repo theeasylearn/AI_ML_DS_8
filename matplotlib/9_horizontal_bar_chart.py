@@ -13,7 +13,7 @@ ipl_teams = [
 title_wins = [5, 5, 3, 1, 1, 1, 1, 1]
 
 #create horizontal chart
-plt.barh(ipl_teams,title_wins,color='yellow',edgecolor='black')
+plt.barh(ipl_teams,title_wins,color=bar_colors,edgecolor='black')
 plt.xlabel('title win')
 plt.ylabel('IPL team name')
 plt.title("IPL Trophy Wins data")
