@@ -1,0 +1,490 @@
+## 1. anagrams
+
+**Description:** Word puzzle experiment dataset measuring accuracy and solving performance under different conditions.
+
+**Common Fields:**
+
+* subidr
+* attnr
+* num1
+* num2
+* num3
+
+**Plots You Can Create:**
+
+* Box Plot (performance comparison)
+* Bar Plot (average score by group)
+* Violin Plot (distribution analysis)
+* Histogram
+
+---
+
+## 2. anscombe
+
+**Description:** Famous dataset demonstrating that datasets with identical statistics can have very different distributions.
+
+**Fields:**
+
+* dataset
+* x
+* y
+
+**Plots You Can Create:**
+
+* Scatter Plot (most important)
+* Regression Plot
+* Facet Grid
+* Line Plot
+
+---
+
+## 3. attention
+
+**Description:** Cognitive psychology experiment measuring attention scores.
+
+**Fields:**
+
+* subject
+* attention
+* solutions
+* score
+
+**Plots You Can Create:**
+
+* Box Plot
+* Bar Plot
+* Violin Plot
+* Point Plot
+
+---
+
+## 4. brain_networks
+
+**Description:** Brain connectivity measurements between different neural networks.
+
+**Fields:**
+
+* network labels
+* connectivity measurements (many numerical columns)
+
+**Plots You Can Create:**
+
+* Heatmap
+* Correlation Matrix
+* Pair Plot
+* Cluster Map
+
+---
+
+## 5. car_crashes
+
+**Description:** US state-wise automobile accident statistics.
+
+**Fields:**
+
+* total
+* speeding
+* alcohol
+* not_distracted
+* no_previous
+* ins_premium
+* ins_losses
+* abbrev
+
+**Plots You Can Create:**
+
+* Bar Plot
+* Scatter Plot
+* Pair Plot
+* Heatmap
+* Bubble Chart
+
+---
+
+## 6. diamonds
+
+**Description:** Diamond characteristics and prices.
+
+**Fields:**
+
+* carat
+* cut
+* color
+* clarity
+* depth
+* table
+* price
+* x
+* y
+* z
+
+**Plots You Can Create:**
+
+* Scatter Plot
+* Box Plot
+* Histogram
+* Violin Plot
+* Pair Plot
+
+---
+
+## 7. dots
+
+**Description:** Experimental response-time measurements.
+
+**Fields:**
+
+* align
+* choice
+* time
+* coherence
+* firing_rate
+
+**Plots You Can Create:**
+
+* Line Plot
+* Point Plot
+* Box Plot
+* Scatter Plot
+
+---
+
+## 8. dowjones
+
+**Description:** Historical Dow Jones Industrial Average stock market data.
+
+**Fields:**
+
+* Date
+* Price
+
+**Plots You Can Create:**
+
+* Line Chart
+* Area Chart
+* Trend Analysis
+* Moving Average Plot
+
+---
+
+## 9. exercise
+
+**Description:** Exercise experiment measuring pulse rates under different activities.
+
+**Fields:**
+
+* id
+* diet
+* pulse
+* time
+* kind
+
+**Plots You Can Create:**
+
+* Box Plot
+* Bar Plot
+* Line Plot
+* Violin Plot
+
+---
+
+## 10. flights
+
+**Description:** Monthly airline passenger counts.
+
+**Fields:**
+
+* year
+* month
+* passengers
+
+**Plots You Can Create:**
+
+* Line Plot
+* Heatmap
+* Area Chart
+* Seasonal Trend Plot
+
+---
+
+## 11. fmri
+
+**Description:** Functional MRI brain activity data.
+
+**Fields:**
+
+* subject
+* timepoint
+* event
+* region
+* signal
+
+**Plots You Can Create:**
+
+* Line Plot
+* Facet Grid
+* Point Plot
+* Heatmap
+
+---
+
+## 12. geyser
+
+**Description:** Old Faithful geyser eruption observations.
+
+**Fields:**
+
+* duration
+* waiting
+
+**Plots You Can Create:**
+
+* Scatter Plot
+* Histogram
+* KDE Plot
+* Joint Plot
+
+---
+
+## 13. glue
+
+**Description:** Example dataset demonstrating pandas/seaborn integration.
+
+**Fields:**
+
+* x
+* y
+* dataset labels
+
+**Plots You Can Create:**
+
+* Scatter Plot
+* Line Plot
+* Facet Grid
+
+---
+
+## 14. healthexp
+
+**Description:** Health expenditure and life expectancy across countries.
+
+**Fields:**
+
+* Country
+* Year
+* Spending_USD
+* Life_Expectancy
+
+**Plots You Can Create:**
+
+* Scatter Plot
+* Line Plot
+* Regression Plot
+* Bubble Chart
+
+---
+
+## 15. iris
+
+**Description:** Classic flower classification dataset.
+
+**Fields:**
+
+* sepal_length
+* sepal_width
+* petal_length
+* petal_width
+* species
+
+**Plots You Can Create:**
+
+* Pair Plot
+* Scatter Plot
+* Box Plot
+* Violin Plot
+* Histogram
+
+---
+
+## 16. mpg
+
+**Description:** Automobile fuel efficiency dataset.
+
+**Fields:**
+
+* mpg
+* cylinders
+* displacement
+* horsepower
+* weight
+* acceleration
+* model_year
+* origin
+* name
+
+**Plots You Can Create:**
+
+* Scatter Plot
+* Pair Plot
+* Box Plot
+* Regression Plot
+* Histogram
+
+---
+
+## 17. penguins
+
+**Description:** Penguin species measurements.
+
+**Fields:**
+
+* species
+* island
+* bill_length_mm
+* bill_depth_mm
+* flipper_length_mm
+* body_mass_g
+* sex
+
+**Plots You Can Create:**
+
+* Pair Plot
+* Scatter Plot
+* Box Plot
+* Violin Plot
+
+---
+
+## 18. planets
+
+**Description:** Exoplanet discovery data.
+
+**Fields:**
+
+* method
+* number
+* orbital_period
+* mass
+* distance
+* year
+
+**Plots You Can Create:**
+
+* Scatter Plot
+* Line Plot
+* Histogram
+* Count Plot
+* Box Plot
+
+---
+
+## 19. seaice
+
+**Description:** Arctic sea ice extent measurements over time.
+
+**Fields:**
+
+* Date
+* Extent
+
+**Plots You Can Create:**
+
+* Line Plot
+* Area Chart
+* Trend Analysis
+* Time Series Visualization
+
+---
+
+## 20. taxis
+
+**Description:** New York taxi trip records.
+
+**Fields:**
+
+* pickup
+* dropoff
+* passengers
+* distance
+* fare
+* tip
+* tolls
+* total
+
+**Plots You Can Create:**
+
+* Histogram
+* Scatter Plot
+* Box Plot
+* Time Series Plot
+* Heatmap
+
+---
+
+## 21. tips
+
+**Description:** Restaurant tipping dataset.
+
+**Fields:**
+
+* total_bill
+* tip
+* sex
+* smoker
+* day
+* time
+* size
+
+**Plots You Can Create:**
+
+* Scatter Plot
+* Box Plot
+* Violin Plot
+* Bar Plot
+* Regression Plot
+
+---
+
+## 22. titanic
+
+**Description:** Titanic passenger survival data.
+
+**Fields:**
+
+* survived
+* pclass
+* sex
+* age
+* sibsp
+* parch
+* fare
+* embarked
+* class
+* who
+* adult_male
+* deck
+* embark_town
+* alive
+* alone
+
+**Plots You Can Create:**
+
+* Count Plot
+* Bar Plot
+* Box Plot
+* Violin Plot
+* Heatmap
+* Pair Plot
+
+### Best Datasets for Beginners
+
+1. iris
+2. tips
+3. titanic
+4. flights
+5. penguins
+6. diamonds
+7. mpg
+8. car_crashes
+
+These datasets cover almost every major Seaborn visualization: line plots, bar plots, count plots, histograms, box plots, violin plots, scatter plots, regression plots, pair plots, and heatmaps.
