@@ -1,4 +1,4 @@
-Sno,District,State P No,age,Sex,Description,Symptoms,Co.Morbidities,DOA,DOD,MB Date,Notes,categ
+Sno,District State, P No,age,Sex,Description,Symptoms,Co.Morbidities,DOA,DOD,MB Date,Notes,categ
 1,Kalaburagi,6,76,Male,Travel history to Saudi Arabia,NA,HTN & Asthama,NA,NA,13-03-2020,NA,Wave 1
 2,Chikkaballapura,53,70,Female,Travel history to Mecca,NA,NA,NA,NA,26-03-2020,NA,Wave 1
 3,Tumakuru,60,60,Male,Travel history to Delhi,NA,NA,NA,NA,27-03-2020,NA,Wave 1

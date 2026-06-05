@@ -1,0 +1,20 @@
+1)  create dataset using ai that has approx 1000 students 
+    dataset should have 
+        id, name, gender, caste, religion, 
+    download dataset and put in your project folder. then use 
+    create count plot chart that will display case wise (SC,ST,OBC, GENERAL) count of student studying in class. 
+
+2) create box plot chart that will display no of century made in each year by below players
+    1) Virat kohli
+    2) rohit sharma
+    3) KL rahul 
+
+    between 2016 to 2026
+
+3) create violin plot chart that will display score of below players 
+    1) Virat kohli
+    2) rohit sharma
+    3) KL rahul 
+
+    between 2016 to 2026 in ODI format.
+
