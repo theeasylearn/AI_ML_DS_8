@@ -1,7 +1,7 @@
 1) create custom components that extract any mobile number 
 2) create custom components that extract any latitude and longitude 
 3) create custom components that extract all the ingredients in recipe 
-4) create custom components that return true or false. if recipe is vegan it returns true otherwise false 
+4) create custom components that return true or false. if recipe is vegan it returns true otherwise false. 
 5) create custom components that return true or false. if text has any adult content otherwise false (english or hindi or gujarati)
 
 create NLP in your account and push all above components and share link with in personal.

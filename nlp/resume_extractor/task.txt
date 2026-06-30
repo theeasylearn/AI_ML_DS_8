@@ -1,0 +1,3 @@
+create dashboard in streamlit 
+    provide facility to search resume by skills 
+        if skill found, display all the data of candidate 

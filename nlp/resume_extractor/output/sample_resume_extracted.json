@@ -1,0 +1,90 @@
+{
+  "filename": "sample_resume.pdf",
+  "contact": {
+    "name": "MALAY JOSHI, UI/UX DESIGNER",
+    "email": "malayj66@gmail.com",
+    "phone": "8734863648",
+    "location": null
+  },
+  "skills": [],
+  "education": [
+    {
+      "degree": "specializes in designing for varied sectors, including decentralized finance (defi) and web3 technology, with a focus on \ntranslating complex requirements into clean, accessible interfaces.",
+      "year": null
+    },
+    {
+      "degree": "zeebu investment platform\nbuild streamlined investment interface for zeebu ecosystem, supporting wallet onboarding, multi-asset selection from \nconnected wallets, and risk-tiered yield configurations with real-time allocation previews.",
+      "year": null
+    },
+    {
+      "degree": "created intuitive data tables and charts for recent invoices, current rates, and zbu pool stats (burned vs. yet-to-burn), \nimproving data accessibility for telecom operators and institutions.",
+      "year": null
+    },
+    {
+      "degree": "integrated filter dropdowns and responsive layouts across multiple screens (dashboard, totals, lists), streamlining navigation \nfor high-volume transaction monitoring in web3 environment.",
+      "year": null
+    },
+    {
+      "degree": "skills\ndesign process\nuser research, user-centered design, wireframing, prototyping, usability testing, user journey mapping, information \narchitecture, interaction design, visual design, design systems, brand consistency, accessibility design.",
+      "year": null
+    }
+  ],
+  "experience": [
+    {
+      "description": "| portfolio \nui/ux designer with 2 years of experience crafting user-centered digital experiences across web and mobile platforms.",
+      "company": null,
+      "duration": null
+    },
+    {
+      "description": "experience\nui/ux designer | zeebu, ahmedabad, gujarat\njul 2024 \u2013 present\nzeebu master app\ndesign complete mobile defi experience showcasing portfolio analytics, stake oversight, token exchange hub, and zbu \nacquisition tools with live risk assessment displays.",
+      "company": null,
+      "duration": null
+    },
+    {
+      "description": "delivered figma prototypes following detailed specification document, emphasizing clean typographic hierarchy, brand-\naligned color systems, and fluid micro-interactions for optimal defi user experience.",
+      "company": null,
+      "duration": null
+    },
+    {
+      "description": "this experience enabled me to design intuitive, user-centric interfaces that effectively meet user needs and \nbusiness goals.",
+      "company": null,
+      "duration": null
+    }
+  ],
+  "certifications": [
+    "MALAY JOSHI, UI/UX DESIGNER\nAhmedabad, India | 8734863648",
+    "| Portfolio \nUI/UX Designer with 2 years of experience crafting user-centered digital experiences across web and mobile platforms.",
+    "Specializes in designing for varied sectors, including Decentralized Finance (DeFi) and web3 Technology, with a focus on \ntranslating complex requirements into clean, accessible interfaces.",
+    "Skilled in conducting user research and applying design \nthinking methodologies to address challenging user needs through continuous iteration and validation.",
+    "Proven ability to bridge \ndesign and development by partnering closely with Development teams, product owners, and stakeholders to ship responsive, \nimpactful solutions in fast-paced environments.",
+    "EXPERIENCE\nUI/UX Designer | ZEEBU, Ahmedabad, Gujarat\nJul 2024 \u2013 PRESENT\nZEEBU MASTER APP\nDesign complete mobile DeFi experience showcasing portfolio analytics, stake oversight, token exchange hub, and ZBU \nacquisition tools with live risk assessment displays.",
+    "Created sophisticated trading panels featuring currency picker, optimal path analyzer (PancakeSwap/Uniswap), aggregator \nCEX/DEX selector, and deal status tracker.",
+    "Design stake management screens revealing total commitment, yield progression graphs, maturity countdowns, and options \nfor purchase/boost/prolong/redeem/collect.",
+    "Develop a proper design system powering Zeebu Master app, establishing visual and functional consistency across all \nscreens through creation of components, variants, variables, and supporting assets.",
+    "ZEEBU INVESTMENT PLATFORM\nBuild streamlined investment interface for Zeebu ecosystem, supporting wallet onboarding, multi-asset selection from \nconnected wallets, and risk-tiered yield configurations with real-time allocation previews.",
+    "Designed portfolio overview cards displaying current holdings across ZBU, stablecoins, and ETH with maturity timers, reward \naccrual status, and redemption controls.",
+    "Shaped performance analytics section combining transaction logs, cumulative returns dashboard, and interactive allocation \ncharts for comprehensive position monitoring.",
+    "Delivered Figma prototypes following detailed specification document, emphasizing clean typographic hierarchy, brand-\naligned color systems, and fluid micro-interactions for optimal DeFi user experience.",
+    "ZEEBU ACHIEVEMENT DASHBOARD\nDesigned comprehensive analytics dashboard for Zeebu 's settlement platform, visualizing ZBU token burns, invoice \nsettlements, and reward volumes to highlight total success metrics.",
+    "Created intuitive data tables and charts for recent invoices, current rates, and ZBU pool stats (burned vs. yet-to-burn), \nimproving data accessibility for telecom operators and institutions.",
+    "Developed global user list interface with map visualization and growth metrics, enabling quick insights into 139+ active \ninstitutions and daily settlements.",
+    "Integrated filter dropdowns and responsive layouts across multiple screens (dashboard, totals, lists), streamlining navigation \nfor high-volume transaction monitoring in Web3 environment.",
+    "Collaborated on high-fidelity Figma designs based on product requirements, focusing on dark-mode UI, precise data \nrendering, and celebratory elements to boost user engagement.",
+    "UI/UX Intern | ZEEBU, Ahmedabad, Gujarat\nJul 2024 \u2013 OCT 2024\nZeebu (Figma & Design Systems)",
+    "L earned and applied Figma fundamentals including frames, layout grids, and responsive web and mobile screen design for \nreal client projects.\u200b\nBuilt reusable design systems with components, variants, color styles, and typography tokens to keep Zeebu interfaces \nvisually consistent.",
+    "Used Auto Layout and constraints to create scalable, responsive UI patterns that adapt smoothly across different screen \nsizes.",
+    "Created interactive Figma prototypes\u00a0communicating user flows and micro-interactions while leveraging plugins for icons, \nillustrations, and content generation to accelerate design workflows with PMs and developers.",
+    "Page 1 of 2\nKey Achievements\nDesigned DeFi products for 1000+ Web3 users\u00a0with proven engagement impact.",
+    "Led user research shaping product strategy\u00a0through trader insights.",
+    "Reduced operational errors by 25% across multiple platforms through intuitive interface design.\nMaintained consistent brand identity while adapting designs for diverse user groups and technical constraints.",
+    "Selected Projects\nSettlement Analytics Dashboard, Zeebu (2025): Real-time settlement dashboard\u00a0tracking burns, rewards, invoice volumes, \nand treasury metrics with dynamic rate charts and institution analytics.",
+    "Investment Panel, Zeebu (2025): Intelligent DeFi yield optimizer\u00a0featuring wallet onboarding, risk-adjusted APY selection, \nfund allocation previews, and NFT position tracking for seamless investment lifecycle management.",
+    "SKILLS\nDesign Process\nUser Research, User-Centered Design, Wireframing, Prototyping, Usability Testing, User Journey Mapping, Information \nArchitecture, Interaction Design, Visual Design, Design Systems, Brand Consistency, Accessibility Design.",
+    "Tools & Technologies\nFigma, Adobe Illustrator, Framer, Spline\u00a0 3d, Lovable.dev AI builder, Google Antigravity, Notion, WordPress, SVGator, HTML, \nCSS, Responsive Design.",
+    "Communication & Collaboration\nSta keholder Management, Cross-functional Collaboration, Design Presentations, User Research Facilitation, Requirements \nGathering, Design Documentation, Client Communication, Team Leadership.",
+    "education\nPursuing Bachelor of Computer Applications (BCA)\nSwami Sahajanand College of Commerce and Management.",
+    "Bhavnagar, Gujarat\nCERTIFICATION\nUI/UX with Figma and Adobe XD\nCompleted an in-depth UI/UX design course in Figma and Adobe XD, gaining advanced skills in wireframing, prototyping, and \nuser testing.",
+    "This experience enabled me to design intuitive, user-centric interfaces that effectively meet user needs and \nbusiness goals."
+  ],
+  "extracted_at": "2026"
+}

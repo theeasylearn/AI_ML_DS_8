@@ -1,0 +1,4 @@
+spacy==3.7.*
+pandas
+pymupdf
+streamlit
