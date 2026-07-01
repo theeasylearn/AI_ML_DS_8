@@ -7,8 +7,15 @@ Excel
 Power BI
 Git
 Django
-HTML
+HTML 5
 CSS
 Leadership
 Team Management
 Problem Solving
+React JS 
+Node js 
+Express 
+PHP
+MongoDB
+MySQL 
+Github
