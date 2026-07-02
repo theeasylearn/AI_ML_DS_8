@@ -37,18 +37,18 @@ if uploaded_file is not None:
         FileContent = uploaded_file.getbuffer()
         file.write(FileContent)
     
-    #check file type
-    if uploaded_file.type == "application/pdf":
-        text = extract_text_from_pdf(temp_path)
-    else:
-        text = uploaded_file.read().decode("utf-8")
-    
-    #display message on screen
-    st.success("File processed successfully!")
-    
-    with st.spinner("Extracting data..."):
-        result = extract_resume(text, uploaded_file.name)
-    
+        #check file type
+        if uploaded_file.type == "application/pdf":
+            text = extract_text_from_pdf(temp_path)
+        else:
+            text = uploaded_file.read().decode("utf-8")
+        
+        #display message on screen
+        st.success("File processed successfully!")
+        
+        with st.spinner("Extracting data..."):
+            result = extract_resume(text, uploaded_file.name)
+        
         st.subheader("Contact Info")
         contact = result["contact"]
 
@@ -61,35 +61,54 @@ if uploaded_file is not None:
         
         # Education
         st.subheader("🎓 Education")
-        for edu in result.get("education", []):
-            if isinstance(edu, dict):
-                display_text = edu.get('degree') or edu.get('institution') or str(edu)
-            else:
-                display_text = str(edu)
-            st.write(f"• {display_text}")
+        edu_list = result.get("education", [])
+        if edu_list:
+            for edu in edu_list:
+                if isinstance(edu, dict):
+                    deg = edu.get("degree") or ""
+                    yr = edu.get("year") or ""
+                    pct = edu.get("percentage") or ""
+                    parts = [p for p in [deg, yr, pct] if p]
+                    line = " | ".join(parts) if parts else str(edu)
+                else:
+                    line = str(edu)
+                # prevent extremely long repeated text in UI
+                if len(line) > 220:
+                    line = line[:217] + "..."
+                st.write(f"• {line}")
+        else:
+            st.write("No education details found")
 
-            # Experience
         st.subheader("💼 Experience")
-        for exp in result.get("experience", []):
-            if isinstance(exp, dict):
-                display_text = exp.get('description') or exp.get('position') or str(exp)
-            else:
-                display_text = str(exp)
-            st.write(f"• {display_text}")
+        exp_list = result.get("experience", [])
+        if exp_list:
+            for exp in exp_list:
+                if isinstance(exp, dict):
+                    desc = exp.get("description", "")
+                    dur = exp.get("duration") or ""
+                    if dur:
+                        st.write(f"• {desc}  \n  _({dur})_")
+                    else:
+                        st.write(f"• {desc}")
+                else:
+                    st.write(f"• {exp}")
+        else:
+            st.write("No experience found")
 
         # Certifications
         st.subheader("📜 Certifications")
         certs = result.get("certifications", [])
         if certs:
             for cert in certs:
-                st.write(f"• {cert}")
+                c = str(cert)
+                if len(c) > 200:
+                    c = c[:197] + "..."
+                st.write(f"• {c}")
         else:
             st.write("No certifications found")
             
-            json_str = json.dumps(result, indent=2)
-           
-        #store data into database
+        json_str = json.dumps(result, indent=2)
         st.download_button("Download JSON", json_str, "result.json", "application/json")
         #delete temporary file 
-        if os.path.exists(temp_path):
-            os.remove(temp_path)
+        # if os.path.exists(temp_path):
+        #     os.remove(temp_path)

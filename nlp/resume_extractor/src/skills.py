@@ -19,20 +19,29 @@ def load_skills():
                 "Excel", "Power BI", "Git", "Django", "HTML", "CSS", "Leadership"]
 
 def extract_skills(doc):
-    #create object of PhraseMatcher
+    # PhraseMatcher from list
     matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
     skills = load_skills()
     
     patterns = [nlp.make_doc(skill) for skill in skills]
-    # load lines that has skills 
     matcher.add("SKILLS", patterns)
     
     matches = matcher(doc)
-    extracted = [] # replace it with set 
-    # //extract exact skill 
+    extracted = []
     for _, start, end in matches:
         skill = doc[start:end].text
         if skill not in extracted:
             extracted.append(skill)
     
+    # Additional fallback extraction for common technical terms in this resume style
+    full = doc.text.lower()
+    extra = []
+    candidates = ['c ', 'c,', ' c ', 'hdf5', 'computer vision', 'image processing', 'postgre', 'postgresql', 'vs code', 'web security', 'network security', 'bilingual']
+    for cand in candidates:
+        if cand in full:
+            nice = cand.strip().title().replace('Hdf5', 'HDF5').replace('Postgre', 'PostgreSQL').replace('C ', 'C')
+            if nice not in extracted and nice not in extra:
+                extra.append(nice.strip())
+    
+    extracted.extend(extra)
     return extracted

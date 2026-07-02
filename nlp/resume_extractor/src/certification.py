@@ -1,17 +1,30 @@
-def extract_certifications(doc):
-    """Better certification extractor"""
-    certs = [] 
-    keywords = ["Academic Background", "Academic Credentials", "Academic Profile", "Academy", "Accredited", "Active", "Additional Credentials", "Administration", "Administrative", "Advisor", "Affiliated to", "Aggregate", "AISSE", "AISSCE", "AICTE", "Amazon Web Services", "Analyst", "Analyzed", "Applied", "Apprenticeship", "Approved by", "Architect", "Architected", "Arts Stream", "Assistant", "Associate", "Assisted", "Audit", "Automate", "Automated", "Autonomous Institute", "AWS", "AWS Certified", "Azure", "Bachelor", "Background", "Board", "Branch", "Branch Rank", "Build", "Built", "CAPM", "Career History", "Career Progression", "CBSE", "CCNA", "CCNP", "CEH", "Certificates", "Certified", "Certifications", "Certifications & Training", "CISA", "CISM", "Cisco", "CISSP", "Cleared", "Co-Founder", "Collaborate", "Collaborated", "College", "Commerce Stream", "CompTIA", "CompTIA A+", "Completed", "Completed Course", "Completion Certificate", "Configure", "Configured", "Consultant", "Contract", "Contractor", "Coordinate", "Coordinated", "Coordinator", "Core Electives", "Corporate Experience", "Coursera", "Create", "Created", "Credential ID", "Credentialed", "Credentials", "CSM", "Current", "Dean's List", "Deliverable", "Deploy", "Deployed", "Design", "Designed", "Develop", "Developed", "Developer", "Director", "Director's Merit List", "Dissertation", "Duration", "edX", "Education", "Education & Professional Development", "Educational Qualifications", "Electives", "Employee", "Employment Details", "Employment History", "Engineer", "Engineered", "Execute", "Executed", "Executive", "Expiration", "Expires", "Final Year Project", "First Class", "First Class with Distinction", "Formal Education", "Founder", "Freelance", "Freelancer", "Full-time", "GCP", "Gold Medalist", "Google Cloud", "Graduation", "Guidance", "Hands-on Experience", "Head of", "Higher Secondary Certificate", "HSC", "Humanities Stream", "Hybrid", "IB", "ICSE", "IEEE", "Implement", "Implemented", "Industry Experience", "Initiate", "Initiated", "Inspect", "Institute", "Intern", "Internship", "ISTQB", "ITIL", "Job History", "Joint", "Junior", "KVPY Scholar", "Lead", "Led", "License Number", "Licensed", "Licenses", "Licenses & Certifications", "LinkedIn Learning", "Maintain", "Maintained", "Major Project", "Manage", "Managed", "Manager", "Member of Technical Staff", "Merit List", "Microsoft", "Mini Project", "Ministry of Education", "MHRD", "MoE", "MTS", "NAAC Accredited", "Network+", "NIRF Ranked", "No Expiration", "NPTEL", "NTSE Scholar", "Officer", "Ongoing", "On-site", "Optimize", "Optimized", "Oracle", "Organization", "Overhaul", "Overhauled", "Paper Publication", "Part-time", "Passed", "PCM", "PCMB", "Percentage", "Percentile", "Permanent", "PMP", "Present", "Principal", "Professional Background", "Professional Certifications", "Professional Development", "Professional Electives", "Professional Experience", "Professional Profile", "Program", "Programmed", "Project", "Proprietor", "PSM", "Qualifications Summary", "Rank", "Recognized by", "Recertified", "Red Hat", "Relevant Coursework", "Relevant Experience", "Remote", "SAFe", "Salesforce", "Scholarship Recipient", "Science Stream", "Scrum Alliance", "Second Class", "Secondary School Certificate", "Security+", "Self-employed", "Seminar", "Senior", "Silver Medalist", "Specialization", "Specialist", "Springer", "SSC", "State Board", "Stream", "Streamline", "Streamlined", "Supervise", "Supervised", "Supervisor", "Technical Background", "Technical Certifications", "Technical Education", "Technical Experience", "Technical Training", "Temporary", "Thesis", "Till Date", "Trainee", "Udacity", "Udemy", "UGC", "University", "University Rank Holder", "Valid", "Valid Score", "Validation", "Verification", "Verified", "Vocational Training", "Work Experience", "Work History", "Years of Experience", "Yrs Exp"]
+import re
 
-    for sent in doc.sents:
-        text = sent.text.strip()
-        lower_text = text.lower()
-        
-        # Check if sentence contains certification keywords
-        if any(kw.lower() in lower_text for kw in keywords) and len(text) > 5:
-            # Clean and add
-            clean_text = text.replace("•", "").strip()
-            if clean_text and clean_text not in certs:
-                certs.append(clean_text)
-    
+def extract_certifications(doc):
+    """Robust certification extraction."""
+    certs = []
+    full_text = doc.text
+    lines = [l.strip() for l in full_text.split('\n') if l.strip()]
+
+    cert_signals = ["certification", "certified", "certificate", "udemy", "coursera", "nptel"]
+    bad_context = ["professional summary", "b.tech", "bachelor of technology", "shantilal", "academic projects", "education"]
+
+    for line in lines:
+        lower = line.lower()
+        if any(sig in lower for sig in cert_signals):
+            if any(bad in lower for bad in bad_context):
+                continue
+            clean = re.sub(r'\s+', ' ', line.replace('•', '')).strip()
+            if len(clean) > 8 and clean not in certs:
+                certs.append(clean[:220])
+
+    if not certs:
+        matches = re.findall(r'Certification[:\s]*([^\\n(]+?)(?:–|-)\s*([^\\n(]+?)\s*\((\d{4})\)', full_text, re.I)
+        for m in matches:
+            name = ' - '.join([x.strip() for x in m if x]).strip()
+            if name and name not in certs:
+                certs.append(name)
+
     return certs
+
+

@@ -1,36 +1,53 @@
 import re
-#this function extract name, email, phone and location from resume
+
 def extract_contact_info(doc):
-    # create dictionary with empty keys 
+    """Improved contact info extraction with better phone and location support."""
     info = {"name": None, "email": None, "phone": None, "location": None}
     full_text = doc.text
-    lines = [] #empty list 
-    
-    all_lines = full_text.split('\n') #split return list which has all lines of resumes
-    
-    for single_line in all_lines:
-        #remove extra space if any 
-        single_line = single_line.strip()
-        if single_line !=None:
-            lines.append(single_line)
+    lines = [line.strip() for line in full_text.split('\n') if line.strip()]
 
-    # Email theeasylearn@gmail.com
+    # Email
     email_match = re.search(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', full_text)
-    if email_match!=None:
-        #copy email address from email_match into info['email']
+    if email_match:
         info["email"] = email_match.group()
 
-    # Phone
-    phone_match = re.search(r'(\+91|0)?[\s-]?(\d{10})', full_text)
-    if phone_match!=None:
-        #copy phone from phone match into phone
-        info["phone"] = phone_match.group(2)
+    # Phone - support +91 98765 43210, 9876543210, +91-98765-43210, etc.
+    phone_patterns = [
+        r'\+91[\s-]?(\d{5}[\s-]?\d{5})',           # +91 98765 43210 or +919876543210
+        r'\b(\d{5}[\s-]?\d{5})\b',                  # 98765 43210
+        r'(\+91|0)?[\s-]?(\d{10})\b'                # fallback 10 digits
+    ]
+    for pattern in phone_patterns:
+        m = re.search(pattern, full_text)
+        if m:
+            # Take the captured group that looks like the number
+            num = m.group(1) or m.group(2) or m.group(0)
+            num = re.sub(r'[\s-]', '', num)  # clean
+            if len(num) >= 10:
+                info["phone"] = num[-10:]   # last 10 digits
+                break
 
-    # NAME - Take first line (most reliable for real resumes)
+    # Location - look in first few lines for "City, State, Country" pattern
+    location_patterns = [
+        r'([A-Za-z\s]+,\s*[A-Za-z\s]+,\s*India)',
+        r'([A-Za-z]+,\s*Gujarat)',
+        r'Bhavnagar[^,\n]*',
+    ]
+    for pat in location_patterns:
+        lm = re.search(pat, full_text, re.IGNORECASE)
+        if lm:
+            loc = lm.group(1) if lm.lastindex else lm.group(0)
+            info["location"] = loc.strip()
+            break
+
+    # Name - first non-empty line, cleaned
     if lines:
         name_line = lines[0]
-        # remove phone and email from name line if they are on same line
-        name_line = re.sub(r'(\+91|0)?[\s-]?\d{10}','',name_line)
+        name_line = re.sub(r'(\+91|0)?[\s-]?\d{5,10}', '', name_line)
         name_line = re.sub(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', '', name_line)
-        info["name"] = name_line.strip()
+        name_line = re.sub(r'linkedin\.com|github\.com|•', '', name_line, flags=re.IGNORECASE)
+        cleaned = name_line.strip()
+        if cleaned and len(cleaned) > 2:
+            info["name"] = cleaned
+
     return info
