@@ -1,28 +1,29 @@
-import re
+import re #re means regular expression
 
 def extract_contact_info(doc):
-    """Improved contact info extraction with better phone and location support."""
+    #crete empty dictionary
     info = {"name": None, "email": None, "phone": None, "location": None}
     full_text = doc.text
+    # list comprehension
     lines = [line.strip() for line in full_text.split('\n') if line.strip()]
 
     # Email
     email_match = re.search(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', full_text)
-    if email_match:
+    if email_match != None:
         info["email"] = email_match.group()
 
     # Phone - support +91 98765 43210, 9876543210, +91-98765-43210, etc.
     phone_patterns = [
         r'\+91[\s-]?(\d{5}[\s-]?\d{5})',           # +91 98765 43210 or +919876543210
         r'\b(\d{5}[\s-]?\d{5})\b',                  # 98765 43210
-        r'(\+91|0)?[\s-]?(\d{10})\b'                # fallback 10 digits
+        r'(\+91|0)?[\s-]?(\d{10})\b'                # 9876543210
     ]
-    for pattern in phone_patterns:
-        m = re.search(pattern, full_text)
-        if m:
+    for pattern in phone_patterns: #search for each and every pattern
+        mobile = re.search(pattern, full_text)
+        if mobile !=None:
             # Take the captured group that looks like the number
-            num = m.group(1) or m.group(2) or m.group(0)
-            num = re.sub(r'[\s-]', '', num)  # clean
+            num = mobile.group(1) or mobile.group(2) or mobile.group(0)
+            num = re.sub(r'[\s-]','', num)  # clean
             if len(num) >= 10:
                 info["phone"] = num[-10:]   # last 10 digits
                 break
@@ -41,13 +42,13 @@ def extract_contact_info(doc):
             break
 
     # Name - first non-empty line, cleaned
-    if lines:
-        name_line = lines[0]
+    if lines!=None:
+        name_line = lines[0] #assume first line has only name
+        #but we have to check 1st line must not have mobile,email links. if it is we have to remove it 
         name_line = re.sub(r'(\+91|0)?[\s-]?\d{5,10}', '', name_line)
         name_line = re.sub(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', '', name_line)
         name_line = re.sub(r'linkedin\.com|github\.com|•', '', name_line, flags=re.IGNORECASE)
         cleaned = name_line.strip()
-        if cleaned and len(cleaned) > 2:
+        if cleaned!=None and len(cleaned) >= 2:
             info["name"] = cleaned
-
     return info

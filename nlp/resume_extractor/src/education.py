@@ -11,12 +11,12 @@ def extract_education(doc):
     in_edu = False
     edu_headers = ['education', 'academic background', 'educational qualifications']
 
-    for i, line in enumerate(lines):
+    for line in lines:
         lower = line.lower()
         if any(h in lower for h in edu_headers):
             in_edu = True
             continue
-        if in_edu:
+        if in_edu == True:
             # Stop at next major section
             if any(h in lower for h in ['additional experience', 'certification', 'experience', 'skills', 'projects', 'summary']):
                 break
@@ -27,10 +27,9 @@ def extract_education(doc):
 
     for line in candidates:
         lower = line.lower()
-
         # Look for degree + college indicators
-        degree_indicators = ['b.tech', 'bachelor', 'b.e', 'master', 'm.tech', 'msc', 'bca', 'mca']
-        if not any(d in lower for d in degree_indicators):
+        degree_indicators = ['b.tech', 'bachelor', 'b.e', 'master', 'm.tech', 'msc', 'bca', 'mca','bsc-it','msc-it','o-level','a-level','b-level']
+        if not any(degree in lower for degree in degree_indicators):
             continue
 
         year = re.search(r'(20\d{2}|19\d{2})', line) or re.search(r'Graduation Year:\s*(\d{4})', line, re.I)

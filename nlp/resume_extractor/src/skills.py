@@ -37,9 +37,9 @@ def extract_skills(doc):
     full = doc.text.lower()
     extra = []
     candidates = ['c ', 'c,', ' c ', 'hdf5', 'computer vision', 'image processing', 'postgre', 'postgresql', 'vs code', 'web security', 'network security', 'bilingual']
-    for cand in candidates:
-        if cand in full:
-            nice = cand.strip().title().replace('Hdf5', 'HDF5').replace('Postgre', 'PostgreSQL').replace('C ', 'C')
+    for keyword in candidates:
+        if keyword in full:
+            nice = keyword.strip().title().replace('Hdf5', 'HDF5').replace('Postgre', 'PostgreSQL').replace('C ', 'C')
             if nice not in extracted and nice not in extra:
                 extra.append(nice.strip())
     
