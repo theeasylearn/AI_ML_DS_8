@@ -108,6 +108,7 @@ if uploaded_file is not None:
             st.write("No certifications found")
             
         json_str = json.dumps(result, indent=2)
+        # save this json file into database 
         st.download_button("Download JSON", json_str, "result.json", "application/json")
         #delete temporary file 
         # if os.path.exists(temp_path):

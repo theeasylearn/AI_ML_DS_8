@@ -11,8 +11,8 @@ def extract_certifications(doc):
 
     for line in lines:
         lower = line.lower()
-        if any(sig in lower for sig in cert_signals):
-            if any(bad in lower for bad in bad_context):
+        if any(signal in lower for signal in cert_signals):
+            if any(bad_signal in lower for bad_signal in bad_context):
                 continue
             clean = re.sub(r'\s+', ' ', line.replace('•', '')).strip()
             if len(clean) > 8 and clean not in certs:
