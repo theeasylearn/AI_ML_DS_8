@@ -8,3 +8,4 @@ for topic in k.knowledge['topics']:
                if question == key:
                     print(k.knowledge['topics'][topic]['answer'])
                     exit(0)
+                    
