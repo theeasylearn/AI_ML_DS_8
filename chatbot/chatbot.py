@@ -1,62 +1,71 @@
 import spacy
-import knowledge_base as k   # Uncomment when you create this file
-
-greetings = [
-    "hello", "hi", "hey", "good morning", "good afternoon", "good evening",
-    "greetings", "welcome", "howdy", "good day","morning","gm"
-    "nice to meet you", "pleased to meet you",
-    "how are you?", "how's it going?", "how have you been?",
-    "what's up?", "what's new?", "how do you do?",
-    "long time no see", "glad to meet you",
-    "it's a pleasure to meet you",
-    "good to see you", "happy to see you",
-    "welcome back", "hope you're doing well",
-    "hope you are fine"
-]
+from spacy.matcher import PhraseMatcher
+import knowledge_base as k
 
 nlp = spacy.load('en_core_web_sm')
+matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
+
+# Register patterns
+for topic_name, data in k.knowledge['topics'].items():
+    patterns = [nlp.make_doc(keyword) for keyword in data['keywords']]
+    matcher.add(topic_name, patterns)
 
 def is_greeting(text):
-    """Check if user input contains any greeting (handles single + multi-word)"""
-    text = text.lower().strip()
+    if not text:
+        return False
+    text_lower = text.lower().strip()
+    greetings = {"hello", "hi", "hey", "howdy", "gm", "greetings", "welcome", "good morning", "good afternoon", "good evening", "how are you", "nice to meet you"}
+    if any(g in text_lower for g in greetings):
+        return True
+    doc = nlp(text_lower)
+    greeting_words = {"hello", "hi", "hey", "howdy", "gm", "welcome", "morning", "afternoon", "evening"}
+    return any(token.text in greeting_words for token in doc)
+
+def get_response(question):
+    if not question or question.strip() == "":
+        return "Bot: I'm here to help!"
     
-    # Remove punctuation so "how are you?" or good morning...  matches "how are you" or good morning
-    list = []
-    for ch in text:
-        if ch.isalnum() or ch.isspace():
-            list.append(ch)
-    clean_question = ''.join(list)      
-    # print(clean_question)
-    if clean_question in greetings:
-            return True
-    return False
-
-def preprocess(question):
     if is_greeting(question):
-        print("Bot : Hello nice to meet you.")
-    else:
-        doc = nlp(question)
-        for token in doc:
-            for topic in k.knowledge['topics']:
-                for item in k.knowledge['topics'][topic]:
-                    if item == "keywords":
-                        for key in k.knowledge['topics'][topic]['keywords']:
-                            #print(token,key)
-                            if token.text == key:
-                                print(k.knowledge['topics'][topic]['answer'])
-                                return None
+        return "Bot: Hello! Nice to meet you. How can I assist you today?"
+    
+    doc = nlp(question)
+    matches = matcher(doc)
+    
+    if not matches:
+        return "Bot: Sorry, I didn't understand. Could you rephrase?"
+    
+    topic_scores = {}
+    for match_id, start, end in matches:
+        topic_name = nlp.vocab.strings[match_id]
+        priority = k.knowledge['topics'][topic_name]['priority']
+        
+        if topic_name not in topic_scores:
+            topic_scores[topic_name] = {'priority': priority, 'count': 0}
+        topic_scores[topic_name]['count'] += 1
+    
+    best_topic = None
+    best_score = -float('inf')
+    
+    for topic, data in topic_scores.items():
+        # Very strong emphasis on number of matches
+        score = (300 / data['priority']) + (data['count'] * 250)
+        if score > best_score:
+            best_score = score
+            best_topic = topic
+    
+    answer = k.knowledge['topics'][best_topic]['answer']
+    return f"Bot: {answer}"
 
-       
 
-# ==================== Chatbot Loop ====================
-print("Bot: Hello! I am your assistant. Type 'bye' to exit.\n")
+# Chatbot Loop
+print("Bot: Hello! I am your EasyLearn Academy assistant.")
+print("Type 'bye' to exit.\n")
 
 while True:
-    question = input("You: ")
-    q_lower = question.lower().strip()
-    
-    if q_lower == "bye":
-        print("Bot : Bye. Please come again!")
+    question = input("You: ").strip()
+    if question.lower() in ["bye", "exit", "goodbye", "quit"]:
+        print("Bot: Bye!")
         break
     else:
-        preprocess(question)
+        response = get_response(question)
+        print(response)
