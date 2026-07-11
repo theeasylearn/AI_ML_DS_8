@@ -55,12 +55,9 @@ def get_response(question):
     
     answer = k.knowledge['topics'][best_topic]['answer']
     return f"Bot: {answer}"
-
-
 # Chatbot Loop
 print("Bot: Hello! I am your EasyLearn Academy assistant.")
 print("Type 'bye' to exit.\n")
-
 while True:
     question = input("You: ").strip()
     if question.lower() in ["bye", "exit", "goodbye", "quit"]:
