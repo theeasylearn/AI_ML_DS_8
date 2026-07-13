@@ -43,15 +43,10 @@ def get_response(question):
             topic_scores[topic_name] = {'priority': priority, 'count': 0}
         topic_scores[topic_name]['count'] += 1
     
-    best_topic = None
-    best_score = -float('inf')
-    
-    for topic, data in topic_scores.items():
-        # Very strong emphasis on number of matches
-        score = (300 / data['priority']) + (data['count'] * 250)
-        if score > best_score:
-            best_score = score
-            best_topic = topic
+    best_topic = min(
+        topic_scores.keys(),
+        key=lambda t: (topic_scores[t]['priority'], -topic_scores[t]['count'])
+    )
     
     answer = k.knowledge['topics'][best_topic]['answer']
     return f"Bot: {answer}"
