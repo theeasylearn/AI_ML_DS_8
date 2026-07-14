@@ -141,7 +141,7 @@ Prepare for Data Analyst / Data Scientist roles with hands-on projects."""
         # Cyber Security
         'cyber_security_course': {
             'priority': 3,
-            'keywords': ['cyber security course', 'cybersecurity syllabus', 'ethical hacking course', 'cyber security fees', 'cyber security duration'],
+            'keywords': ['cyber security','cyber security course', 'cybersecurity syllabus', 'ethical hacking course', 'cyber security fees', 'cyber security duration'],
             'answer': """Cyber Security Course
 • Duration: 8 months
 • Timings: 2 hours per session
@@ -165,7 +165,7 @@ Build skills for Cybersecurity Analyst / Ethical Hacker roles."""
         # Flutter Mobile App Development
         'flutter_course': {
             'priority': 3,
-            'keywords': ['flutter course', 'flutter syllabus', 'flutter details', 'flutter duration', 'flutter fees', 'mobile app development flutter', 'flutter training'],
+            'keywords': ['flutter','flutter course', 'flutter syllabus', 'flutter details', 'flutter duration', 'flutter fees', 'mobile app development flutter', 'flutter training'],
             'answer': """Flutter Mobile App Development
 • Duration: 6 months
 • Timings: 2 hours per session
@@ -188,7 +188,7 @@ Become a cross-platform mobile developer with one codebase."""
         # Digital Marketing
         'digital_marketing_course': {
             'priority': 3,
-            'keywords': ['digital marketing course', 'digital marketing syllabus', 'digital marketing fees', 'seo course', 'social media marketing course'],
+            'keywords': ['digital marketing','digital marketing course', 'digital marketing syllabus', 'digital marketing fees', 'seo course', 'social media marketing course'],
             'answer': """Digital Marketing Course
 • Duration: 6 months
 • Timings: 2 hours per session
@@ -236,7 +236,7 @@ Strong foundation for system programming and competitive coding."""
         # C++ Programming
         'cpp_course': {
             'priority': 3,
-            'keywords': ['c++ course', 'cpp course', 'c plus plus', 'c++ syllabus', 'learn c++', 'c++ programming'],
+            'keywords': ['c++','c++ course', 'cpp course', 'c plus plus', 'c++ syllabus', 'learn c++', 'c++ programming'],
             'answer': """C++ Programming Course
 • Duration: 1.5 months
 • Timings: 2 hours per session
@@ -259,7 +259,7 @@ Ideal for game development, competitive programming, and software engineering fo
         # Java Programming
         'java_course': {
             'priority': 3,
-            'keywords': ['java course', 'java syllabus', 'java programming', 'core java', 'java training'],
+            'keywords': ['java','java course', 'java syllabus', 'java programming', 'core java', 'java training'],
             'answer': """Java Programming Course
 • Duration: 3 months
 • Timings: 2 hours per session
@@ -282,7 +282,7 @@ Strong base for Android development, enterprise applications, and backend roles.
         # CCC (Course on Computer Concepts)
         'ccc_course': {
             'priority': 3,
-            'keywords': ['ccc course', 'ccc syllabus', 'ccc details', 'course on computer concepts', 'ccc fees'],
+            'keywords': ['ccc','ccc course', 'ccc syllabus', 'ccc details', 'course on computer concepts', 'ccc fees'],
             'answer': """CCC (Course on Computer Concepts)
 • Duration: 3 months
 • Timings: 2 hours per session
@@ -303,7 +303,7 @@ Government-recognized certificate course. Great for beginners and government job
         # Tally with GST
         'tally_course': {
             'priority': 3,
-            'keywords': ['tally course', 'tally syllabus', 'tally with gst', 'tally erp 9', 'tally prime', 'accounting course tally'],
+            'keywords': ['tally','tally course', 'tally syllabus', 'tally with gst', 'tally erp 9', 'tally prime', 'accounting course tally'],
             'answer': """Tally Course (with GST)
 • Duration: 3 months
 • Timings: 2 hours per session
@@ -346,7 +346,7 @@ Perfect for accounting careers, small business owners, and Tally certification."
         # ─────────────────────────────────────────────
         'courses': {
             'priority': 6,
-            'keywords': ['courses', 'course', 'what do you teach', 'program', 'programs', 'subjects', 'curriculum', 'training', 'learn', 'study', 'python', 'mern', 'php', 'full stack', 'ai', 'ml', 'artificial intelligence', 'machine learning', 'data science', 'cyber security', 'ui', 'ux', 'ui/ux', 'web design', 'tally', 'ccc', 'android', 'java', 'asp.net', 'dot net', 'mobile app', 'web development', 'available', 'offer', 'list of courses', 'which course', 'what courses'],
+            'keywords': ['courses', 'course', 'what do you teach', 'program', 'programs', 'subjects', 'curriculum', 'learn', 'study', 'python', 'mern', 'php', 'full stack', 'ai', 'ml', 'artificial intelligence', 'machine learning', 'data science', 'cyber security', 'ui', 'ux', 'ui/ux', 'web design', 'tally', 'ccc', 'android', 'java', 'asp.net', 'dot net', 'mobile app', 'web development', 'available', 'offer', 'list of courses', 'which course', 'what courses'],
             'answer': """We offer the following job-oriented courses:
 • Python Programming (3 months)
 • MERN Full Stack Development (6 months)
