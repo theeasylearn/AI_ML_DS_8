@@ -1,0 +1,60 @@
+Full Name: ayan
+Email: ayan@gmail.com
+Mobile: 1234567890
+
+--- Conversation Session ---
+You: python
+Bot: Python Course (Job-Oriented)
+-  Duration: 3 months
+-  Timings: 2 hours per session
+-  Fees: Rs. 7500 (EMI available)
+
+Comprehensive Topics:
+-  Python Fundamentals (Variables, Data Types, Operators, Input/Output)
+-  Control Flow (if-else, loops)
+-  Functions, Modules & Packages
+-  Strings, Lists, Tuples, Dictionaries, Sets
+-  File Handling & Exception Handling
+-  Object-Oriented Programming (OOP)
+-  Introduction to Libraries (NumPy, Pandas)
+-  Mini Projects: Calculator, File Manager, Simple Games, Data Analysis scripts
+
+Perfect for beginners aiming for software development or data roles. Includes live projects and certificate.
+You: java
+Bot: Java Programming Course
+-  Duration: 3 months
+-  Timings: 2 hours per session
+-  Fees: Rs. 7500
+
+Comprehensive Topics:
+-  Java Fundamentals & JVM
+-  Data Types, Variables, Operators
+-  Control Flow & Loops
+-  OOP in Java (Classes, Inheritance, Interfaces, Abstract Classes)
+-  Exception Handling
+-  Collections Framework (List, Set, Map)
+-  Multithreading basics
+-  File Handling & JDBC basics
+-  Mini Projects & GUI intro (Swing/JavaFX)
+
+Strong base for Android development, enterprise applications, and backend roles.
+You: mern course
+Bot: MERN Full Stack Development
+-  Duration: 6 months
+-  Timings: 2 hours per session
+-  Fees: Rs. 25000 (EMI available)
+
+Comprehensive Topics:
+-  HTML5, CSS3, Responsive Design & Bootstrap
+-  JavaScript ES6+ (Variables, Functions, Promises, Async/Await)
+-  React.js (Components, JSX, Hooks, State Management, Routing, Redux)
+-  Node.js & Express.js (Backend Development, REST APIs, Middleware)
+-  MongoDB (Database Design, CRUD Operations, Aggregation, Mongoose)
+-  Authentication & Authorization (JWT, Sessions)
+-  Full-Stack Integration Projects
+-  Deployment (Render, Netlify, Vercel)
+-  Capstone Project: E-commerce / Social Media App
+
+Become a complete Full Stack Developer. Includes live projects & placement assistance.
+You: bye
+Bot: Bye!

@@ -1,0 +1,70 @@
+Full Name: kaliash prajapati
+Email: kailash@gmail.com
+Mobile: 1234567890
+
+--- Conversation Session ---
+You: python
+Bot: Python Course (Job-Oriented)
+• Duration: 3 months
+• Timings: 2 hours per session
+• Fees: ₹7500 (EMI available)
+
+Comprehensive Topics:
+• Python Fundamentals (Variables, Data Types, Operators, Input/Output)
+• Control Flow (if-else, loops)
+• Functions, Modules & Packages
+• Strings, Lists, Tuples, Dictionaries, Sets
+• File Handling & Exception Handling
+• Object-Oriented Programming (OOP)
+• Introduction to Libraries (NumPy, Pandas)
+• Mini Projects: Calculator, File Manager, Simple Games, Data Analysis scripts
+
+Perfect for beginners aiming for software development or data roles. Includes live projects and certificate.
+You: reactjs
+Bot: Sorry, I didn't understand. Could you rephrase?
+You: mern
+Bot: We offer the following job-oriented courses:
+• Python Programming (3 months)
+• MERN Full Stack Development (6 months)
+• AI/ML (8 months)
+• Data Science (8 months)
+• Cyber Security (8 months)
+• Flutter Mobile App Development (6 months)
+• Digital Marketing (6 months)
+• C Programming (1.5 months)
+• C++ Programming (1.5 months)
+• Java Programming (3 months)
+• CCC (3 months)
+• Tally with GST (3 months)
+
+All courses include practical projects, certificates, and placement support. Contact us for detailed syllabus and current offers.
+You: mern course
+Bot: MERN Full Stack Development
+• Duration: 6 months
+• Timings: 2 hours per session
+• Fees: ₹25000 (EMI available)
+
+Comprehensive Topics:
+• HTML5, CSS3, Responsive Design & Bootstrap
+• JavaScript ES6+ (Variables, Functions, Promises, Async/Await)
+• React.js (Components, JSX, Hooks, State Management, Routing, Redux)
+• Node.js & Express.js (Backend Development, REST APIs, Middleware)
+• MongoDB (Database Design, CRUD Operations, Aggregation, Mongoose)
+• Authentication & Authorization (JWT, Sessions)
+• Full-Stack Integration Projects
+• Deployment (Render, Netlify, Vercel)
+• Capstone Project: E-commerce / Social Media App
+
+Become a complete Full Stack Developer. Includes live projects & placement assistance.
+You: what is your contact number
+Bot: You can reach us at Eva Surbhi Mall, 105, Waghawadi Road, opposite Aksharwadi Temple, Bhavnagar, Gujarat - 364002. 
+            Phone/WhatsApp: 9662512857
+            Website: https://theeasylearnacademy.com/
+            We are available Monday to Saturday, 9 AM to 7 PM. Feel free to call or WhatsApp for quick enquiry!
+You: what is your email
+Bot: You can reach us at Eva Surbhi Mall, 105, Waghawadi Road, opposite Aksharwadi Temple, Bhavnagar, Gujarat - 364002. 
+            Phone/WhatsApp: 9662512857
+            Website: https://theeasylearnacademy.com/
+            We are available Monday to Saturday, 9 AM to 7 PM. Feel free to call or WhatsApp for quick enquiry!
+You: bye
+Bot: Bye!
