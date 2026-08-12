@@ -1,0 +1,56 @@
+Full Name: a
+Email: a@b.com
+Mobile: 1231231231
+
+--- Conversation Session ---
+You: hi
+Bot: Hello! Nice to meet you. How can I assist you today?
+You: tell me about the easylearn
+Bot: EasyLearn Academy (also known as IT Experts Academy) is a leading IT training institute in Bhavnagar, Gujarat. 
+We specialize in practical, job-oriented courses in programming, web development, mobile apps, AI/ML, Data Science, and Cybersecurity. 
+Our mission is to make quality IT education accessible and affordable for students in smaller cities, with strong focus on hands-on projects and placement support.
+You: tell me about python
+Bot: Python Course (Job-Oriented)
+-  Duration: 3 months
+-  Timings: 2 hours per session
+-  Fees: Rs. 7500 (EMI available)
+
+Comprehensive Topics:
+-  Python Fundamentals (Variables, Data Types, Operators, Input/Output)
+-  Control Flow (if-else, loops)
+-  Functions, Modules & Packages
+-  Strings, Lists, Tuples, Dictionaries, Sets
+-  File Handling & Exception Handling
+-  Object-Oriented Programming (OOP)
+-  Introduction to Libraries (NumPy, Pandas)
+-  Mini Projects: Calculator, File Manager, Simple Games, Data Analysis scripts
+
+Perfect for beginners aiming for software development or data roles. Includes live projects and certificate.
+You: what is your mobile number
+Bot: You can reach us at Eva Surbhi Mall, 105, Waghawadi Road, opposite Aksharwadi Temple, Bhavnagar, Gujarat - 364002. 
+            Phone/WhatsApp: 9662512857
+            Website: https://theeasylearnacademy.com/
+            We are available Monday to Saturday, 9 AM to 7 PM. Feel free to call or WhatsApp for quick enquiry!
+You: address
+Bot: We are located at Eva Surbhi Mall, 105, Waghawadi Road, opposite Aksharwadi Temple, Bhavnagar, Gujarat - 364002. 
+You can visit us Monday to Saturday, 9 AM to 7 PM. Check our website for Google Maps link: https://theeasylearnacademy.com/
+You: mern stack
+Bot: MERN Full Stack Development
+-  Duration: 6 months
+-  Timings: 2 hours per session
+-  Fees: Rs. 25000 (EMI available)
+
+Comprehensive Topics:
+-  HTML5, CSS3, Responsive Design & Bootstrap
+-  JavaScript ES6+ (Variables, Functions, Promises, Async/Await)
+-  React.js (Components, JSX, Hooks, State Management, Routing, Redux)
+-  Node.js & Express.js (Backend Development, REST APIs, Middleware)
+-  MongoDB (Database Design, CRUD Operations, Aggregation, Mongoose)
+-  Authentication & Authorization (JWT, Sessions)
+-  Full-Stack Integration Projects
+-  Deployment (Render, Netlify, Vercel)
+-  Capstone Project: E-commerce / Social Media App
+
+Become a complete Full Stack Developer. Includes live projects & placement assistance.
+You: bye
+Bot: Bye!

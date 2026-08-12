@@ -2,6 +2,7 @@ import os
 import uuid
 import datetime
 from flask import Flask, request, jsonify, send_from_directory
+from chatbot import get_response, send_email_with_attachment
 
 app = Flask(__name__)
 
@@ -37,14 +38,15 @@ def finalize_session(session_id):
         print(f"\nServer: Error saving log file: {e}")
         
     # Email the file using the existing SMTP configuration in chatbot.py
-    from chatbot import send_email_with_attachment
     send_email_with_attachment(filename)
 
+# root http:// 127.0.0.1:5000
 @app.route('/')
 def index():
     # Serve chatbot.html from the root folder if accessed through the server
     return send_from_directory('.', 'chatbot.html')
 
+# 127.0.0.1:5000/api/start -> http://[IP_ADDRESS]/api/start
 @app.route('/api/start', methods=['POST', 'OPTIONS'])
 def start_session():
     if request.method == 'OPTIONS':
@@ -79,44 +81,56 @@ def start_session():
         'message': 'Chatbot session started.'
     })
 
+#  127.0.0.1:5000/api/message -> http://[IP_ADDRESS]/api/message
 @app.route('/api/message', methods=['POST', 'OPTIONS'])
 def handle_message():
     if request.method == 'OPTIONS':
         return '', 200
         
-    data = request.json or {}
-    session_id = data.get('session_id')
-    message = data.get('message', '').strip()
-    
-    if not session_id or session_id not in sessions:
-        return jsonify({'error': 'Invalid or expired session. Please start a new chat.'}), 404
+    try:
+        data = request.json or {}
+        session_id = data.get('session_id')
+        message = data.get('message', '').strip()
         
-    sess = sessions[session_id]
-    if not sess['active']:
-        return jsonify({'error': 'This session has already been closed.'}), 400
+        if not session_id or session_id not in sessions:
+            return jsonify({'error': 'Invalid or expired session. Please start a new chat.'}), 404
+            
+        sess = sessions[session_id]
+        if not sess['active']:
+            return jsonify({'error': 'This session has already been closed.'}), 400
+            
+        # Append message to log
+        sess['session_log'] += f"You: {message}\n"
         
-    # Append message to log
-    sess['session_log'] += f"You: {message}\n"
-    
-    # Check if message is an exit command
-    if message.lower() in ["bye", "exit", "goodbye", "quit"]:
-        sess['session_log'] += "Bot: Bye!\n"
-        finalize_session(session_id)
+        # Check if message is an exit command
+        if message.lower() in ["bye", "exit", "goodbye", "quit"]:
+            sess['session_log'] += "Bot: Bye!\n"
+            finalize_session(session_id)
+            return jsonify({
+                'response': 'Bot: Bye!',
+                'session_ended': True
+            })
+            
+        # Get response from chatbot NLP matcher
+        response_text = get_response(message)
+        sess['session_log'] += f"{response_text}\n"
+        
         return jsonify({
-            'response': 'Bot: Bye!',
-            'session_ended': True
+            'response': response_text,
+            'session_ended': False
         })
-        
-    # Get response from chatbot NLP matcher
-    from chatbot import get_response
-    response_text = get_response(message)
-    sess['session_log'] += f"{response_text}\n"
-    
-    return jsonify({
-        'response': response_text,
-        'session_ended': False
-    })
+    except Exception as e:
+        import traceback
+        tb = traceback.format_exc()
+        try:
+            log_path = os.path.join(os.path.dirname(__file__), "error.log")
+            with open(log_path, "w", encoding="utf-8") as f:
+                f.write(tb)
+        except Exception as write_err:
+            print(f"Failed to write error.log: {write_err}")
+        return jsonify({'error': str(e), 'traceback': tb}), 500
 
+#  127.0.0.1:5000/api/exit -> http://[IP_ADDRESS]/api/message
 @app.route('/api/exit', methods=['POST', 'OPTIONS'])
 def end_session():
     if request.method == 'OPTIONS':
@@ -135,6 +149,28 @@ def end_session():
         return jsonify({'message': 'Session ended, log saved and emailed.'})
     else:
         return jsonify({'message': 'Session was already closed.'})
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    from werkzeug.exceptions import HTTPException
+    if isinstance(e, HTTPException):
+        response = e.get_response()
+    else:
+        import traceback
+        tb = traceback.format_exc()
+        try:
+            log_path = os.path.join(os.path.dirname(__file__), "error.log")
+            with open(log_path, "w", encoding="utf-8") as f:
+                f.write(tb)
+        except Exception as write_err:
+            print(f"Failed to write error.log: {write_err}")
+        response = jsonify({'error': str(e), 'traceback': tb})
+        response.status_code = 500
+        
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    response.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+    return response
 
 if __name__ == '__main__':
     print("Starting EasyLearn Chatbot Web Server on http://127.0.0.1:5000...")

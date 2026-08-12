@@ -1,9 +1,5 @@
 import difflib
 import re
-import spacy
-from spacy.matcher import PhraseMatcher
-from spacy.tokens import Span
-from spacy.util import filter_spans
 import knowledge_base as k
 import datetime
 import os
@@ -18,13 +14,45 @@ SENDER_EMAIL = "karan.bhatt.bhavnagar@gmail.com"
 SENDER_PASSWORD = "pmef abok epcw yrva"
 RECEIVER_EMAIL = "theeasylearn@gmail.com"
 
-nlp = spacy.load('en_core_web_sm')
-matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
+def check_spacy_safe():
+    import subprocess
+    import sys
+    try:
+        # Run import and model load in a separate process to check for C-level segfaults or missing models
+        cmd = [sys.executable, "-c", "import spacy; spacy.load('en_core_web_sm')"]
+        res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=8)
+        return res.returncode == 0
+    except Exception:
+        return False
 
-# Register patterns
-for topic_name, data in k.knowledge['topics'].items():
-    patterns = [nlp.make_doc(keyword) for keyword in data['keywords']]
-    matcher.add(topic_name, patterns)
+# Try to load spacy, fallback to pure python keyword matcher if not available or unsafe
+SPACY_AVAILABLE = False
+nlp = None
+matcher = None
+
+try:
+    if check_spacy_safe():
+        import spacy
+        from spacy.matcher import PhraseMatcher
+        from spacy.tokens import Span
+        from spacy.util import filter_spans
+        
+        nlp = spacy.load('en_core_web_sm')
+        matcher = PhraseMatcher(nlp.vocab, attr="LOWER")
+        
+        # Register patterns
+        for topic_name, data in k.knowledge['topics'].items():
+            patterns = [nlp.make_doc(keyword) for keyword in data['keywords']]
+            matcher.add(topic_name, patterns)
+            
+        SPACY_AVAILABLE = True
+        print("Bot: SpaCy NLP matcher loaded successfully.")
+    else:
+        print("Bot: SpaCy loading is unsafe or not installed. Falling back to built-in keyword matcher.")
+        SPACY_AVAILABLE = False
+except Exception as spacy_err:
+    print(f"Bot: SpaCy NLP load failed ({spacy_err}). Falling back to built-in keyword matcher.")
+    SPACY_AVAILABLE = False
 
 # Build vocabulary for spelling correction
 kb_words = set()
@@ -82,8 +110,12 @@ def is_greeting(text):
             
     # Check single-word greetings against tokenized words (exact match only)
     greeting_words = {"hello", "hi", "hey", "howdy", "gm", "greetings", "welcome"}
-    doc = nlp(text_lower)
-    return any(token.text in greeting_words for token in doc)
+    if SPACY_AVAILABLE:
+        doc = nlp(text_lower)
+        return any(token.text in greeting_words for token in doc)
+    else:
+        words = re.findall(r'\b\w+\b', text_lower)
+        return any(w in greeting_words for w in words)
 
 def get_response(question):
     if not question or question.strip() == "":
@@ -92,37 +124,73 @@ def get_response(question):
     # Correct spelling first
     question_corrected = correct_spelling(question)
     
-    doc = nlp(question_corrected)
-    matches = matcher(doc)
-    
-    # Filter overlapping matches to keep only the longest spans
-    spans = []
-    for match_id, start, end in matches:
-        span = Span(doc, start, end, label=match_id)
-        # If the match is a time-of-day word and is preceded by "good", skip it
-        if span.text.lower() in {"morning", "afternoon", "evening"}:
-            if start > 0 and doc[start - 1].text.lower() == "good":
-                continue
-        spans.append(span)
-    filtered_spans = filter_spans(spans)
-    
-    if filtered_spans:
-        topic_scores = {}
-        for span in filtered_spans:
-            topic_name = span.label_
-            priority = k.knowledge['topics'][topic_name]['priority']
+    if SPACY_AVAILABLE:
+        doc = nlp(question_corrected)
+        matches = matcher(doc)
+        
+        # Filter overlapping matches to keep only the longest spans
+        spans = []
+        for match_id, start, end in matches:
+            span = Span(doc, start, end, label=match_id)
+            # If the match is a time-of-day word and is preceded by "good", skip it
+            if span.text.lower() in {"morning", "afternoon", "evening"}:
+                if start > 0 and doc[start - 1].text.lower() == "good":
+                    continue
+            spans.append(span)
+        filtered_spans = filter_spans(spans)
+        
+        if filtered_spans:
+            topic_scores = {}
+            for span in filtered_spans:
+                topic_name = span.label_
+                priority = k.knowledge['topics'][topic_name]['priority']
+                
+                if topic_name not in topic_scores:
+                    topic_scores[topic_name] = {'priority': priority, 'count': 0}
+                topic_scores[topic_name]['count'] += 1
             
-            if topic_name not in topic_scores:
-                topic_scores[topic_name] = {'priority': priority, 'count': 0}
-            topic_scores[topic_name]['count'] += 1
+            best_topic = min(
+                topic_scores.keys(),
+                key=lambda t: (topic_scores[t]['priority'], -topic_scores[t]['count'])
+            )
+            
+            answer = k.knowledge['topics'][best_topic]['answer']
+            return f"Bot: {answer}"
+    else:
+        # Fallback keyword matching using Regex
+        question_lower = question_corrected.lower()
+        topic_scores = {}
         
-        best_topic = min(
-            topic_scores.keys(),
-            key=lambda t: (topic_scores[t]['priority'], -topic_scores[t]['count'])
-        )
-        
-        answer = k.knowledge['topics'][best_topic]['answer']
-        return f"Bot: {answer}"
+        for topic_name, data in k.knowledge['topics'].items():
+            priority = data['priority']
+            count = 0
+            
+            for keyword in data['keywords']:
+                kw_clean = keyword.lower()
+                pattern = r'\b' + re.escape(kw_clean) + r'\b'
+                # Avoid counting parts of greeting phrases
+                if kw_clean in {"morning", "afternoon", "evening"}:
+                    matches = []
+                    for match in re.finditer(pattern, question_lower):
+                        start = match.start()
+                        if start >= 5 and question_lower[start-5:start].strip() == "good":
+                            continue
+                        matches.append(match)
+                    count += len(matches)
+                else:
+                    matches = re.findall(pattern, question_lower)
+                    count += len(matches)
+                    
+            if count > 0:
+                topic_scores[topic_name] = {'priority': priority, 'count': count}
+                
+        if topic_scores:
+            best_topic = min(
+                topic_scores.keys(),
+                key=lambda t: (topic_scores[t]['priority'], -topic_scores[t]['count'])
+            )
+            answer = k.knowledge['topics'][best_topic]['answer']
+            return f"Bot: {answer}"
     
     # No topic match found, check if it's a greeting
     if is_greeting(question_corrected):

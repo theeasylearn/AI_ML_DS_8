@@ -661,7 +661,26 @@
         });
 
         if (!response.ok) {
-          throw new Error('Connection failed. Please restart session.');
+          let errorText = '';
+          try {
+            const errData = await response.json();
+            errorText = errData.traceback || errData.error || errData.message || JSON.stringify(errData);
+          } catch (e) {
+            try {
+              errorText = await response.text();
+              // Strip HTML tags if it's a Flask debug page to make it readable in the chat bubble
+              const tempDiv = document.createElement('div');
+              tempDiv.innerHTML = errorText;
+              errorText = tempDiv.textContent || tempDiv.innerText || errorText;
+              // Limit size
+              if (errorText.length > 800) {
+                errorText = errorText.substring(0, 800) + '...';
+              }
+            } catch (e2) {
+              errorText = `Status: ${response.status} ${response.statusText}`;
+            }
+          }
+          throw new Error(errorText || 'Connection failed. Please restart session.');
         }
 
         const data = await response.json();
@@ -681,7 +700,7 @@
 
       } catch (err) {
         typingIndicator.style.display = 'none';
-        appendMessage('bot', 'Bot: An error occurred communicating with server. Please restart chat.');
+        appendMessage('bot', `Bot: An error occurred communicating with server.\n\nDetails:\n${err.message}`);
       }
     }
 
