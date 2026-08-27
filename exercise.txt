@@ -1,0 +1,27 @@
+logistic regression 
+----------------------------------------------------------------
+There are 2 input features in each exercise.
+
+Exercise 1: FinanceDevelop a logistic regression example that will predict whether a loan applicant will Default ($y=1$) or Not Default ($y=0$) based on two input features: Debt-to-Income ratio ($x_1$) and Credit Score ($x_2$).
+
+Exercise 2: E-CommerceDevelop a logistic regression example that will predict whether an online shopper will Complete a Purchase ($y=1$) or Abandon the Cart ($y=0$) based on two input features: Time spent on site in minutes ($x_1$) and Number of pages viewed ($x_2$).
+
+Exercise 3: Real EstateDevelop a logistic regression example that will predict whether a house will Sell within 30 days ($y=1$) or Take longer ($y=0$) based on two input features: Listing price in hundreds of thousands ($x_1$) and Square footage in thousands ($x_2$).
+
+Exercise 4: ManufacturingDevelop a logistic regression example that will predict whether a factory machine will Fail ($y=1$) or Operate Normally ($y=0$) based on two input features: Operating temperature in °C ($x_1$) and Vibration level ($x_2$).
+
+Exercise 5: Fitness TechDevelop a logistic regression example that will predict whether a fitness app user will Achieve Daily Calorie Goal ($y=1$) or Miss It ($y=0$) based on two input features: Active minutes ($x_1$) and Calories consumed in thousands ($x_2$).
+
+linear regression
+------------------------------------------------------
+There are 2 input features in each exercise.
+
+Exercise 1: Predicting Student Exam ScoresScenario: An education researcher wants to analyze how student study habits and class engagement impact final exam performance.Input Features ($X$):$X_1$: Hours studied per week$X_2$: Attendance rate (percentage)Target Variable ($Y$): Final exam score (out of 100)Practice Goal: Train a model to find out whether study hours or attendance has a stronger weight on the final score.
+
+Exercise 2: Estimating Car Fuel EfficiencyScenario: An automotive blog wants to predict a vehicle's fuel economy to help consumers evaluate fuel costs.Input Features ($X$):$X_1$: Engine displacement size (in liters)$X_2$: Total vehicle weight (in pounds or kilograms)Target Variable ($Y$): Fuel efficiency (Miles Per Gallon - MPG)Practice Goal: Observe how both engine size and weight negatively correlate with fuel efficiency (negative coefficients).
+
+Exercise 3: Calculating Monthly Gym RevenueScenario: A gym owner wants to forecast monthly revenue to optimize budget allocation.Input Features ($X$):$X_1$: Total number of active premium members$X_2$: Monthly digital marketing expenditure (in dollars)Target Variable ($Y$): Total monthly revenue (in dollars)Practice Goal: Determine the baseline revenue (intercept) when membership growth and ad spend are zero.
+
+Exercise 4: Estimating Daily Ice Cream SalesScenario: An ice cream parlor owner wants to forecast daily product demand to prevent shortages or food waste.Input Features ($X$):$X_1$: Maximum daily temperature (in Fahrenheit or Celsius)$X_2$: Estimated daily foot traffic count passing the shopTarget Variable ($Y$): Number of ice cream cones sold per dayPractice Goal: Make a prediction for an upcoming hot weekend day with high projected foot traffic.
+
+Exercise 5: Software Developer Salary PredictionScenario: A tech recruitment platform wants to build a pricing model to estimate fair market salaries for software engineers.Input Features ($X$):$X_1$: Years of professional coding experience$X_2$: Number of specialized technical certifications earnedTarget Variable ($Y$): Annual salary (in thousands of dollars)Practice Goal: Evaluate how much value a certification adds to a developer's salary compared to an extra year of experience.
