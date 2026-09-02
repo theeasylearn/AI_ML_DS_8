@@ -25,3 +25,222 @@ Exercise 3: Calculating Monthly Gym RevenueScenario: A gym owner wants to foreca
 Exercise 4: Estimating Daily Ice Cream SalesScenario: An ice cream parlor owner wants to forecast daily product demand to prevent shortages or food waste.Input Features ($X$):$X_1$: Maximum daily temperature (in Fahrenheit or Celsius)$X_2$: Estimated daily foot traffic count passing the shopTarget Variable ($Y$): Number of ice cream cones sold per dayPractice Goal: Make a prediction for an upcoming hot weekend day with high projected foot traffic.
 
 Exercise 5: Software Developer Salary PredictionScenario: A tech recruitment platform wants to build a pricing model to estimate fair market salaries for software engineers.Input Features ($X$):$X_1$: Years of professional coding experience$X_2$: Number of specialized technical certifications earnedTarget Variable ($Y$): Annual salary (in thousands of dollars)Practice Goal: Evaluate how much value a certification adds to a developer's salary compared to an extra year of experience.
+
+KMeans algorithm 
+--------------------
+ 1 ECommerce  Retail Customer Segmentation
+
+Features 3
+
+ Annual Spending 
+ Purchase Frequency ordersyear
+ Average Return Rate 
+
+Finding the value of k Elbow Method
+First standardize all three features using zscore Then run KMeans for k  1 to 8 and calculate WCSS From the elbow graph a clear bend can be seen at k  4
+
+Clusters k  4
+
+ Cluster 1  VIP Customers Spend a lot purchase frequently and have a low return rate
+
+ Cluster 2  HighRisk Customers Spend a lot but return many products
+
+ Cluster 3  Regular Budget Customers Spend less but purchase frequently and usually keep their products
+
+ Cluster 4  Occasional Customers Spend less and purchase only a few times
+
+
+
+ 2 Healthcare Patient Risk Grouping
+
+Features 3
+
+ Systolic Blood Pressure mmHg
+ Fasting Blood Glucose mgdL
+ LDL Cholesterol mgdL
+
+Finding the value of k
+For this example we use k  3 because patients can be divided into three simple groups Low Risk Medium Risk and High Risk
+
+Clusters k  3
+
+ Cluster 1  Low Risk Normal blood pressure normal glucose level and low LDL cholesterol
+
+ Cluster 2  Medium Risk Slightly high blood pressure increased glucose level and high LDL cholesterol
+
+ Cluster 3  High Risk High blood pressure very high glucose level and very high LDL cholesterol
+
+
+
+ 3 Telecommunications Mobile User Segmentation
+
+Features 4
+
+ Monthly Data Usage GB
+ Domestic Call Minutes
+ International SMS Count
+ OffPeak Data Usage Ratio
+
+Finding the value of k Elbow Method
+Run KMeans for different values of k and calculate inertia The elbow graph shows a clear bend at k  3
+
+Clusters k  3
+
+ Cluster 1  Heavy Data Users Use a large amount of mobile data but make fewer calls
+
+ Cluster 2  Calling Users Use less data but make many phone calls and send many SMS messages
+
+ Cluster 3  Night Users Use a moderate amount of data especially during offpeak hours
+
+
+
+ 4 Real Estate Housing Area Segmentation
+
+Features 3
+
+ Price per Square Foot ft
+ Distance from Transit Hub km
+ School Rating 110
+
+Finding the value of k
+For this example we choose k  4 to divide housing areas into four groups based on price transportation and school quality
+
+Clusters k  4
+
+ Cluster 1  Premium Areas High property prices and very close to public transport
+
+ Cluster 2  Family Areas Higher property prices but farther from transport with very good schools
+
+ Cluster 3  Average Areas Medium property prices reasonably close to transport and average schools
+
+ Cluster 4  Budget Areas Low property prices far from transport and lower school ratings
+
+
+
+ 5 Agriculture Soil Fertility Grouping
+
+Features 4
+
+ Soil pH
+ Nitrogen mgkg
+ Phosphorus mgkg
+ Electrical Conductivity dSm
+
+Finding the value of k Elbow Method
+Run KMeans for k  1 to 7 and calculate WCSS The elbow appears at k  3
+
+Clusters k  3
+
+ Cluster 1  Poor Soil Low pH and low nitrogen and phosphorus The soil may need additional treatment
+
+ Cluster 2  Good Agricultural Soil Balanced pH with good levels of nitrogen and phosphorus
+
+ Cluster 3  Salty Soil High pH high phosphorus and high electrical conductivity The soil may have excess fertilizer or salt
+
+
+
+ 6 Cybersecurity Network Traffic Grouping
+
+Features 3
+
+ Packet Frequency packetssec
+ Average Packet Size bytes
+ Unique Destination IP Ratio
+
+Finding the value of k
+We choose k  3 to separate normal network traffic from two common types of unusual traffic
+
+Clusters k  3
+
+ Cluster 1  Normal Traffic Normal packet frequency with different packet sizes and normal IP usage
+
+ Cluster 2  Port Scanning Many packets are sent to different IP addresses usually with small and similar packet sizes
+
+ Cluster 3  Heavy Data Transfer Large packets are sent repeatedly usually to one main destination
+
+
+
+ 7 Manufacturing Machine Bearing Condition
+
+Features 2
+
+ Vibration Level g
+ Operating Temperature C
+
+Finding the value of k Elbow Method
+Run KMeans for different values of k The elbow appears at k  3
+
+Clusters k  3
+
+ Cluster 1  Healthy Machine Low vibration and normal operating temperature
+
+ Cluster 2  Machine Wear Higher vibration and temperature which may indicate mechanical problems
+
+ Cluster 3  Critical Condition Very high vibration and temperature indicating that the machine may fail soon
+
+
+
+ 8 Banking Credit Card Transaction Grouping
+
+Features 4
+
+ Transaction Amount 
+ Time Since Previous Transaction seconds
+ Distance from Usual Location km
+ POS Entry Mode
+
+Finding the value of k Elbow Method
+Scale the four features between 0 and 1 and run KMeans for different values of k The elbow appears at k  4
+
+Clusters k  4
+
+ Cluster 1  Normal Transactions Small or medium transactions made at regular intervals and familiar locations
+
+ Cluster 2  Travel Transactions Larger transactions made far away from the customers usual location
+
+ Cluster 3  Card Testing Very small transactions made repeatedly in a short period
+
+ Cluster 4  Suspicious Transactions Large transactions made quickly from unusual locations or using manual entry
+
+
+
+ 9 Sports Analytics Football Midfielder Grouping
+
+Features 3
+
+ Progressive Passes per 90 minutes
+ Defensive Pressures per 90 minutes
+ Distance Covered kmmatch
+
+Finding the value of k
+We choose k  3 because midfielders can be grouped into three common playing styles
+
+Clusters k  3
+
+ Cluster 1  Playmakers Make many forward passes but apply less defensive pressure
+
+ Cluster 2  Defensive Midfielders Make fewer forward passes but apply strong defensive pressure
+
+ Cluster 3  BoxtoBox Players Contribute in both attack and defence and cover a large distance
+
+
+
+ 10 Environmental Science Air Quality Zone Grouping
+
+Features 3
+
+ PM25 gm
+ Nitrogen Dioxide NO
+ Ozone O
+
+Finding the value of k Elbow Method
+Use the average readings from airquality sensors and run KMeans for different values of k The elbow appears at k  3
+
+Clusters k  3
+
+ Cluster 1  Traffic Pollution Areas High NO and PM25 levels mainly because of vehicle traffic
+
+ Cluster 2  Smog Areas High ozone and PM25 levels usually found in sunny and polluted areas
+
+ Cluster 3  Clean Areas Low PM25 and NO levels usually found near parks or green areas
+
