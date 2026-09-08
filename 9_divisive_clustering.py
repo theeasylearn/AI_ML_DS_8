@@ -2,6 +2,7 @@
 # DIVISIVE HIERARCHICAL CLUSTERING
 # Example: Grouping 12 Countries
 # ============================================================
+
 # Step 1: Import required libraries
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -83,178 +84,41 @@ data = {
 df = pd.DataFrame(data)
 
 print("Original Dataset:")
-print(df)
+# print(df)
+
+#select input features 
+X = df[[
+    "GDP_per_capita",
+    "Life_expectancy",
+    "Internet_usage",
+]]
 
 
-# ============================================================
-# Step 3: Select the input features
-# ============================================================
-
-X = df[
-    [
-        "GDP_per_capita",
-        "Life_expectancy",
-        "Internet_usage"
-    ]
-]
-
-
-# ============================================================
-# Step 4: Standardize the data
-# ============================================================
-
-# GDP has values such as 1,100 and 100,000.
-# Life expectancy has values around 50-85.
-# Internet usage has values around 30-100.
-#
-# Because their scales are different, we standardize them.
-
+#apply scaler 
 scaler = StandardScaler()
 
-X_scaled = scaler.fit_transform(X)
-
-
-# ============================================================
-# Step 5: Create a function for Divisive Clustering
-# ============================================================
+x_scaled = scaler.fit_transform(X)
+# print(x_scaled)
 
 def divisive_clustering(X, countries, number_of_clusters=4):
-
-    # Initially, all countries belong to one cluster
+    #create dictionary which has all the clusters 
     clusters = {
-        0: list(range(len(countries)))
+        0: list(range(len(countries))),
     }
-
     next_cluster_id = 1
+    #run loop to crate 4 clusters 
+    while len(clusters)<number_of_clusters:
+        # findout upon which key we should work to create new clusters 
+        largest_cluster_id = max(clusters,key=lambda cluster_id : len(clusters[cluster_id]))
 
-    # Continue splitting until desired number of clusters
-    while len(clusters) < number_of_clusters:
-
-        # ----------------------------------------------------
-        # Find the largest cluster
-        # ----------------------------------------------------
-
-        largest_cluster_id = max(
-            clusters,
-            key=lambda cluster_id: len(clusters[cluster_id])
-        )
-
-        # Get countries belonging to that cluster
+        #extract data 
         indexes = clusters[largest_cluster_id]
-
-        # Extract their feature values
         cluster_data = X[indexes]
-
-        # ----------------------------------------------------
-        # Split the cluster into 2 groups
-        # ----------------------------------------------------
-
-        kmeans = KMeans(
-            n_clusters=2,
-            random_state=42,
-            n_init=10
-        )
-
-        labels = kmeans.fit_predict(cluster_data)
-
-        # ----------------------------------------------------
-        # Create two new clusters
-        # ----------------------------------------------------
-
-        cluster_1 = []
-        cluster_2 = []
-
-        for i, label in zip(indexes, labels):
-
-            if label == 0:
-                cluster_1.append(i)
-            else:
-                cluster_2.append(i)
-
-        # Remove the original cluster
-        del clusters[largest_cluster_id]
-
-        # Add the two new clusters
-        clusters[next_cluster_id] = cluster_1
-        next_cluster_id += 1
-
-        clusters[next_cluster_id] = cluster_2
-        next_cluster_id += 1
-
-    return clusters
-
-
-# ============================================================
-# Step 6: Perform Divisive Clustering
-# ============================================================
-
-clusters = divisive_clustering(
-    X_scaled,
-    df["Country"].tolist(),
-    number_of_clusters=4
-)
-
-
-# ============================================================
-# Step 7: Display the final clusters
-# ============================================================
-
-print("\nFinal Clusters:")
-print("----------------")
-
-for cluster_id, indexes in clusters.items():
-
-    print(f"\nCluster {cluster_id}:")
-
-    for index in indexes:
-        print("  ", df.loc[index, "Country"])
-
-
-# ============================================================
-# Step 8: Add cluster number to DataFrame
-# ============================================================
-
-df["Cluster"] = 0
-
-for cluster_id, indexes in clusters.items():
-
-    for index in indexes:
-        df.loc[index, "Cluster"] = cluster_id
-
-
-# Display final dataset
-print("\nFinal Dataset:")
-print(df)
-
-
-# ============================================================
-# Step 9: Visualize the clusters
-# ============================================================
-
-plt.figure(figsize=(10, 6))
-
-plt.scatter(
-    df["GDP_per_capita"],
-    df["Life_expectancy"],
-    c=df["Cluster"],
-    s=100
-)
-
-# Add country names to the graph
-for i in range(len(df)):
-
-    plt.annotate(
-        df.loc[i, "Country"],
-        (
-            df.loc[i, "GDP_per_capita"],
-            df.loc[i, "Life_expectancy"]
-        ),
-        xytext=(5, 5),
-        textcoords="offset points"
-    )
-
-plt.xlabel("GDP per Capita (USD)")
-plt.ylabel("Life Expectancy (Years)")
-plt.title("Divisive Hierarchical Clustering of Countries")
-
-plt.show()
+        print(cluster_data)
+        #apply kmean algorithm 
+        model = KMeans(random_state=42,n_clusters=2,n_init=1)
+        model.fit_transform(cluster_data)
+        print(model.labels_)
+        break
+# print(df["Country"].tolist())
+divisive_clustering(x_scaled,df["Country"].tolist(),4)
