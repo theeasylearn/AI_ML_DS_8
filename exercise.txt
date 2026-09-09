@@ -244,3 +244,27 @@ Clusters k  3
 
  Cluster 3  Clean Areas Low PM25 and NO levels usually found near parks or green areas
 
+Agglomerative Clustering (Bottom-Up)
+1) Customer Spending SegmentationScenario: A supermarket wants to group customers based on spending habits, starting from individual shoppers and pairing the most similar ones to find broad customer archetypes.Input Features ($X$):$X_1$: Annual income (in thousands of dollars)$X_2$: Average monthly spending score (1-100)Target Variable ($Y$): Assigned customer archetype (e.g., Cluster 0, Cluster 1)Practice Goal: Build a dendrogram to identify 3 main shopper profiles and output the cluster assignments.
+
+2) City Neighborhood ZoningScenario: A city planner wants to group adjacent small blocks into larger municipal zones based on crime rates and property values.Input Features ($X$):$X_1$: Median property value (in thousands of dollars)$X_2$: Crime incidents per 1,000 residentsTarget Variable ($Y$): Assigned municipal zone (Cluster)Practice Goal: Merge similar blocks bottom-up until 2 distinct zones emerge, representing "High-Value/Low-Crime" and "Low-Value/High-Crime" areas.
+
+3) Genomic Sequence GroupingScenario: A biologist has individual DNA samples and wants to construct a phylogenetic tree by pairing the most genetically similar sequences step-by-step.Input Features ($X$):$X_1$: Genetic Marker A expression level$X_2$: Genetic Marker B expression levelTarget Variable ($Y$): Phylogenetic clade (Cluster)Practice Goal: Group samples bottom-up using Ward's linkage to find the evolutionary branches of the samples.
+
+4) Factory Machine Failure ModesScenario: An engineer wants to group individual machine breakdown incidents to find common root causes by linking the most similar failure metrics first.Input Features ($X$):$X_1$: Operating temperature at time of failure (in Celsius)$X_2$: Vibration frequency anomaly (in Hz)Target Variable ($Y$): Failure mode prototype (Cluster)Practice Goal: Use bottom-up clustering to merge incidents until 3 distinct types of machine failure modes are identified.
+
+5) Topic Modeling for News ArticlesScenario: A news aggregator starts with individual articles and merges them into progressively larger overarching topics (e.g., individual tech articles merged into a general "Technology" category).Input Features ($X$):$X_1$: Keyword frequency count for "Economy"$X_2$: Keyword frequency count for "Election"Target Variable ($Y$): Broad news category (Cluster)Practice Goal: Compute a distance matrix and group the articles bottom-up to form 2 main news categories.
+------------------------------------------------------
+Divisive Clustering (Top-Down)
+------------------------------------------------------
+
+1) Macro-Market SplittingScenario: A global streaming service wants to divide its single massive global user base into distinct regional cohorts by repeatedly splitting the largest, most diverse groups.Input Features ($X$):$X_1$: Average daily watch time (in minutes)$X_2$: Preference score for localized content (1-10)Target Variable ($Y$): Regional cohort grouping (Cluster)Practice Goal: Start with all users in one cluster and split them top-down to find 2 highly cohesive viewer markets.
+
+
+2) Supply Chain Logistics HubsScenario: A national delivery company wants to split a massive country-wide delivery zone into smaller, localized fulfillment regions to reduce shipping times.Input Features ($X$):$X_1$: Delivery coordinate (Latitude)$X_2$: Delivery coordinate (Longitude)Target Variable ($Y$): Assigned localized logistics region (Cluster)Practice Goal: Divide the entire national map top-down into 3 sub-regions by continually splitting the cluster with the highest spatial variance.
+
+3) Codebase Microservices RefactoringScenario: A software architect needs to break down a giant monolithic application into smaller microservices by separating distinct functional modules.Input Features ($X$):$X_1$: Number of shared database tables utilized$X_2$: Frequency of cross-module API calls per minuteTarget Variable ($Y$): Microservice boundary (Cluster)Practice Goal: Partition the monolith top-down into 2 independent microservices with minimal overlap.
+
+4)  Organizing a Broad E-commerce CatalogScenario: An online retailer wants to take a massive "All Products" inventory and repeatedly split it into finer sub-categories.Input Features ($X$):$X_1$: Product weight (in kg)$X_2$: Average retail price (in USD)Target Variable ($Y$): Department sub-category (Cluster)Practice Goal: Split the master product list iteratively to form 3 distinct department categories based on physical size and cost.
+
+5) Network Traffic Anomaly SegregationScenario: A cybersecurity system logs all incoming server traffic as one large dataset and needs to split it sequentially to isolate normal traffic from distinct types of DDoS attacks.Input Features ($X$):$X_1$: Requests per second from source IP$X_2$: Average packet size (in bytes)Target Variable ($Y$): Traffic classification group (Cluster)Practice Goal: Isolate malicious traffic by continuously splitting the most anomalous subgroups top-down until the "normal" baseline is separated from the attacks.

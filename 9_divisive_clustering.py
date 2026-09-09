@@ -110,15 +110,35 @@ def divisive_clustering(X, countries, number_of_clusters=4):
     while len(clusters)<number_of_clusters:
         # findout upon which key we should work to create new clusters 
         largest_cluster_id = max(clusters,key=lambda cluster_id : len(clusters[cluster_id]))
-
         #extract data 
         indexes = clusters[largest_cluster_id]
         cluster_data = X[indexes]
-        print(cluster_data)
         #apply kmean algorithm 
-        model = KMeans(random_state=42,n_clusters=2,n_init=1)
+        model = KMeans(random_state=42,n_clusters=2,n_init=10)
         model.fit_transform(cluster_data)
-        print(model.labels_)
-        break
+        # print(model.labels_)
+        cluster_1 = []
+        cluster_2 = []
+        for label,index in zip(model.labels_,indexes):
+            if label == 0:
+                cluster_1.append(index)
+            else:
+                cluster_2.append(index)
+        del clusters[largest_cluster_id]
+        clusters[next_cluster_id] = cluster_1
+        next_cluster_id= next_cluster_id + 1 #2
+        clusters[next_cluster_id] = cluster_2
+        next_cluster_id= next_cluster_id + 1 #
+    return clusters
 # print(df["Country"].tolist())
-divisive_clustering(x_scaled,df["Country"].tolist(),4)
+clusters = divisive_clustering(x_scaled,df["Country"].tolist(),4)
+#clusters add original dataset 
+temp = {}
+for cluster in clusters.items():
+    current_cluster = cluster[0]
+    for index in cluster[1]:
+        #update original dataset
+        temp[index] = current_cluster
+df["cluster"] = temp
+print(df)
+#task display dataframe as scatter chart
