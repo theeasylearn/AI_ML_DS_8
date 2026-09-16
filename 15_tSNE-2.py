@@ -1,62 +1,55 @@
 # ---------------------------------------------------------
 # T-SNE EXAMPLE
-# Handwritten Digit Visualization
+# 3. Fashion-MNIST
+# Fashion-MNIST consists of 70,000 $28 \times 28$ grayscale images across 10 clothing categories, organized as a drop-in replacement for standard MNIST.
 # ---------------------------------------------------------
 
 # Import required libraries
 import matplotlib.pyplot as plt
-
-from sklearn.datasets import load_digits
+from sklearn.datasets import fetch_openml
 from sklearn.preprocessing import StandardScaler
 from sklearn.manifold import TSNE
 # ---------------------------------------------------------
-# STEP 1: Load the dataset
+# 1. Download dataset (returns X as 70,000 x 784, y as strings)
 # ---------------------------------------------------------
-
-# Load the built-in handwritten digits dataset
-digits = load_digits()
-
-# X contains the pixel values
-# Each image is represented using 64 features
-X = digits.data
-
-# y contains the actual digit (0 to 9)
-y = digits.target
+fmnist = fetch_openml('Fashion-MNIST', version=1, as_frame=False, parser='auto')
+X = fmnist.data
+y = fmnist.target.astype(int)
 
 print("Dataset shape:", X.shape)
 print("Number of features:", X.shape[1])
 
 
-# ---------------------------------------------------------
-# STEP 2: Standardize the data
-# ---------------------------------------------------------
+# # ---------------------------------------------------------
+# # STEP 2: Standardize the data
+# # ---------------------------------------------------------
 
-# Standardization puts features on a similar scale
+# # Standardization puts features on a similar scale
 scaler = StandardScaler()
 
 X_scaled = scaler.fit_transform(X)
 
 
-# # ---------------------------------------------------------
-# # STEP 3: Apply t-SNE
-# # ---------------------------------------------------------
+# # # ---------------------------------------------------------
+# # # STEP 3: Apply t-SNE
+# # # ---------------------------------------------------------
 
-# # Create the t-SNE model
+# # # Create the t-SNE model
 model = TSNE(
     n_components=2,       # Convert data into 2 dimensions
     perplexity=30,        # Number related to neighborhood size
     random_state=42       # Gives reproducible results
 )
 
-# # Transform 64-dimensional data into 2 dimensions
+# # # Transform 64-dimensional data into 2 dimensions
 X_tsne = model.fit_transform(X_scaled)
 
 print("t-SNE output shape:", X_tsne.shape)
 
 
-# # ---------------------------------------------------------
-# # STEP 4: Visualize the result
-# # ---------------------------------------------------------
+# # # ---------------------------------------------------------
+# # # STEP 4: Visualize the result
+# # # ---------------------------------------------------------
 
 plt.figure(figsize=(10, 7))
 
@@ -71,10 +64,10 @@ scatter = plt.scatter(
 )
 
 # Add color bar to show digit numbers
-plt.colorbar(scatter, label="Digit")
+plt.colorbar(scatter, label="cloths")
 
 # Add title and labels
-plt.title("t-SNE Visualization of Handwritten Digits")
+plt.title("t-SNE Visualization of Fashion MNIST")
 plt.xlabel("t-SNE Dimension 1")
 plt.ylabel("t-SNE Dimension 2")
 # Display the graph
