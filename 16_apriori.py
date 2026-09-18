@@ -35,7 +35,6 @@ print(df)
 frequent_itemsets = apriori(df,min_support=0.40,use_colnames=True)
 print("\nFREQUENT ITEMSETS")
 print(frequent_itemsets)
-
 # Generate association rules
 rules = association_rules(
     frequent_itemsets,
@@ -44,21 +43,21 @@ rules = association_rules(
 )
 
 # print("\nASSOCIATION RULES")
-for index, rule in rules.iterrows():
-    print(f"{rule['antecedents']} -> "f"{rule['consequents']}")
-    print(f"Support: {rule['support']:.2%}")
-    print(f"Confidence: {rule['confidence']:.2%}")
-    print(f"Lift: {rule['lift']:.2f}")
+for index, row in rules.iterrows():
+    print(f"{row['antecedents']} -> {row['consequents']}")
+    print(f"Support: {row['support']:.2%}")
+    print(f"Confidence: {row['confidence']:.2%}")
+    print(f"Lift: {row['lift']:.2f}")
     print("-" * 40)
 
 # Find strong rules
-strong_rules = rules[(rules["confidence"] >= 0.60) &(rules["lift"] > 1)]
+strong_rules = rules[(rules["confidence"] >= 0.70)  & (rules["lift"] > 1)]
 
 print("\nSTRONG RULES")
 
-for index,rule in strong_rules.iterrows():
-    print(f"{rule['antecedents']} -> "f"{rule['consequents']}")
-    print(f"Support: {rule['support']:.2%}")
-    print(f"Confidence: {rule['confidence']:.2%}")
-    print(f"Lift: {rule['lift']:.2f}")
+for index, row in strong_rules.iterrows():
+    print(f"{row['antecedents']} -> {row['consequents']}")
+    print(f"Support: {row['support']:.2%}")
+    print(f"Confidence: {row['confidence']:.2%}")
+    print(f"Lift: {row['lift']:.2f}")
     print("-" * 40)
