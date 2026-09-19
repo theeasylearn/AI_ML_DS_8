@@ -49,68 +49,21 @@ transactions = (
     .apply(list)
     .tolist()
 )
-
-
-# Convert transactions to binary format
+#encoding
 encoder = TransactionEncoder()
 data = encoder.fit_transform(transactions)
 
-df = pd.DataFrame(
-    data,
-    columns=encoder.columns_
-)
+#create dataframe
+df = pd.DataFrame(data,columns=encoder.columns_)
+print(df.head(5))
 
-print("NUMBER OF USERS:", len(transactions))
-print("NUMBER OF MOVIES:", len(df.columns))
-exit(0)
-# Find frequent movie combinations
-frequent_itemsets = apriori(
-    df,
-    min_support=0.05,
-    use_colnames=True
-)
+frequent_itemsets = apriori(df,min_support=0.05,use_colnames=True)
+# print(frequent_itemsets.head(5))
 
-print("\nFREQUENT MOVIE ITEMSETS")
-print(frequent_itemsets)
+rules = association_rules(frequent_itemsets,metric='confidence', min_threshold=0.05)
 
-# Generate association rules
-rules = association_rules(
-    frequent_itemsets,
-    metric="confidence",
-    min_threshold=0.30
-)
+#filter data
+rules = rules [rules['lift']>1]
+print(rules.head(5))
 
-# Keep useful columns
-rules = rules[
-    [
-        "antecedents",
-        "consequents",
-        "support",
-        "confidence",
-        "lift"
-    ]
-]
 
-# Keep positive associations
-rules = rules[
-    rules["lift"] > 1
-]
-
-# Sort by lift
-rules = rules.sort_values(
-    "lift",
-    ascending=False
-)
-
-print("\nMOVIE ASSOCIATION RULES")
-
-for _, rule in rules.head(20).iterrows():
-
-    antecedent = ", ".join(rule["antecedents"])
-    consequent = ", ".join(rule["consequents"])
-
-    print(f"{antecedent} -> {consequent}")
-    print(f"Support: {rule['support']:.2%}")
-    print(f"Confidence: {rule['confidence']:.2%}")
-    print(f"Lift: {rule['lift']:.2f}")
-    print("-" * 50)
