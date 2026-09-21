@@ -14,6 +14,10 @@ This rule can then be used to recommend **Movie B** to users who have shown inte
 The objective of this example is to demonstrate how **Association Rule Learning can be applied to a real-world movie recommendation problem**.
 
 dataset download link - https://grouplens.org/datasets/movielens/100k/
+
+furture project.
+https://claude.ai/share/14a1a169-5b44-4666-8904-52fb2470db42
+
 '''
 import pandas as pd
 from mlxtend.preprocessing import TransactionEncoder
@@ -66,4 +70,14 @@ rules = association_rules(frequent_itemsets,metric='confidence', min_threshold=0
 rules = rules [rules['lift']>1]
 print(rules.head(5))
 
+#sorting
+rules = rules.sort_values("lift",ascending=False)
 
+#print final result
+for index,rule in rules.head(20).iterrows():
+    print(rule['antecedents'])
+    print(rule['consequents'])
+    print("Lift ",rule['lift'])
+    print("support ",rule['support'])
+    print("confidence ",rule['confidence'])
+    print("-"*100)
