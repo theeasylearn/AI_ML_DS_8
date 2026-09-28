@@ -14,62 +14,50 @@ from sklearn.metrics import (
     roc_curve,
     roc_auc_score
 )
+
 # ============================================================
 # 1. Load Dataset
 # ============================================================
 patient = load_breast_cancer()
-X = pd.DataFrame(
-    patient.data,
-    columns=patient.feature_names
-)
 
-y = pd.Series(patient.target,name="target")
-print("Dataset Size:", X.shape)
-print("\nTarget Mapping:")
-# exit(0)
+#define x (data) and y (target)
+X  = pd.DataFrame(patient.data,columns=patient.feature_names)
+# print(X.shape)
+# print(X)
+Y = pd.Series(patient.target,name="target")
+# print(Y)
+# exit(1)
+#split data into training and testing
+list = train_test_split(X,Y,train_size=0.80,test_size=0.20,random_state=42,stratify=Y)
+x_train = list[0] # list has train data for at 0th position
+x_test = list[1]  # list has test data for at 1st position
+y_train = list[2] # list has y train target for at 2nd position
+y_test = list[3] # list has y test target for at 3rd position
 
-for i, name in enumerate(patient.target_names):
-    print(i, "=", name)
-# exit(0)
-# ============================================================
-# 2. Train-Test Split
-# ============================================================
-X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.20,random_state=42,stratify=y)
-# ============================================================
-# 3. Feature Scaling
-# ============================================================
+#use scaler 
 scaler = StandardScaler()
-X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.transform(X_test)
+x_train_scaled = scaler.fit_transform(x_train)
+x_test_scaled = scaler.fit_transform(x_test)
 
-# ============================================================
-# 4. Create KNN Model
-# ============================================================
+#create model 
 knn = KNeighborsClassifier(n_neighbors=5)
-knn.fit(X_train_scaled,y_train)
-# ============================================================
-# 5. Prediction
-# ============================================================
+knn.fit(x_train,y_train)
+y_predict = knn.predict(x_test)
 
-y_pred = knn.predict(X_test_scaled)
-# ============================================================
-# 6. Accuracy
-# ============================================================
-accuracy = accuracy_score(
-    y_test,
-    y_pred
-)
-# ============================================================
-# 7. Convert Target
-# ============================================================
+accuracy = accuracy_score(y_test,y_predict)
+
 # Original:
 # 0 = malignant
 # 1 = benign
+
 # Medical interpretation:
 # 1 = malignant
 # 0 = benign
-y_test_medical = (y_test == 0).astype(int)
-y_pred_medical = (y_pred == 0).astype(int)
+
+y_test_medical  = (y_test == 0).astype(int)
+y_pred_medical = (y_predict == 0).astype(int)
+
+
 # ============================================================
 # 8. Confusion Matrix
 # ============================================================
@@ -117,7 +105,7 @@ specificity = TN / (TN + FP)
 # ============================================================
 
 # Probability of malignant class
-y_probability = knn.predict_proba(X_test_scaled)[:, 0]
+y_probability = knn.predict_proba(x_test_scaled)[:, 0]
 
 fpr, tpr, thresholds = roc_curve(
     y_test_medical,
