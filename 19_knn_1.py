@@ -41,8 +41,8 @@ x_test_scaled = scaler.fit_transform(x_test)
 
 #create model 
 knn = KNeighborsClassifier(n_neighbors=5)
-knn.fit(x_train,y_train)
-y_predict = knn.predict(x_test)
+knn.fit(x_train_scaled,y_train)
+y_predict = knn.predict(x_test_scaled)
 
 accuracy = accuracy_score(y_test,y_predict)
 
@@ -144,7 +144,8 @@ print("True Positive :", TP)
 # ============================================================
 
 plt.figure(figsize=(8, 6))
-
+# print("fpr", fpr,"tpr",tpr);
+# exit(1);
 plt.plot(
     fpr,
     tpr,
