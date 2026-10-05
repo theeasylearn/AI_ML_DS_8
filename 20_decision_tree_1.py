@@ -5,6 +5,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
+import numpy as np
 # --------------------------------------------------
 # 1. Download dataset from Kaggle
 # --------------------------------------------------
@@ -23,9 +24,9 @@ df.columns = df.columns.str.strip()
 # --------------------------------------------------
 # 4. Convert categorical values into numbers
 # --------------------------------------------------
-print("Before Categorical Encoding")
-print(df.head(10))
-input("Press any to continue")
+# print("Before Categorical Encoding")
+# print(df.head(10))
+# input("Press any to continue")
 df["education"] = df["education"].str.strip().map({
     "Graduate": 1,
     "Not Graduate": 0
@@ -41,7 +42,7 @@ df["loan_status"] = df["loan_status"].str.strip().map({
     "Rejected": 0
 })
 print("After Categorical Encoding")
-print(df.head(10))
+# print(df.head(10))
 # exit(1)
 # --------------------------------------------------
 # 5. Select input features
@@ -75,14 +76,10 @@ X_train, X_test, y_train, y_test = train_test_split(
     test_size=0.20,
     random_state=42
 )
-#we will start from this model
 # --------------------------------------------------
 # 8. Create Decision Tree
 # --------------------------------------------------
-model = DecisionTreeClassifier(
-    criterion="gini",
-    random_state=42
-)
+model = DecisionTreeClassifier(criterion="gini",random_state=42)
 # --------------------------------------------------
 # 9. Train model
 # --------------------------------------------------
@@ -90,10 +87,7 @@ model.fit(X_train, y_train)
 # --------------------------------------------------
 # 10. Make prediction
 # --------------------------------------------------
-
 y_pred = model.predict(X_test)
-
-
 # --------------------------------------------------
 # 11. Check accuracy
 # --------------------------------------------------
@@ -101,3 +95,10 @@ y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 
 print("Accuracy:", accuracy)
+print("Test data")
+print(y_pred)
+result = np.where(y_pred == 1, 'Approved', 'reject')
+X_test['loan_status'] = result
+with pd.ExcelWriter("output.xls", engine="openpyxl") as writer:
+    X_test.to_excel(writer, sheet_name="Sheet1", index=False)
+print('done....')
