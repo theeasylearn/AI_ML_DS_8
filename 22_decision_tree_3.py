@@ -44,56 +44,38 @@ from sklearn.metrics import r2_score
 path = kagglehub.dataset_download(
     "yasserh/housing-prices-dataset"
 )
-
 print("Dataset downloaded successfully!")
-
 print("Dataset location:")
 print(path)
-
-
 # ------------------------------------------------------------
 # STEP 4: Load the dataset
 # ------------------------------------------------------------
-
-df = pd.read_csv(
-    path + "/Housing.csv"
-)
-
-
+df = pd.read_csv(path + "/Housing.csv")
 # ------------------------------------------------------------
 # STEP 5: Display the dataset
 # ------------------------------------------------------------
-
 print("\nFirst 5 rows:")
-print(df.head())
-
-
+# print(df.head(10))
 # ------------------------------------------------------------
 # STEP 6: Display dataset information
 # ------------------------------------------------------------
 
-print("\nDataset Shape:")
-print(df.shape)
-
+print("\nDataset Shape (row column):")
+print(df.shape) 
 print("\nColumn Names:")
 print(df.columns)
-
 print("\nDataset Information:")
-df.info()
-
-
+# df.info()
+# exit(1)
 # ------------------------------------------------------------
 # STEP 7: Check missing values
 # ------------------------------------------------------------
-
 print("\nMissing Values:")
 print(df.isnull().sum())
-
-
 # ------------------------------------------------------------
 # STEP 8: Select input features
 # ------------------------------------------------------------
-
+# exit(1)
 # We are using the following information
 # to predict the house price.
 
@@ -106,99 +88,56 @@ X = df[
         "parking"
     ]
 ]
-
-
-# ------------------------------------------------------------
+#---------------------------------------
 # STEP 9: Select target/output
 # ------------------------------------------------------------
-
 # price is the value we want to predict.
-
 y = df["price"]
-
-
 # ------------------------------------------------------------
 # STEP 10: Split dataset
 # ------------------------------------------------------------
-
 # 80% → Training data
 # 20% → Testing data
-
 X_train, X_test, y_train, y_test = train_test_split(
     X,
     y,
     test_size=0.20,
     random_state=42
 )
-
-
 print("\nTraining records:", len(X_train))
 print("Testing records:", len(X_test))
-
-
 # ------------------------------------------------------------
 # STEP 11: Create Decision Tree Regressor
 # ------------------------------------------------------------
-
-model = DecisionTreeRegressor(
-    criterion="squared_error",
-    max_depth=5,
-    random_state=42
-)
-
-
+model = DecisionTreeRegressor(criterion="squared_error",max_depth=11,random_state=42)
 # ------------------------------------------------------------
 # STEP 12: Train the model
 # ------------------------------------------------------------
-
-model.fit(
-    X_train,
-    y_train
-)
-
+model.fit(X_train,y_train)
 print("\nModel training completed!")
-
-
 # ------------------------------------------------------------
 # STEP 13: Make predictions
 # ------------------------------------------------------------
-
-y_pred = model.predict(
-    X_test
-)
-
-
+y_pred = model.predict(X_test)
 # ------------------------------------------------------------
 # STEP 14: Display Actual vs Predicted prices
 # ------------------------------------------------------------
-
-result = pd.DataFrame({
-    "Actual Price": y_test.values,
-    "Predicted Price": y_pred
-})
-
+result = pd.DataFrame({"Actual Price": y_test.values,"Predicted Price": y_pred})
 
 # Format prices with commas
 # Example:
 # 6250000 → 6,250,000
 
-result["Actual Price"] = result["Actual Price"].apply(
-    lambda x: f"₹{x:,.0f}"
-)
-
-result["Predicted Price"] = result["Predicted Price"].apply(
-    lambda x: f"₹{x:,.0f}"
-)
+result["Actual Price"] = result["Actual Price"].apply(lambda x: f"₹{x:,.0f}")
+result["Predicted Price"] = result["Predicted Price"].apply(lambda x: f"₹{x:,.0f}")
 
 
 print("\nActual vs Predicted Prices:")
-print(result.head(10).to_string(index=False))
-
-
+print(result.head(20).to_string(index=False))
+# exit(1)
 # ------------------------------------------------------------
 # STEP 15: Calculate MAE
 # ------------------------------------------------------------
-
 mae = mean_absolute_error(
     y_test,
     y_pred
@@ -234,7 +173,6 @@ print(f"₹{rmse:,.2f}")
 # ------------------------------------------------------------
 # STEP 18: Calculate R² Score
 # ------------------------------------------------------------
-
 r2 = r2_score(
     y_test,
     y_pred
@@ -243,7 +181,7 @@ r2 = r2_score(
 print("\nR² Score:")
 print(f"{r2:.4f}")
 
-
+exit(1)
 # ------------------------------------------------------------
 # STEP 19: Predict price of a new house
 # ------------------------------------------------------------
