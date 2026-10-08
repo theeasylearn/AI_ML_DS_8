@@ -1,25 +1,4 @@
-# ============================================================
-# DECISION TREE REGRESSION
-# House Price Prediction
-# ============================================================
 
-
-# ------------------------------------------------------------
-# STEP 1: Install KaggleHub
-# ------------------------------------------------------------
-
-# Run this only once in Google Colab / Jupyter
-# !pip install kagglehub
-
-
-# ------------------------------------------------------------
-# STEP 2: Import libraries
-# ------------------------------------------------------------
-
-# Used to download dataset from Kaggle
-import kagglehub
-
-# Used to work with datasets
 import pandas as pd
 
 # Used for mathematical calculations
@@ -35,65 +14,43 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
-
-
-# ------------------------------------------------------------
-# STEP 3: Download dataset from Kaggle
-# ------------------------------------------------------------
-
-path = kagglehub.dataset_download("harlfoxem/housesalesprediction")
-
-print("Dataset downloaded successfully!")
-print("Dataset location:")
-print(path)
-# ------------------------------------------------------------
-# STEP 4: Load the dataset
-# ------------------------------------------------------------
-df = pd.read_csv(path + "/kc_house_data.csv")
-# ------------------------------------------------------------
-# STEP 5: Display the dataset
-# ------------------------------------------------------------
+df = pd.read_csv("IPO Dataset.csv")
 # print("\nFirst 5 rows:")
-# print(df.head(10))
-# ------------------------------------------------------------
-# STEP 6: Display dataset information
-# ------------------------------------------------------------
-
-print("\nDataset Shape (row column):")
-print(df.shape) 
-print("\nColumn Names:")
-print(df.columns)
-# print("\nDataset Information:")
-# df.info()
-# ------------------------------------------------------------
-# STEP 7: Check missing values
-# ------------------------------------------------------------
-print("\nMissing Values:")
-print(df.isnull().sum())
-# ------------------------------------------------------------
-# STEP 8: Select input features
-# ------------------------------------------------------------
+print(df.head(10))
 # exit(1)
+# print("\nDataset Shape (row column):")
+# print(df.shape) 
+# print("\nColumn Names:")
+# print(df.columns)
+# print("\nDataset Information:")
 # We are using the following information
 # to predict the house price.
-
-X = df.drop(['id', 'date', 'price'], axis=1)
+df['GMP_Percentage'] = (df['GMP'] / df['Offer Price']) * 100
+df.columns = df.columns.str.strip().str.replace(' ', '_')
+X = df[[
+    'Issue_Size(crores)', 
+    'Offer_Price', 
+    'GMP_Percentage',  # Engineered by you
+    'QIB', 
+    'HNI', 
+    'RII',
+    'Subscription_Strength', 
+    'QIB_Ratio', 
+    'HNI_Ratio', 
+    'RII_Ratio', 
+    'HNI_QIB_Ratio'
+]]
 #---------------------------------------
 # STEP 9: Select target/output
 # ------------------------------------------------------------
 # price is the value we want to predict.
-y = df["price"]
+y = df["Listing_Gain"]
 # ------------------------------------------------------------
 # STEP 10: Split dataset
 # ------------------------------------------------------------
 # 80% → Training data
 # 20% → Testing data
-X_train, X_test, y_train, y_test = train_test_split(
-    X,
-    y,
-    test_size=0.20,
-    random_state=42
-)
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.20,random_state=42)
 print("\nTraining records:", len(X_train))
 print("Testing records:", len(X_test))
 # exit(1)
@@ -101,6 +58,16 @@ print("Testing records:", len(X_test))
 # ------------------------------------------------------------
 # STEP 11: Create Decision Tree Regressor
 # ------------------------------------------------------------
+# Test depths from 2 to 8 to find the sweet spot
+for depth in range(2, 9):
+    model = DecisionTreeRegressor(max_depth=depth, random_state=42)
+    model.fit(X_train, y_train)
+    
+    train_score = model.score(X_train, y_train)
+    test_score = model.score(X_test, y_test)
+    
+    print(f"Depth: {depth} | Train R²: {train_score:.4f} | Test R²: {test_score:.4f}")
+exit(1)
 model = DecisionTreeRegressor(criterion="squared_error",max_depth=9,random_state=42)
 # ------------------------------------------------------------
 # STEP 12: Train the model
