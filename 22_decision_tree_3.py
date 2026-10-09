@@ -15,46 +15,43 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 df = pd.read_csv("IPO Dataset.csv")
-# print("\nFirst 5 rows:")
-print(df.head(10))
-# exit(1)
-# print("\nDataset Shape (row column):")
-# print(df.shape) 
-# print("\nColumn Names:")
-# print(df.columns)
-# print("\nDataset Information:")
-# We are using the following information
-# to predict the house price.
-df['GMP_Percentage'] = (df['GMP'] / df['Offer Price']) * 100
-df.columns = df.columns.str.strip().str.replace(' ', '_')
-X = df[[
-    'Issue_Size(crores)', 
-    'Offer_Price', 
-    'GMP_Percentage',  # Engineered by you
-    'QIB', 
-    'HNI', 
-    'RII',
-    'Subscription_Strength', 
-    'QIB_Ratio', 
-    'HNI_Ratio', 
-    'RII_Ratio', 
-    'HNI_QIB_Ratio'
-]]
-#---------------------------------------
-# STEP 9: Select target/output
-# ------------------------------------------------------------
-# price is the value we want to predict.
-y = df["Listing_Gain"]
-# ------------------------------------------------------------
-# STEP 10: Split dataset
-# ------------------------------------------------------------
-# 80% → Training data
-# 20% → Testing data
-X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.20,random_state=42)
-print("\nTraining records:", len(X_train))
-print("Testing records:", len(X_test))
-# exit(1)
+print("before cleaning", df.shape)
 
+# Rename first, then compute
+df.columns = df.columns.str.strip().str.replace(' ', '_')
+df['GMP_Percentage'] = (df['GMP'] / df['Offer_Price']) * 100
+
+feature_cols = [
+    'Issue_Size(crores)', 'Offer_Price', 'GMP_Percentage',
+    'QIB', 'HNI', 'RII', 'Subscription_Strength',
+    'QIB_Ratio', 'HNI_Ratio', 'RII_Ratio', 'HNI_QIB_Ratio'
+]
+target_col = 'Listing_Gain'
+
+# 1. Convert to numeric (text like "-", "NA", "" becomes NaN)
+for col in feature_cols + [target_col]:
+    df[col] = pd.to_numeric(df[col], errors='coerce')
+
+# 2. Replace inf (from division by zero) with NaN
+df = df.replace([np.inf, -np.inf], np.nan)
+
+# 3. Check missing values
+print("missing values:\n", df[feature_cols + [target_col]].isnull().sum())
+
+# 4. Keep only needed columns, then drop rows with ANY missing value
+df = df[feature_cols + [target_col]].dropna()
+print("after cleaning", df.shape)
+
+# 5. Split into X and y
+X = df[feature_cols]
+y = df[target_col]
+# 5. Fill missing feature values with the median
+# df[feature_cols] = df[feature_cols].fillna(df[feature_cols].median())
+
+print("After cleaning ",X.shape)
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.20,random_state=42)
+
+# exit(1)
 # ------------------------------------------------------------
 # STEP 11: Create Decision Tree Regressor
 # ------------------------------------------------------------
@@ -67,8 +64,9 @@ for depth in range(2, 9):
     test_score = model.score(X_test, y_test)
     
     print(f"Depth: {depth} | Train R²: {train_score:.4f} | Test R²: {test_score:.4f}")
-exit(1)
-model = DecisionTreeRegressor(criterion="squared_error",max_depth=9,random_state=42)
+# exit(1)
+
+model = DecisionTreeRegressor(criterion="squared_error",max_depth=2,random_state=42)
 # ------------------------------------------------------------
 # STEP 12: Train the model
 # ------------------------------------------------------------
@@ -82,14 +80,14 @@ y_pred = model.predict(X_test)
 # STEP 14: Display Actual vs Predicted prices
 # ------------------------------------------------------------
 result = pd.DataFrame({"Actual Price": y_test.values,"Predicted Price": y_pred})
+print(result)
+exit(1)
 
 # Format prices with commas
 # Example:
 # 6250000 → 6,250,000
-
 result["Actual Price"] = result["Actual Price"].apply(lambda x: f"₹{x:,.0f}")
 result["Predicted Price"] = result["Predicted Price"].apply(lambda x: f"₹{x:,.0f}")
-
 
 print("\nActual vs Predicted Prices:")
 print(result.head(20).to_string(index=False))
