@@ -36,7 +36,8 @@ from sklearn.metrics import roc_auc_score
 # ============================================================
 # CONFIG  (change these, re-run, compare)
 # ============================================================
-STOCK = "RELIANCE.NS"
+# STOCK = "RELIANCE.NS"
+STOCK = "M&M.NS"
 INDEX = "^NSEI"
 PERIOD = "10y"            # more history = more trades to learn from
 
@@ -78,8 +79,6 @@ def load_data():
     df = stock[["Open", "High", "Low", "Close", "Volume"]].dropna().copy()
     df["Nifty"] = index["Close"].reindex(df.index).ffill()
     return df.dropna()
-
-
 # ============================================================
 # STEP 2: Features (all use data up to the close of day T only)
 # ============================================================
