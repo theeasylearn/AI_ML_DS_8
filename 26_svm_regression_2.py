@@ -19,20 +19,52 @@ import kagglehub
 
 # Download latest version
 path = kagglehub.dataset_download("jarupula/machine-hack")
-
 print("Path to dataset files:", path)
 df = pd.read_csv(path + "/train.csv")
 print("\nFirst five rows:")
 df = df.dropna()
-print(df.head())
-print(df.shape)
+# print(df.head())
+print("before cleaning",df.shape)
 print(df.columns.to_list())
+df = df.drop_duplicates()
+df['Levy'] = df['Levy'].replace('-', np.nan).astype(float)
+
+# Engine volume: Extract 'Turbo' binary feature FIRST, then clean string and replace 0 with NaN
+#Feature Engineering
+df['Turbo'] = df['Engine volume'].str.contains('Turbo', na=False).astype(int)
+df['Engine volume'] = (
+    df['Engine volume']
+    .str.replace('Turbo','', regex=False)
+    .str.strip()
+    .astype(float)
+    .replace(0.0, np.nan)
+)
+
+# Mileage: Strip ' km', convert to float, and replace 0 km with NaN
+df['Mileage'] = (
+    df['Mileage']
+    .str.replace(' km', '', regex=False)
+    .str.strip()
+    .astype(float)
+    .replace(0.0, np.nan)
+)
+
+# Apply dropna across the cleaned numeric columns
+df = df.dropna(subset=['Levy', 'Engine volume', 'Mileage'])
+
+df = df[(df['Price'] >= 500) & (df['Price'] <= 200000) & (df['Mileage'] <= 1000000)].copy()
+df['Leather interior'] = df['Leather interior'].map({'Yes': 1, 'No': 0})
+df['Wheel'] = df['Wheel'].map({'Left wheel': 0, 'Right-hand drive': 1})
+
+
+print(f"After dropna on Levy, Engine volume, and Mileage: {df.shape}")
+exit(1)
 '''
     ['ID', 'Price', 'Levy', 'Manufacturer', 'Model', 'Prod. year', 'Category', 'Leather interior', 'Fuel type', 'Engine volume', 'Mileage', 'Cylinders', 'Gear box type', 'Drive wheels', 'Doors', 'Wheel', 'Color', 'Airbags']
 '''
 exit(1)
 
-feature_columns = ['Levy', 'Manufacturer', 'Model', 'Prod. year', 'Category', 'Leather interior', 'Fuel type', 'Engine volume', 'Mileage', 'Cylinders', 'Gear box type', 'Drive wheels', 'Wheel', 'Color', 'Airbags']
+feature_columns = ['Levy', 'Manufacturer', 'Prod. year', 'Category', 'Leather interior', 'Fuel type', 'Engine volume', 'Mileage', 'Cylinders', 'Gear box type', 'Drive wheels', 'Wheel', 'Color', 'Airbags','Turbo']
 
 X = df[feature_columns]
 y = df["Price"]
