@@ -28,7 +28,7 @@ df = df.drop(columns=['Manufacturer'])
 # df = bin_encoder.fit_transform(df)
 
 # ==========================================
-# 5. One-Hot Encoding (Nominal Categories)
+# 5. One-Hot Encoding (Nominal Categories) string
 # ==========================================
 ohe_cols = ['Gear box type', 'Drive wheels', 'Fuel type', 'Category', 'Color']
 df = pd.get_dummies(df, columns=ohe_cols, drop_first=True, dtype=int)
