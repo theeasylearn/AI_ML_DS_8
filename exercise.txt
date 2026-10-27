@@ -268,3 +268,332 @@ Divisive Clustering (Top-Down)
 4)  Organizing a Broad E-commerce CatalogScenario: An online retailer wants to take a massive "All Products" inventory and repeatedly split it into finer sub-categories.Input Features ($X$):$X_1$: Product weight (in kg)$X_2$: Average retail price (in USD)Target Variable ($Y$): Department sub-category (Cluster)Practice Goal: Split the master product list iteratively to form 3 distinct department categories based on physical size and cost.
 
 5) Network Traffic Anomaly SegregationScenario: A cybersecurity system logs all incoming server traffic as one large dataset and needs to split it sequentially to isolate normal traffic from distinct types of DDoS attacks.Input Features ($X$):$X_1$: Requests per second from source IP$X_2$: Average packet size (in bytes)Target Variable ($Y$): Traffic classification group (Cluster)Practice Goal: Isolate malicious traffic by continuously splitting the most anomalous subgroups top-down until the "normal" baseline is separated from the attacks.
+
+----------------------------------------------------------------------------
+
+================================================================================
+TOPIC 1: DBSCAN (DENSITY-BASED SPATIAL CLUSTERING)
+Focus: Geospatial hotspot discovery, non-linear customer segmentation, and unsupervised anomaly/fraud isolation.
+================================================================================
+
+Exercise 1.1: Ride-Sharing Pickup Hotspot and Dead-Zone Mapping
+Task Type: Clustering / Geospatial Analytics
+Business Problem: Cluster raw GPS pickup coordinates (Latitude, Longitude) to identify high-density surge-pricing zones and isolate remote, unprofitable pickup requests as noise.
+Portfolio Value: Demonstrates ability to apply the Haversine distance metric on geospatial data for logistics, food delivery, and mobility companies.
+Dataset Name: Uber Pickups in New York City (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/fivethirtyeight/uber-pickups-in-new-york-city
+
+Exercise 1.2: Credit Card Fraud and Erratic Spending Anomaly Detection
+Task Type: Clustering / Anomaly Detection
+Business Problem: Group cardholders by spending behavior (cash advance frequency, credit limit utilization, payment ratios) and flag isolated noise points (label = -1) for fraud review.
+Portfolio Value: Shows recruiters how to detect novel fraud patterns when labeled fraud data is unavailable.
+Dataset Name: Credit Card Dataset for Clustering (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/arjunbhasin2013/ccdata
+
+Exercise 1.3: B2B Wholesale Distributor Client Segmentation
+Task Type: Clustering
+Business Problem: Segment Hotel/Restaurant/Cafe (Horeca) clients based on annual spend across 6 product categories while separating mega-wholesalers that distort standard K-Means centroids.
+Portfolio Value: Highlights practical handling of heavily skewed monetary data and k-distance graph tuning for eps and min_samples.
+Dataset Name: Wholesale Customers Dataset (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/ml/datasets/wholesale+customers
+
+Exercise 1.4: Short-Term Rental (Airbnb) Micro-Neighborhood and Price-Outlier Discovery
+Task Type: Clustering / Pricing Analytics
+Business Problem: Cluster property listings by geographic coordinates, minimum nights, and nightly rates to uncover natural tourist micro-districts and spot overpriced outlier listings.
+Portfolio Value: Combines spatial density clustering with pricing analytics for hospitality and real estate marketplaces.
+Dataset Name: New York City Airbnb Open Data (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/dgomonov/new-york-city-airbnb-open-data
+
+Exercise 1.5: Retail Mall Shopper Behavioral Grouping and VIP Outlier Detection
+Task Type: Clustering
+Business Problem: Segment retail shoppers using age, annual income, and spending score, isolating extreme luxury buyers and window-shoppers from core customer clusters.
+Portfolio Value: Provides a direct visual benchmark comparing DBSCAN against K-Means for retail marketing teams.
+Dataset Name: Mall Customer Segmentation Data (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python
+
+
+================================================================================
+TOPIC 2: PCA (PRINCIPAL COMPONENT ANALYSIS)
+Focus: Eliminating multicollinearity, compressing high-dimensional sensor/financial data, and building composite business indices.
+================================================================================
+
+Exercise 2.1: Corporate Bankruptcy Risk Financial Ratio Compression
+Task Type: Dimensionality Reduction
+Business Problem: Compress 95 highly correlated financial ratios (liquidity, leverage, operating margins) into uncorrelated principal components capturing 90% of variance prior to credit risk modeling.
+Portfolio Value: Proves mastery of tackling severe multicollinearity in banking and quantitative finance datasets.
+Dataset Name: Company Bankruptcy Prediction Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/fedesoriano/company-bankruptcy-prediction
+
+Exercise 2.2: Clinical Oncology Biomarker Dimensionality Reduction
+Task Type: Dimensionality Reduction
+Business Problem: Reduce 30 correlated cell-nucleus measurements into 2D and 3D principal components, interpreting component loadings to explain which physical traits drive variance.
+Portfolio Value: Demonstrates ability to pair variance retention scree plots with interpretable feature loadings for healthcare stakeholders.
+Dataset Name: Breast Cancer Wisconsin Diagnostic Dataset (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29
+
+Exercise 2.3: Wearable IoT Motion Sensor Compression for Edge Deployment
+Task Type: Dimensionality Reduction
+Business Problem: Condense 561 accelerometer and gyroscope smartphone sensor features down to a lightweight feature set that runs efficiently on low-memory wearable hardware.
+Portfolio Value: Highlights model latency and memory optimization for MLOps and IoT engineering roles.
+Dataset Name: Human Activity Recognition with Smartphones (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/uciml/human-activity-recognition-with-smartphones
+
+Exercise 2.4: Music Streaming Audio Profile and Vibe Index Engineering
+Task Type: Dimensionality Reduction / Feature Engineering
+Business Problem: Combine 15 audio engineering traits (danceability, acousticness, energy, valence, tempo, liveness) into composite mood axes to power playlist recommendations.
+Portfolio Value: Shows creative feature engineering for media streaming and consumer tech recommendation pipelines.
+Dataset Name: Spotify Tracks Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset
+
+Exercise 2.5: Global Socio-Economic Development Index Construction
+Task Type: Dimensionality Reduction / Ranking
+Business Problem: Synthesize 9 macroeconomic indicators (GDP per capita, inflation, child mortality, health spend, imports/exports) into 3 composite indices to rank nations for NGO funding allocation.
+Portfolio Value: Turns an unsupervised mathematical transformation into an executive decision-support scorecard.
+Dataset Name: Unsupervised Learning on Country Data (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/rohan0301/unsupervised-learning-on-country-data
+
+
+================================================================================
+TOPIC 3: t-SNE (t-DISTRIBUTED STOCHASTIC NEIGHBOR EMBEDDING)
+Focus: Non-linear 2D/3D manifold visualization, auditing high-dimensional embeddings, and visually validating business segments.
+================================================================================
+
+Exercise 3.1: E-Commerce Fashion Catalog Visual Similarity Audit
+Task Type: Manifold Visualization
+Business Problem: Project 784-dimensional apparel images onto an interactive 2D map so merchandising teams can visually spot mislabeled clothing items and overlapping product lines.
+Portfolio Value: Demonstrates practical catalog quality assurance for computer vision and retail e-commerce roles.
+Dataset Name: Fashion-MNIST Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/zalando-research/fashionmnist
+
+Exercise 3.2: High-Dimensional Credit Card Fraud Island Visualization
+Task Type: Manifold Visualization
+Business Problem: Embed 28 anonymized transaction vectors (V1 through V28) into 2D space to visually prove to risk executives that fraudulent transactions form tight, separable pockets.
+Portfolio Value: Builds compelling visual storytelling around extreme class imbalance in FinTech.
+Dataset Name: Credit Card Fraud Detection Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+
+Exercise 3.3: Multi-Persona Marketing Segmentation Audit
+Task Type: Manifold Visualization
+Business Problem: Map 11 customer demographic and spending variables into 2D space across multiple perplexity settings (10, 30, 50) to diagnose why existing marketing segments overlap.
+Portfolio Value: Shows deep intuition around hyperparameter tuning (perplexity and learning_rate) in unsupervised analytics.
+Dataset Name: Customer Segmentation Classification Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/kaushiksuresh147/customer-segmentation
+
+Exercise 3.4: Beverage Chemical Quality and Grade Separation Mapping
+Task Type: Manifold Visualization
+Business Problem: Project 11 physicochemical lab test variables (acidity, residual sugar, sulfates, alcohol) onto a 2D manifold to visualize how premium-grade beverages separate from standard batches.
+Portfolio Value: Relevant to food science, manufacturing quality control, and chemical process engineering.
+Dataset Name: Wine Quality Dataset (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/dataset/186/wine+quality
+
+Exercise 3.5: Telecom Subscriber Churn Risk Landscape
+Task Type: Manifold Visualization
+Business Problem: Embed 20 subscriber contract, billing, and usage attributes into 2D space, color-coding by churn outcome to uncover non-linear pockets of high-risk customers.
+Portfolio Value: Equips retention teams with visual cluster profiles before training supervised churn classifiers.
+Dataset Name: Telco Customer Churn Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/blastchar/telco-customer-churn
+
+
+================================================================================
+TOPIC 4: APRIORI ALGORITHM
+Focus: Market basket analysis, retail shelf placement (planograms), cross-sell recommendation widgets, and promotional bundling.
+================================================================================
+
+Exercise 4.1: Supermarket Aisle Layout and Planogram Optimization
+Task Type: Association Rule Mining
+Business Problem: Mine point-of-sale grocery receipts using Support, Confidence, and Lift thresholds to recommend which product categories should be placed on adjacent shelves.
+Portfolio Value: Directly translates association rules into physical store layout strategy for retail analytics roles.
+Dataset Name: Groceries Market Basket Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/irfanasrullah/groceries
+
+Exercise 4.2: Quick-Service Cafe and Bakery Combo Meal Design
+Task Type: Association Rule Mining
+Business Problem: Analyze timestamped morning and afternoon bakery transactions to pair high-margin beverages with complementary pastries for discounted combo menus.
+Portfolio Value: Demonstrates revenue optimization and Average Order Value (AOV) growth for hospitality and QSR brands.
+Dataset Name: The Bread Basket Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/mittalvasu95/the-bread-basket
+
+Exercise 4.3: B2B E-Commerce Frequently Bought Together Checkout Engine
+Task Type: Association Rule Mining
+Business Problem: Clean cancelled invoices, group multi-item UK wholesale transactions by country, and generate top cross-sell product rules for an online checkout widget.
+Portfolio Value: Showcases end-to-end data wrangling (handling returns, missing IDs, and one-hot basket encoding) on real transactional logs.
+Dataset Name: Online Retail Dataset (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/dataset/352/online+retail
+
+Exercise 4.4: Retail Promotional Loss-Leader and Anchor Bundling
+Task Type: Association Rule Mining
+Business Problem: Identify anchor products that drive multi-item basket additions using Lift and Conviction metrics to decide which items to discount during weekend sales.
+Portfolio Value: Highlights business-driven rule filtering beyond basic support thresholds.
+Dataset Name: Market Basket Optimization Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/devchauhan1/market-basket-optimisationcsv
+
+Exercise 4.5: Telecom and Consumer Hardware Accessory Cross-Sell Bundling
+Task Type: Association Rule Mining
+Business Problem: Discover purchasing associations across 20 customer product slots to automate post-purchase email accessory recommendations.
+Portfolio Value: Connects market basket mining directly to CRM email automation and lifecycle marketing.
+Dataset Name: Customer Purchasing Patterns with Market Basket (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/thedevastator/customer-purchasing-patterns-with-market-basket
+
+
+================================================================================
+TOPIC 5: FP-GROWTH / FP-PATH (FREQUENT PATTERN TREE AND PATH MINING)
+Focus: High-speed, memory-efficient frequent pattern mining via FP-Tree prefix paths and conditional pattern bases on large datasets.
+================================================================================
+
+Exercise 5.1: Enterprise Multi-Year Retail Basket Mining (FP-Tree vs. Apriori Benchmark)
+Task Type: Frequent Pattern Path Mining
+Business Problem: Construct an FP-Tree across more than 1 million retail transaction rows to extract frequent item paths, benchmarking memory footprint and runtime against Apriori.
+Portfolio Value: Proves the candidate understands algorithmic scalability and why production systems favor FP-Growth over candidate generation.
+Dataset Name: Online Retail II Dataset (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/ml/datasets/online+retail+II
+
+Exercise 5.2: Quick-Commerce (Instacart) Dark-Store Warehouse Slotting
+Task Type: Frequent Pattern Path Mining
+Business Problem: Trace frequent FP-Tree prefix paths across millions of grocery orders to co-locate high-frequency item trios in dark-store picking aisles, cutting delivery prep time.
+Portfolio Value: Directly addresses supply chain and quick-commerce fulfillment optimization.
+Dataset Name: Instacart Market Basket Analysis (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis
+
+Exercise 5.3: E-Commerce Clickstream Session Path and Funnel Analysis
+Task Type: Frequent Pattern Path Mining
+Business Problem: Mine frequent browsing paths from online shopping clickstream sequences to identify which multi-page product views consistently convert into purchases.
+Portfolio Value: Applies FP-Path mining to UX funnel analytics and conversion rate optimization (CRO).
+Dataset Name: Clickstream Data for Online Shopping (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/ml/datasets/clickstream+data+for+online+shopping
+
+Exercise 5.4: High-Velocity Supermarket Loyalty Bundle Extraction
+Task Type: Frequent Pattern Path Mining
+Business Problem: Use conditional pattern bases on 38,000+ grocery purchase records to uncover multi-item household staples at very low support thresholds without memory overflow.
+Portfolio Value: Shows mastery of mining rare but high-value niche product combinations.
+Dataset Name: Groceries Dataset for Market Basket Analysis (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/heeraldedhia/groceries-dataset
+
+Exercise 5.5: Omnichannel Department Store Cross-Category Path Mining
+Task Type: Frequent Pattern Path Mining
+Business Problem: Extract frequent sub-category purchasing paths across Furniture, Office Supplies, and Technology orders to structure B2B corporate discount tiers.
+Portfolio Value: Demonstrates multi-level (hierarchical) frequent pattern mining for enterprise retail.
+Dataset Name: Superstore Marketing and Transaction Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/vivek468/superstore-dataset-final
+
+
+================================================================================
+TOPIC 6: K-NEAREST NEIGHBORS (KNN) - 3 CLASSIFICATION AND 2 REGRESSION
+Focus: Feature scaling (StandardScaler), distance metric selection (Euclidean vs. Manhattan), and similarity-based inference.
+================================================================================
+
+Exercise 6.1: Telecom Subscriber Churn Early-Warning System
+Task Type: Classification
+Business Problem: Predict whether a telecom customer will cancel their subscription based on tenure, contract type, and monthly charges, tuning k using cross-validation.
+Portfolio Value: Highlights the critical impact of feature scaling and F1/Recall optimization in customer retention.
+Dataset Name: Telco Customer Churn Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/blastchar/telco-customer-churn
+
+Exercise 6.2: Clinical Diabetes Risk Screening and Triage Tool
+Task Type: Classification
+Business Problem: Classify patients as diabetic or non-diabetic using 8 clinical metrics (glucose, BMI, insulin, age), selecting k to minimize false negatives in clinical screening.
+Portfolio Value: Shows healthcare domain awareness by prioritizing Sensitivity/Recall and imputing zero-coded missing biological values.
+Dataset Name: Pima Indians Diabetes Database (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
+
+Exercise 6.3: Retail Banking Credit Card Default Prediction
+Task Type: Classification
+Business Problem: Predict next-month payment default using 6 months of billing and repayment history, comparing uniform voting against distance-weighted voting (weights='distance').
+Portfolio Value: Demonstrates handling of class imbalance (SMOTE + KNN) in consumer credit risk underwriting.
+Dataset Name: Default of Credit Card Clients (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients
+
+Exercise 6.4: Automated Real Estate Comps Valuation Engine
+Task Type: Regression
+Business Problem: Predict residential property sale prices by averaging the k most similar nearby homes based on latitude, longitude, living area, and grade.
+Portfolio Value: Mirrors how human real estate appraisers price homes (Comparative Market Analysis), making it highly intuitive for PropTech interviews.
+Dataset Name: House Sales in King County, USA (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/harlfoxem/housesalesprediction
+
+Exercise 6.5: Pre-Owned Automobile Instant Trade-In Pricer
+Task Type: Regression
+Business Problem: Estimate the resale value of used cars from mileage, manufacture year, engine displacement, and transmission type using distance-weighted KNN regression.
+Portfolio Value: Builds a practical pricing engine relevant to automotive marketplaces (Spinny, Cars24, CarMax).
+Dataset Name: Used Car Price Prediction Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/avikasliwal/used-cars-price-prediction
+
+
+================================================================================
+TOPIC 7: DECISION TREE - 3 CLASSIFICATION AND 2 REGRESSION
+Focus: White-box model interpretability, rule extraction for executives, cost-complexity pruning (ccp_alpha), and non-linear threshold splits.
+================================================================================
+
+Exercise 7.1: HR Employee Attrition Root-Cause and Rule Explainer
+Task Type: Classification
+Business Problem: Train and prune a Decision Tree to predict employee turnover, exporting visual decision rules (overtime, low monthly income, commute distance) for HR directors.
+Portfolio Value: Shows ability to translate ML splits into actionable HR policy interventions.
+Dataset Name: IBM HR Analytics Employee Attrition and Performance (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset
+
+Exercise 7.2: Bank Telemarketing Term-Deposit Lead Scoring
+Task Type: Classification
+Business Problem: Predict which banking clients will subscribe to a term deposit before outbound calls are made, comparing Gini vs. Entropy criteria to maximize campaign ROI.
+Portfolio Value: Connects confusion matrix metrics directly to call-center cost savings and conversion efficiency.
+Dataset Name: Bank Marketing Dataset (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/ml/datasets/bank+marketing
+
+Exercise 7.3: Regulatory-Compliant Automated Loan Approval Scorecard
+Task Type: Classification
+Business Problem: Build an auditable loan approval tree using applicant income, credit history, loan amount, and property area that satisfies banking right-to-explanation regulations.
+Portfolio Value: Highlights explainable AI (XAI) and hyperparameter pruning (max_depth, min_samples_leaf) in regulated financial services.
+Dataset Name: Loan Prediction Problem Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/altruistdelhite04/loan-prediction-problem-dataset
+
+Exercise 7.4: Medical Insurance Premium Dynamic Pricing Model
+Task Type: Regression
+Business Problem: Predict annual individual healthcare charges based on age, BMI, smoking status, and dependents, capturing sharp non-linear cost jumps (such as smokers with BMI above 30).
+Portfolio Value: Demonstrates why regression trees outperform linear regression when variables interact via strict thresholds.
+Dataset Name: Medical Cost Personal Datasets (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/mirichoi0218/insurance
+
+Exercise 7.5: Urban Bike-Sharing Fleet Rebalancing Forecaster
+Task Type: Regression
+Business Problem: Forecast hourly bike rental demand across seasonal, weather, temperature, and workday features to schedule station restocking trucks.
+Portfolio Value: Showcases temporal feature extraction (hour of day, rush-hour flags) and RMSE/MAE evaluation for smart-city logistics.
+Dataset Name: Bike Sharing Dataset (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/ml/datasets/bike+sharing+dataset
+
+
+================================================================================
+TOPIC 8: SUPPORT VECTOR MACHINE (SVM) - 3 CLASSIFICATION AND 2 REGRESSION
+Focus: Margin maximization, kernel trick (RBF, Polynomial, Linear), high-dimensional text classification, and Support Vector Regression (SVR).
+============================================================================
+
+Exercise 8.1: E-Commerce Real-Time Purchase Intent Classifier
+Task Type: Classification
+Business Problem: Predict whether an active website visitor will complete a purchase before exiting based on bounce rates, page values, and session duration using an RBF-kernel SVM.
+Portfolio Value: Demonstrates GridSearchCV hyperparameter tuning (C and gamma) for real-time coupon triggering.
+Dataset Name: Online Shoppers Purchasing Intention Dataset (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/ml/datasets/Online+Shoppers+Purchasing+Intention+Dataset
+
+Exercise 8.2: Enterprise SMS and Phishing Security Filter
+Task Type: Classification
+Business Problem: Convert raw text messages into high-dimensional TF-IDF vectors and train a LinearSVC classifier to quarantine spam and smishing attacks with near-zero false positives.
+Portfolio Value: Proves understanding of why Linear SVMs excel in sparse, ultra-high-dimensional NLP feature spaces.
+Dataset Name: SMS Spam Collection Dataset (Kaggle)
+Dataset Link: https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset
+
+Exercise 8.3: Cardiovascular Disease Clinical Risk Stratification
+Task Type: Classification
+Business Problem: Classify presence of heart disease from 13 clinical attributes (chest pain type, resting ECG, cholesterol, max heart rate), comparing Linear, Polynomial, and RBF kernels.
+Portfolio Value: Highlights ROC-AUC analysis and probability calibration (CalibratedClassifierCV) for clinical decision support.
+Dataset Name: Heart Disease Dataset (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/ml/datasets/heart+Disease
+
+Exercise 8.4: Civil Engineering Concrete Strength Quality Assurance
+Task Type: Regression (SVR)
+Business Problem: Predict the compressive strength (MPa) of concrete mixes from 8 ingredient quantities (cement, slag, fly ash, water, superplasticizer) and curing age using SVR.
+Portfolio Value: Applies non-linear RBF Support Vector Regression (epsilon, C, gamma tuning) to industrial materials testing and manufacturing QA.
+Dataset Name: Concrete Compressive Strength Dataset (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/ml/datasets/concrete+compressive+strength
+
+Exercise 8.5: Smart Building HVAC and Appliance Energy Load Forecasting
+Task Type: Regression (SVR)
+Business Problem: Predict residential appliance energy usage (in Wh) from wireless indoor temperature and humidity sensor networks to optimize smart-home energy billing.
+Portfolio Value: Showcases SVR robustness to sensor noise via the epsilon-insensitive tube in clean-tech and IoT energy management.
+Dataset Name: Appliances Energy Prediction Dataset (UCI ML Repository)
+Dataset Link: https://archive.ics.uci.edu/ml/datasets/Appliances+energy+prediction
