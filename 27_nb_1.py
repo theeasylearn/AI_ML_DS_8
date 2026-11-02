@@ -1,3 +1,5 @@
+# https://share.gemini.google/g9jKH8pN6Qbc
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 import kagglehub
@@ -61,4 +63,4 @@ score = accuracy_score(y_test, y_pred_hybrid)
 print("=== Hybrid Naive Bayes (PCA-GaussianNB + CategoricalNB) ===")
 print(f"Test Accuracy: {score * 100:.2f}%\n")
 print(classification_report(y_test, y_pred_hybrid))
-exit(1)
+# exit(1)
