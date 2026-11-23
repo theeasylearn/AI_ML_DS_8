@@ -1,0 +1,41 @@
+What is Client?
+-----------------------------------------------------------------------------------------
+Client can be any device(computer/tablet/pc) that can send request to other computer for information. Client receive response of request from server. Client computer must be connected with server computer using any communication channel. Client computer always send request on specific address known as URL (Universal Resource Locator / Uniform resource Locator). in simple mostly it kind of web page. after client receive response of request, client and server gets disconnect 
+
+What is Server?
+------------------------------------------------------------------------------------------
+Server accept request send by client computer Process it generate & return response of back to client computer. Server computer use a particular technology/platform to process the request. this can be 
+
+Python
+PHP
+asp.net
+node js or can be anything 
+
+to process request in python we need to use particular framework/library. for example one can use
+
+Django 
+Flesk 
+fastAPI for this purpose 
+
+what is A.P.I?
+-----------------------------------------------------------------------------------------
+    full form of API is application programming interface. A.P.I is used to connect two different application & share data between them. to share data application use JSON format. main job of api is to 
+        1) accept request from client
+        2) process (activate model and supply input to it, receive output)
+        3) return output as response to client 
+    
+what is JSON?
+-----------------------------------------------------------------------------------------
+    full of JSON is javascript object notation. it is format used by application to transmit data with each others. for python developer it is one kind of dictionary which has key value pair. for example we want to call API that will validate whether job post is fake or real using ML. in such case we will call some api let us say 
+    http://www.render.com/the_easylearn_academy/fake_real_job
+
+    when we call api we need to pass some data let us say 
+    title, description requirement, benefits, salary etc then we will pass it like below 
+    
+    {'title':"Urgent Work From Home Data Entry Clerk - Earn $3500/Week",
+    'description':"Immediate start! No experience required. Earn daily cash payouts from home processing simple forms. Send bank details for direct wire transfer setup.",
+    'requirements':"Must have internet access and basic typing skills.",
+    'benefits':"Daily cash bonuses, flexible hours.",
+    'telecommuting':1, 'has_company_logo':0, 'has_questions':0, 'has_salary':1,}
+
+https://chatgpt.com/share/6affdb75-a42c-83ec-be63-132879463e1b
