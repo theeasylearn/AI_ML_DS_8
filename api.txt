@@ -30,7 +30,8 @@ what is JSON?
     http://www.render.com/the_easylearn_academy/fake_real_job
 
     when we call api we need to pass some data let us say 
-    title, description requirement, benefits, salary etc then we will pass it like below 
+    title, description, requirement, benefits, salary etc 
+    then we will pass it like below 
     
     {'title':"Urgent Work From Home Data Entry Clerk - Earn $3500/Week",
     'description':"Immediate start! No experience required. Earn daily cash payouts from home processing simple forms. Send bank details for direct wire transfer setup.",
@@ -38,4 +39,11 @@ what is JSON?
     'benefits':"Daily cash bonuses, flexible hours.",
     'telecommuting':1, 'has_company_logo':0, 'has_questions':0, 'has_salary':1,}
 
+    api will return json object
+    {'response':1} mean real job post or 
+    {'response':0} mean fake job post or 
+
 https://chatgpt.com/share/6affdb75-a42c-83ec-be63-132879463e1b
+
+where we will develop API. 
+we will develop API on our computer like we develop models but after API is developed run & tested, we will upload on server. we need VPS (virtual private server) server. VPS mean you have remote computer which can be anywhere in whole world and you control is from your computer. it just like playing GTA 6 on your friends computer but input and output will be from your computer. vps are generally paid service. but there are some companies which given basis level VPS service on free of cost. one such company is render.com which provide free vps and fastAPI deployment  
